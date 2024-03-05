@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3bcox5dh6nvx"]
+
+[ext_resource type="Script" path="res://Scripts/Knight/Items/archer_arrow_blue.gd" id="1_ae2s7"]
+[ext_resource type="Texture2D" uid="uid://bo4f02ms4wity" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Arrow/Arrow.png" id="2_qt83o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rstmf"]
+
+[node name="ArcherArrowBlue" type="Area2D" groups=["Arrow"]]
+script = ExtResource("1_ae2s7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rstmf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qt83o")
+vframes = 2
+
+[node name="DestroyedTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DestroyedTimer" to="." method="_on_destroyed_timer_timeout"]
