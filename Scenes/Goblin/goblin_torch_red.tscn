@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcqjtui6y2r45"]
+[gd_scene load_steps=19 format=3 uid="uid://dcqjtui6y2r45"]
 
 [ext_resource type="Texture2D" uid="uid://07ch03hy0din" path="res://Assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_a5dpu"]
 [ext_resource type="Script" path="res://Scripts/Goblin/goblin_torch_red.gd" id="1_qbmch"]
@@ -10,8 +10,80 @@
 radius = 250.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40if3"]
-radius = 30.0
-height = 64.0
+radius = 39.0
+height = 78.0
+
+[sub_resource type="Animation" id="Animation_k0qau"]
+resource_name = "AttackDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoblinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 25, 26]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8lfhj"]
+resource_name = "AttackLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoblinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoblinSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wu0ka"]
 resource_name = "AttackRight"
@@ -27,6 +99,62 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoblinSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_btsna"]
+resource_name = "AttackUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoblinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_gfls0"]
@@ -46,6 +174,35 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_hw8ay"]
+resource_name = "RunLeft"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoblinSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoblinSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_mu4b5"]
 resource_name = "RunRight"
 length = 0.5
@@ -62,11 +219,27 @@ tracks/0/keys = {
 "update": 1,
 "values": [7, 8, 9, 10, 11, 12]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoblinSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sucbf"]
 _data = {
+"AttackDown": SubResource("Animation_k0qau"),
+"AttackLeft": SubResource("Animation_8lfhj"),
 "AttackRight": SubResource("Animation_wu0ka"),
+"AttackUp": SubResource("Animation_btsna"),
 "Idle": SubResource("Animation_gfls0"),
+"RunLeft": SubResource("Animation_hw8ay"),
 "RunRight": SubResource("Animation_mu4b5")
 }
 
@@ -173,6 +346,7 @@ _data = {
 }
 
 [node name="GoblinTorchRed" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_qbmch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -182,7 +356,7 @@ shape = SubResource("CapsuleShape2D_6xi04")
 texture = ExtResource("1_a5dpu")
 hframes = 7
 vframes = 5
-frame = 7
+frame = 31
 
 [node name="DetectedArea" type="Area2D" parent="."]
 visible = false
@@ -217,5 +391,9 @@ vframes = 2
 path_desired_distance = 5.0
 path_postprocessing = 1
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_entered"]
 [connection signal="area_exited" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,25 +1,32 @@
 extends CharacterBody2D
 
-
-var currentenemy
-var enemyarea
+var speed = 20
+var currentenemy = null
+var enemyarea = null
 var attack = false
 var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
-func _process(delta):
+func _physics_process(delta):
 	if currentenemy !=null and enemyarea == null:
-		velocity = currentenemy.global_position.x - global_position.x
-		
+		velocity = currentenemy.global_position - global_position
+		velocity.normalized()
+		move_and_slide()
+		if velocity != Vector2(0,0) and attack == false:
+			if currentenemy.global_position.x > global_position.x:
+				$VisualAnimation.play("RunRight")
+			else:
+				$VisualAnimation.play("RunLeft")
 
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy"):
-		if currentenemy != null:
+		if currentenemy == null:
 			currentenemy = area
 
 
 func _on_range_area_area_entered(area):
 	if area.is_in_group("Enemy"):
-		enemyarea = area
-		Attack()
+		if enemyarea == null:
+			enemyarea = area
+			Attack()
 		
 func Attack():
 	if enemyarea != null:
@@ -47,6 +54,9 @@ func dead_enemy():
 	enemyarea = null
 	currentenemy = null
 	attack = false
+	
+func take_damage():
+	$AnimationTree
 func _on_attack_timer_timeout():
 	if enemyarea != null:
 		Attack()
