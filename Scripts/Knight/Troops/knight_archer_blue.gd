@@ -56,9 +56,16 @@ func dead_enemy():
 	attack = false
 	
 func take_damage():
-	$AnimationTree
+	#$ToolAnimation.play("take_damage")
+	pass
 func _on_attack_timer_timeout():
 	if enemyarea != null:
 		Attack()
 	else:
 		dead_enemy()
+
+
+func _on_tool_animation_animation_finished(anim_name):
+	if anim_name == "take_damage":
+		print("Ani bit")
+		$ToolAnimation.play("detected")

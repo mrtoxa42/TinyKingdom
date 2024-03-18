@@ -1,9 +1,24 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcdnqy5l8jtdf"]
+[gd_scene load_steps=20 format=3 uid="uid://bcdnqy5l8jtdf"]
 
 [ext_resource type="Texture2D" uid="uid://d1w57dt7vdrtw" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Blue/Archer_Blue.png" id="1_g3e68"]
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_archer_blue.gd" id="1_y3hd6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oxng"]
+
+[sub_resource type="Animation" id="Animation_l2nci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_6r7x6"]
 resource_name = "detected"
@@ -22,7 +37,7 @@ tracks/0/keys = {
 "values": [0.01, 250.0]
 }
 
-[sub_resource type="Animation" id="Animation_de2rg"]
+[sub_resource type="Animation" id="Animation_xtjaf"]
 resource_name = "take_damage"
 length = 0.3
 tracks/0/type = "value"
@@ -40,8 +55,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwam6"]
 _data = {
+"RESET": SubResource("Animation_l2nci"),
 "detected": SubResource("Animation_6r7x6"),
-"take_damage": SubResource("Animation_de2rg")
+"take_damage": SubResource("Animation_xtjaf")
 }
 
 [sub_resource type="Animation" id="Animation_uv14d"]
@@ -205,6 +221,22 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_ns4op"]
+resource_name = "Reset"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_qnrrb"]
 resource_name = "RunLeft"
 length = 0.5
@@ -270,6 +302,7 @@ _data = {
 "AttackRight": SubResource("Animation_1l3v4"),
 "AttackUp": SubResource("Animation_sr786"),
 "Idle": SubResource("Animation_s8du3"),
+"Reset": SubResource("Animation_ns4op"),
 "RunLeft": SubResource("Animation_qnrrb"),
 "RunRight": SubResource("Animation_chrap")
 }
@@ -278,37 +311,10 @@ _data = {
 radius = 400.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgsk7"]
-radius = 129.764
+radius = 181.758
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jnx7b"]
 radius = 38.0526
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4snvp"]
-animation = &"take_damage"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pw76j"]
-animation = &"detected"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_q35oc"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_i6k3b"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_olf6w"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2rn03"]
-graph_offset = Vector2(221.284, -35.1323)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_pw76j")
-nodes/Animation/position = Vector2(500, 180)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_4snvp")
-"nodes/Animation 2/position" = Vector2(620, 40)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_i6k3b")
-nodes/Blend2/position = Vector2(1000, 20)
-"nodes/Blend2 2/node" = SubResource("AnimationNodeBlend2_q35oc")
-"nodes/Blend2 2/position" = Vector2(800, 220)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_olf6w")
-nodes/OneShot/position = Vector2(1172.71, 23.5387)
-nodes/output/position = Vector2(1360, 40)
-node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"OneShot", 0, &"Blend2", &"output", 0, &"OneShot"]
 
 [node name="KnightArcherBlue" type="CharacterBody2D"]
 script = ExtResource("1_y3hd6")
@@ -317,7 +323,6 @@ script = ExtResource("1_y3hd6")
 shape = SubResource("CapsuleShape2D_8oxng")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
 texture = ExtResource("1_g3e68")
 hframes = 8
 vframes = 7
@@ -327,12 +332,13 @@ frame = 47
 libraries = {
 "": SubResource("AnimationLibrary_gwam6")
 }
+autoplay = "detected"
 
 [node name="VisualAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lim23")
 }
-autoplay = "Idle"
+autoplay = "Reset"
 
 [node name="DetectedArea" type="Area2D" parent="."]
 
@@ -353,18 +359,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArcherArea"]
 shape = SubResource("CircleShape2D_jnx7b")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_gwam6")
-}
-tree_root = SubResource("AnimationNodeBlendTree_2rn03")
-anim_player = NodePath("../ToolAnimation")
-parameters/Blend2/blend_amount = 1.0
-"parameters/Blend2 2/blend_amount" = 0
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
-
+[connection signal="animation_finished" from="ToolAnimation" to="." method="_on_tool_animation_animation_finished"]
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
 [connection signal="area_entered" from="RangeArea" to="." method="_on_range_area_area_entered"]
 [connection signal="area_exited" from="RangeArea" to="." method="_on_range_area_area_exited"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var hp = 10
+var hp = 2
 var speed = 50
 var accel = 7
 var dead = false
@@ -88,7 +88,7 @@ func _on_goblin_torch_area_area_entered(area):
 		if enemyarea == null:
 			enemyarea = area.get_owner()
 			Attack()
-			print("a")
+	
 			
 
 

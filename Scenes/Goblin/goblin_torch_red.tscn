@@ -356,7 +356,7 @@ shape = SubResource("CapsuleShape2D_6xi04")
 texture = ExtResource("1_a5dpu")
 hframes = 7
 vframes = 5
-frame = 31
+frame = 21
 
 [node name="DetectedArea" type="Area2D" parent="."]
 visible = false
