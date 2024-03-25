@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
 
-var hp = 10
+var hp = 3
 var speed = 50
+var enemyspeed = 10
 var accel = 7
 var dead = false
 var currentenemy 
 var enemyarea
 var archerarea
 var attack = false
+var enemydistance = null
 	 
 @onready var nav = $NavigationAgent2D
 
@@ -32,8 +34,11 @@ func _physics_process(delta):
 				$VisualAnimation.play("RunLeft")
 		else:
 			if enemyarea == null:
-				velocity = currentenemy.global_position - global_position
-				velocity.normalized()
+				
+				if enemydistance == null:
+					enemydistance = currentenemy.global_position - global_position 
+					enemydistance.normalized()
+				velocity = enemydistance * delta * enemyspeed
 				move_and_slide()
 				if velocity != Vector2(0,0) and attack == false:
 					if currentenemy.global_position.x > global_position.x:
@@ -45,7 +50,7 @@ func Attack():
 	attack = true
 	if (currentenemy.global_position.y - global_position.y) > 50:
 			$VisualAnimation.play("AttackDown")
-	elif (currentenemy.global_position.y - global_position.y) < -50:
+	elif (currentenemy.global_position.y - global_position.y) < -50:	
 		$VisualAnimation.play("AttackUp")
 	elif currentenemy.global_position.x > global_position.x:
 		$VisualAnimation.play("AttackRight")
@@ -76,8 +81,12 @@ func deal_damage():
 		enemyarea.take_damage()
 func _on_goblin_torch_area_area_entered(area):
 	if area.is_in_group("Knight"):
-		currentenemy = area
-		Attack()
+		if area.get_owner().enemyarea == self:
+			currentenemy = area
+			enemyarea = area.get_owner()
+			
+			
+			Attack()
 	if area.is_in_group("Arrow"):
 		archerarea = area.myarcher
 		if currentenemy == null:
@@ -88,7 +97,6 @@ func _on_goblin_torch_area_area_entered(area):
 		if enemyarea == null:
 			enemyarea = area.get_owner()
 			Attack()
-			print("a")
 			
 
 

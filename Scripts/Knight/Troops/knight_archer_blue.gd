@@ -4,6 +4,7 @@ var speed = 20
 var currentenemy = null
 var enemyarea = null
 var attack = false
+var hp = 3
 var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
 func _physics_process(delta):
 	if currentenemy !=null and enemyarea == null:
@@ -56,7 +57,11 @@ func dead_enemy():
 	attack = false
 	
 func take_damage():
-	$AnimationTree
+	$ExtraAnimation.play("take_damage")
+	
+	
+	
+
 func _on_attack_timer_timeout():
 	if enemyarea != null:
 		Attack()

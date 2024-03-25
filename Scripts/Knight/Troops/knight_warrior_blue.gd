@@ -5,6 +5,7 @@ var currentdetectedenenmy
 var currentenemy
 var enemyarea
 var speed = 20
+var hp = 5
 var attack = false
 func _process(delta):
 	if currentdetectedenenmy != null and enemyarea == null:
@@ -24,11 +25,21 @@ func _on_detected_area_area_entered(area):
 		if currentdetectedenenmy == null:
 			currentdetectedenenmy = area
 			
+func take_damage():
+	if hp >1:
+		hp -=1
+		$ExtraAnimation.play("take_damage")
+	else:
+		$ToolAnimation.play("dead")
+		$KnightArea/CollisionShape2D.disabled = true
+		await $ToolAnimation.animation_finished
+		queue_free()
+		
 
 
 func _on_knight_area_area_entered(area):
 	if area.is_in_group("Enemy"):
-		enemyarea = area
+		enemyarea = area.get_owner()
 		Attack()
 		
 
@@ -55,7 +66,7 @@ func Attack():
 	$AttackTimer.start()
 func deal_damage():
 	if enemyarea != null:
-		enemyarea.get_owner().take_damage()
+		enemyarea.take_damage()
 func dead_enemy():
 	enemyarea = null
 	currentdetectedenenmy = null

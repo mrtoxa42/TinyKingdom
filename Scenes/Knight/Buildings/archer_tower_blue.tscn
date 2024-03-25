@@ -203,6 +203,7 @@ _data = {
 
 [node name="ArcherTowerBlue" type="Area2D"]
 script = ExtResource("1_cq5q4")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_77iqn")
@@ -220,7 +221,7 @@ position = Vector2(0, -54)
 texture = ExtResource("2_rxywm")
 hframes = 8
 vframes = 7
-frame = 22
+frame = 47
 
 [node name="ArcherAnimation" type="AnimationPlayer" parent="."]
 libraries = {
