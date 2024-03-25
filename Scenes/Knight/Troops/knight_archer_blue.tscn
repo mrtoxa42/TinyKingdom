@@ -5,6 +5,21 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oxng"]
 
+[sub_resource type="Animation" id="Animation_l2nci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_6r7x6"]
 resource_name = "detected"
 length = 0.2
@@ -19,12 +34,38 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
+<<<<<<< HEAD
 "values": [0.01, 400.0]
+=======
+"values": [0.01, 250.0]
+}
+
+[sub_resource type="Animation" id="Animation_xtjaf"]
+resource_name = "take_damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1)]
+>>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwam6"]
 _data = {
+<<<<<<< HEAD
 "detected": SubResource("Animation_6r7x6")
+=======
+"RESET": SubResource("Animation_l2nci"),
+"detected": SubResource("Animation_6r7x6"),
+"take_damage": SubResource("Animation_xtjaf")
+>>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 }
 
 [sub_resource type="Animation" id="Animation_uv14d"]
@@ -188,6 +229,22 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_ns4op"]
+resource_name = "Reset"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_qnrrb"]
 resource_name = "RunLeft"
 length = 0.5
@@ -253,6 +310,7 @@ _data = {
 "AttackRight": SubResource("Animation_1l3v4"),
 "AttackUp": SubResource("Animation_sr786"),
 "Idle": SubResource("Animation_s8du3"),
+"Reset": SubResource("Animation_ns4op"),
 "RunLeft": SubResource("Animation_qnrrb"),
 "RunRight": SubResource("Animation_chrap")
 }
@@ -299,7 +357,11 @@ _data = {
 radius = 500.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgsk7"]
+<<<<<<< HEAD
 radius = 400.0
+=======
+radius = 181.758
+>>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jnx7b"]
 radius = 38.0526
@@ -326,7 +388,7 @@ autoplay = "detected"
 libraries = {
 "": SubResource("AnimationLibrary_lim23")
 }
-autoplay = "Idle"
+autoplay = "Reset"
 
 [node name="ExtraAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -353,6 +415,10 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArcherArea"]
 shape = SubResource("CircleShape2D_jnx7b")
 
+<<<<<<< HEAD
+=======
+[connection signal="animation_finished" from="ToolAnimation" to="." method="_on_tool_animation_animation_finished"]
+>>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
 [connection signal="area_entered" from="RangeArea" to="." method="_on_range_area_area_entered"]
 [connection signal="area_exited" from="RangeArea" to="." method="_on_range_area_area_exited"]

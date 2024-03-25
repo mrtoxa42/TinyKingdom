@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
 
+<<<<<<< HEAD
 var hp = 3
+=======
+var hp = 2
+>>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 var speed = 50
 var enemyspeed = 10
 var accel = 7
@@ -97,6 +101,10 @@ func _on_goblin_torch_area_area_entered(area):
 		if enemyarea == null:
 			enemyarea = area.get_owner()
 			Attack()
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 			
 
 
