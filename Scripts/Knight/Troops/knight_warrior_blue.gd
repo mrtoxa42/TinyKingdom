@@ -6,6 +6,7 @@ var currentenemy
 var enemyarea
 var speed = 20
 var hp = 5
+var dead = false
 var attack = false
 func _process(delta):
 	if currentdetectedenenmy != null and enemyarea == null:
@@ -26,14 +27,16 @@ func _on_detected_area_area_entered(area):
 			currentdetectedenenmy = area
 			
 func take_damage():
+
 	if hp >1:
-		hp -=1
+		hp-=1
 		$ExtraAnimation.play("take_damage")
 	else:
-		$ToolAnimation.play("dead")
+		dead = true
+		$ExtraAnimation.play("dead")
 		$KnightArea/CollisionShape2D.disabled = true
-		await $ToolAnimation.animation_finished
-		queue_free()
+		#await $ExtraAnimation.animation_finished
+		#queue_free()
 		
 
 

@@ -1,11 +1,8 @@
 extends CharacterBody2D
 
 
-<<<<<<< HEAD
+
 var hp = 3
-=======
-var hp = 2
->>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 var speed = 50
 var enemyspeed = 10
 var accel = 7
@@ -50,19 +47,21 @@ func _physics_process(delta):
 					else:
 						$VisualAnimation.play("RunLeft")
 
+
 func Attack():
-	attack = true
-	if (currentenemy.global_position.y - global_position.y) > 50:
-			$VisualAnimation.play("AttackDown")
-	elif (currentenemy.global_position.y - global_position.y) < -50:	
-		$VisualAnimation.play("AttackUp")
-	elif currentenemy.global_position.x > global_position.x:
-		$VisualAnimation.play("AttackRight")
-	else:
-		$VisualAnimation.play("AttackLeft")
-	await $VisualAnimation.animation_finished
-	$VisualAnimation.play("Idle")
-	$AttackTimer.start()
+	if dead == false:
+		attack = true
+		if (currentenemy.global_position.y - global_position.y) > 50:
+				$VisualAnimation.play("AttackDown")
+		elif (currentenemy.global_position.y - global_position.y) < -50:	
+			$VisualAnimation.play("AttackUp")
+		elif currentenemy.global_position.x > global_position.x:
+			$VisualAnimation.play("AttackRight")
+		else:
+			$VisualAnimation.play("AttackLeft")
+		await $VisualAnimation.animation_finished
+		$VisualAnimation.play("Idle")
+		$AttackTimer.start()
 
 
 func take_damage():
@@ -74,47 +73,52 @@ func take_damage():
 			dead = true
 			$ToolAnimation.play("dead")
 			$CollisionShape2D.disabled = true
-			if archerarea != null:
-				archerarea.dead_enemy()
-				$GoblinTorchArea/CollisionShape2D.disabled = true
-			await $ToolAnimation.animation_finished
-			queue_free()
+			$GoblinTorchArea/CollisionShape2D.disabled = true
+			#await $ToolAnimation.animation_finished
+			#queue_free()
+
 
 func deal_damage():
 	if enemyarea != null:
 		enemyarea.take_damage()
+		
+
+
+
+
 func _on_goblin_torch_area_area_entered(area):
-	if area.is_in_group("Knight"):
-		if area.get_owner().enemyarea == self:
-			currentenemy = area
-			enemyarea = area.get_owner()
-			
-			
-			Attack()
-	if area.is_in_group("Arrow"):
-		archerarea = area.myarcher
-		if currentenemy == null:
-			currentenemy = area.myarcher
-	if area.is_in_group("Archer"):
-		if currentenemy == null:
-			currentenemy = area
-		if enemyarea == null:
-			enemyarea = area.get_owner()
-			Attack()
-<<<<<<< HEAD
-=======
-	
->>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
+	if enemyarea == null:
+		if area.is_in_group("Knight"):
+				currentenemy = area
+				enemyarea = area.get_owner()
+				Attack()
+		if area.is_in_group("Arrow"):
+			if area.archertype == "Archer":
+				archerarea = area.myarcher
+				if currentenemy == null:
+					currentenemy = area.myarcher
+		if area.is_in_group("Archer"):
+			if currentenemy == null:
+				currentenemy = area
+			if enemyarea == null:
+				enemyarea = area.get_owner()
+				Attack()
 			
 
 
 
 func _on_goblin_torch_area_area_exited(area):
 	if area.is_in_group("Knight"):
-		pass
+		if area.get_owner() == enemyarea:
+			enemyarea = null
+			currentenemy = null
+	if area.is_in_group("Archer"):
+		if area.get_owner() == enemyarea:
+			enemyarea = null
+			currentenemy = null
 			
 
 
 func _on_attack_timer_timeout():
-	if enemyarea !=null:
+	if enemyarea !=null and dead == false:
 		Attack()

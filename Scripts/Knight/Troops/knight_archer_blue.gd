@@ -5,9 +5,12 @@ var currentenemy = null
 var enemyarea = null
 var attack = false
 var hp = 3
+var dead = false
 var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
+
+
 func _physics_process(delta):
-	if currentenemy !=null and enemyarea == null:
+	if currentenemy !=null and enemyarea == null and dead == false:
 		velocity = currentenemy.global_position - global_position
 		velocity.normalized()
 		move_and_slide()
@@ -27,10 +30,11 @@ func _on_range_area_area_entered(area):
 	if area.is_in_group("Enemy"):
 		if enemyarea == null:
 			enemyarea = area
+			$ToolAnimation.stop()
 			Attack()
 		
 func Attack():
-	if enemyarea != null:
+	if enemyarea != null and dead == false:
 		attack = true
 		if (enemyarea.global_position.y - global_position.y) > 50:
 			$VisualAnimation.play("AttackDown")
@@ -51,22 +55,23 @@ func create_arrow():
 		Arrow.global_position = global_position
 		Arrow.target = enemyarea
 		Arrow.myarcher = self
+		Arrow.archertype = "Archer"
 func dead_enemy():
 	enemyarea = null
 	currentenemy = null
 	attack = false
 	
 func take_damage():
-<<<<<<< HEAD
-	$ExtraAnimation.play("take_damage")
+	if hp >=1:
+		hp -= 1
+		$ExtraAnimation.play("take_damage")
+	else:
+		dead = true
+		$ExtraAnimation.play("dead")
+		$ArcherArea/CollisionShape2D.disabled = true
 	
 	
 	
-
-=======
-	#$ToolAnimation.play("take_damage")
-	pass
->>>>>>> 3d54fbca9f50d0172e95ed1d2100fffca1454d6f
 func _on_attack_timer_timeout():
 	if enemyarea != null:
 		Attack()
@@ -76,5 +81,17 @@ func _on_attack_timer_timeout():
 
 func _on_tool_animation_animation_finished(anim_name):
 	if anim_name == "take_damage":
-		print("Ani bit")
 		$ToolAnimation.play("detected")
+
+
+func _on_detected_area_area_exited(area):
+	if area == currentenemy:
+		currentenemy = null
+		
+
+
+func _on_range_area_area_exited(area):
+	if area == enemyarea and currentenemy ==null:
+		$ToolAnimation.play("detected")
+		enemyarea = null
+		print(enemyarea)

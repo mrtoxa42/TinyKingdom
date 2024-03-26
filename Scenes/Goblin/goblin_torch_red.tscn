@@ -352,13 +352,6 @@ script = ExtResource("1_qbmch")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6xi04")
 
-[node name="GoblinSprite" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_a5dpu")
-hframes = 7
-vframes = 5
-frame = 21
-
 [node name="DetectedArea" type="Area2D" parent="."]
 visible = false
 
@@ -383,6 +376,7 @@ libraries = {
 autoplay = "reset"
 
 [node name="ExtraSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_6bt3r")
 hframes = 7
 vframes = 2
@@ -393,6 +387,12 @@ path_postprocessing = 1
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GoblinSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_a5dpu")
+hframes = 7
+vframes = 5
+frame = 2
 
 [connection signal="area_entered" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_entered"]
 [connection signal="area_exited" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_exited"]

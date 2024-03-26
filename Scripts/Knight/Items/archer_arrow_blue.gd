@@ -3,7 +3,8 @@ extends Area2D
 
 var target
 var currentenemy
-var myarcher
+var myarcher 
+var archertype
 var speed = 15
 
 

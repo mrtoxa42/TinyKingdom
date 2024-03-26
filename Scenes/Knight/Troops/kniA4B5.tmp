@@ -389,7 +389,7 @@ _data = {
 radius = 500.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgsk7"]
-radius = 0.01
+radius = 181.758
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqol4"]
 radius = 37.3363
@@ -424,6 +424,7 @@ visible = false
 shape = SubResource("CircleShape2D_e4ldn")
 
 [node name="RangeArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
 position = Vector2(1, -7)

@@ -40,6 +40,7 @@ func create_arrow():
 		Arrow.global_position = global_position
 		Arrow.target = enemyarea
 		Arrow.myarcher = self
+		Arrow.archertype = "Tower"
 func dead_enemy():
 	enemyarea = null
 	currentenemy = null

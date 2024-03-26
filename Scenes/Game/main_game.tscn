@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=10 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_1s2rt"]
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="3_8sss6"]
 [ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="5_s5sa5"]
-[ext_resource type="PackedScene" uid="uid://bcdnqy5l8jtdf" path="res://Scenes/Knight/Troops/knight_archer_blue.tscn" id="5_x8g7q"]
+[ext_resource type="PackedScene" uid="uid://dgy7tuyuu5us3" path="res://Scenes/Knight/Troops/knight_archer_blue.tscn" id="5_x8g7q"]
+[ext_resource type="PackedScene" uid="uid://bq8rjxjltbv58" path="res://Scenes/Knight/Buildings/archer_tower_blue.tscn" id="6_t6lqq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bsjv1"]
 texture = ExtResource("1_1s2rt")
@@ -588,3 +589,6 @@ position = Vector2(-483, 409)
 
 [node name="KnightWarriorBlue" parent="." instance=ExtResource("5_s5sa5")]
 position = Vector2(235, 476)
+
+[node name="ArcherTowerBlue" parent="." instance=ExtResource("6_t6lqq")]
+position = Vector2(485, 426)
