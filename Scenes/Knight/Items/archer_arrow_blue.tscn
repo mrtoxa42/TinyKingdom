@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bo4f02ms4wity" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Arrow/Arrow.png" id="2_qt83o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rstmf"]
+size = Vector2(23, 6)
 
 [node name="ArcherArrowBlue" type="Area2D" groups=["Arrow"]]
 script = ExtResource("1_ae2s7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18.5, 3)
 shape = SubResource("RectangleShape2D_rstmf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

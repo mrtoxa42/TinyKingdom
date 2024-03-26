@@ -30,7 +30,7 @@ func _on_range_area_area_entered(area):
 	if area.is_in_group("Enemy"):
 		if enemyarea == null:
 			enemyarea = area
-			$ToolAnimation.stop()
+			$ToolAnimation.pause()
 			Attack()
 		
 func Attack():
@@ -46,8 +46,10 @@ func Attack():
 			$VisualAnimation.play("AttackLeft")
 	await $VisualAnimation.animation_finished
 	$VisualAnimation.play("Idle")
-	if enemyarea !=null:
+	if enemyarea !=null: 
 		$AttackTimer.start()
+		
+		
 func create_arrow():
 	if enemyarea != null:
 		var Arrow = arrow.instantiate()
@@ -56,11 +58,14 @@ func create_arrow():
 		Arrow.target = enemyarea
 		Arrow.myarcher = self
 		Arrow.archertype = "Archer"
+		
+
 func dead_enemy():
 	enemyarea = null
 	currentenemy = null
 	attack = false
 	
+
 func take_damage():
 	if hp >=1:
 		hp -= 1
@@ -69,6 +74,8 @@ func take_damage():
 		dead = true
 		$ExtraAnimation.play("dead")
 		$ArcherArea/CollisionShape2D.disabled = true
+		await $ExtraAnimation.animation_finished
+		queue_free()
 	
 	
 	
@@ -91,7 +98,10 @@ func _on_detected_area_area_exited(area):
 
 
 func _on_range_area_area_exited(area):
-	if area == enemyarea and currentenemy ==null:
+	if area == enemyarea:
 		$ToolAnimation.play("detected")
 		enemyarea = null
-		print(enemyarea)
+		
+	#if currentenemy !=null and area == enemyarea:
+		#$ToolAnimation.play("detec")
+

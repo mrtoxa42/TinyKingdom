@@ -37,6 +37,7 @@ func _physics_process(delta):
 			if enemyarea == null:
 				
 				if enemydistance == null:
+					
 					enemydistance = currentenemy.global_position - global_position 
 					enemydistance.normalized()
 				velocity = enemydistance * delta * enemyspeed
@@ -74,8 +75,8 @@ func take_damage():
 			$ToolAnimation.play("dead")
 			$CollisionShape2D.disabled = true
 			$GoblinTorchArea/CollisionShape2D.disabled = true
-			#await $ToolAnimation.animation_finished
-			#queue_free()
+			await $ToolAnimation.animation_finished
+			queue_free()
 
 
 func deal_damage():
@@ -92,11 +93,11 @@ func _on_goblin_torch_area_area_entered(area):
 				currentenemy = area
 				enemyarea = area.get_owner()
 				Attack()
-		if area.is_in_group("Arrow"):
-			if area.archertype == "Archer":
-				archerarea = area.myarcher
-				if currentenemy == null:
-					currentenemy = area.myarcher
+		#if area.is_in_group("Arrow"):
+			#if area.archertype == "Archer":
+				#archerarea = area.myarcher
+				#if currentenemy == null:
+					#currentenemy = area.myarcher
 		if area.is_in_group("Archer"):
 			if currentenemy == null:
 				currentenemy = area

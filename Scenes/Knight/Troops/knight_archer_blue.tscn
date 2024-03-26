@@ -1,25 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgy7tuyuu5us3"]
+[gd_scene load_steps=24 format=3 uid="uid://dgy7tuyuu5us3"]
 
 [ext_resource type="Texture2D" uid="uid://d1w57dt7vdrtw" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Blue/Archer_Blue.png" id="1_g3e68"]
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_archer_blue.gd" id="1_y3hd6"]
 [ext_resource type="Texture2D" uid="uid://cdturbcgk57ww" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="3_r7yir"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oxng"]
-
-[sub_resource type="Animation" id="Animation_l2nci"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_6r7x6"]
 resource_name = "detected"
@@ -56,7 +41,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwam6"]
 _data = {
-"RESET": SubResource("Animation_l2nci"),
 "detected": SubResource("Animation_6r7x6"),
 "take_damage": SubResource("Animation_xtjaf")
 }
@@ -308,20 +292,19 @@ _data = {
 "RunRight": SubResource("Animation_chrap")
 }
 
-[sub_resource type="Animation" id="Animation_t17wu"]
-resource_name = "take_damage"
-length = 0.3
+[sub_resource type="Animation" id="Animation_krkgl"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/path = NodePath("ExtraSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_llu35"]
@@ -363,19 +346,20 @@ tracks/2/keys = {
 "values": [0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 13]
 }
 
-[sub_resource type="Animation" id="Animation_krkgl"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_t17wu"]
+resource_name = "take_damage"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ExtraSprite:frame")
+tracks/0/path = NodePath("Sprite2D:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6mnbb"]
@@ -389,7 +373,7 @@ _data = {
 radius = 500.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgsk7"]
-radius = 0.01
+radius = 125.005
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqol4"]
 radius = 37.3363
@@ -418,7 +402,6 @@ libraries = {
 }
 
 [node name="DetectedArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectedArea"]
 shape = SubResource("CircleShape2D_e4ldn")
@@ -441,7 +424,7 @@ shape = SubResource("CircleShape2D_wqol4")
 texture = ExtResource("1_g3e68")
 hframes = 8
 vframes = 7
-frame = 3
+frame = 47
 
 [node name="ExtraSprite" type="Sprite2D" parent="."]
 visible = false
