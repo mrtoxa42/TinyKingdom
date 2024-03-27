@@ -63,20 +63,20 @@ func Attack():
 		await $VisualAnimation.animation_finished
 		$VisualAnimation.play("Idle")
 		$AttackTimer.start()
-
+	
 
 func take_damage():
 	if dead == false:
-		if hp >= 1:
-			hp-=1
-			$ToolAnimation.play("takedamage")
-		else:
+		hp -=1
+		if hp == 0:
 			dead = true
 			$ToolAnimation.play("dead")
 			$CollisionShape2D.disabled = true
-			$GoblinTorchArea/CollisionShape2D.disabled = true
+			$GoblinTorchArea.queue_free()
 			await $ToolAnimation.animation_finished
 			queue_free()
+		else:
+			$ToolAnimation.play("takedamage")
 
 
 func deal_damage():
@@ -93,11 +93,11 @@ func _on_goblin_torch_area_area_entered(area):
 				currentenemy = area
 				enemyarea = area.get_owner()
 				Attack()
-		#if area.is_in_group("Arrow"):
-			#if area.archertype == "Archer":
-				#archerarea = area.myarcher
-				#if currentenemy == null:
-					#currentenemy = area.myarcher
+		if area.is_in_group("Arrow"):
+			if area.archertype == "Archer":
+				archerarea = area.myarcher
+				if currentenemy == null:
+					currentenemy = area.myarcher
 		if area.is_in_group("Archer"):
 			if currentenemy == null:
 				currentenemy = area

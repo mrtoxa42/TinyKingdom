@@ -11,7 +11,7 @@ var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
 func _on_range_area_area_entered(area):
 	if area.is_in_group("Enemy"):
 		if enemyarea == null:
-			enemyarea = area.get_owner()
+			enemyarea = area
 			Attack()
 		
 			
@@ -19,9 +19,9 @@ func _on_range_area_area_entered(area):
 func Attack():
 	if enemyarea != null:
 		attack = true
-		if (enemyarea.global_position.y - global_position.y) > 50:
+		if (enemyarea.global_position.y - global_position.y) > 70:
 			$ArcherAnimation.play("AttackDown")
-		elif (enemyarea.global_position.y - global_position.y) < -50:
+		elif (enemyarea.global_position.y - global_position.y) < -100:
 			$ArcherAnimation.play("AttackUp")
 		elif enemyarea.global_position.x > global_position.x:
 			$ArcherAnimation.play("AttackRight")
@@ -37,7 +37,7 @@ func create_arrow():
 	if enemyarea != null:
 		var Arrow = arrow.instantiate()
 		get_tree().get_root().add_child(Arrow)
-		Arrow.global_position = global_position
+		Arrow.global_position = $ArrowMarker.global_position
 		Arrow.target = enemyarea
 		Arrow.myarcher = self
 		Arrow.archertype = "Tower"
@@ -53,5 +53,13 @@ func _on_attack_timer_timeout():
 		$ArcherAnimation.play("Idle")
 
 func _on_range_area_area_exited(area):
-	pass
+	if area == enemyarea:
+		enemyarea = null
+		$ToolAnimation.play("range")
 		
+
+
+func _on_tool_animation_animation_finished(anim_name):
+	if anim_name == "range":
+		if enemyarea == null:
+			$ToolAnimation.play("range")
