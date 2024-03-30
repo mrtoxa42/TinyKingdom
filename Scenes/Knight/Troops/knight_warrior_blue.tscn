@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="2_v2f2g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a13i7"]
-radius = 43.0
-height = 86.0
+radius = 22.0
+height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xgg0k"]
 radius = 0.01
@@ -396,7 +396,6 @@ hframes = 7
 vframes = 2
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
 
@@ -404,5 +403,7 @@ debug_enabled = true
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
 [connection signal="area_entered" from="KnightArea" to="." method="_on_knight_area_area_entered"]
 [connection signal="area_exited" from="KnightArea" to="." method="_on_knight_area_area_exited"]
+[connection signal="mouse_entered" from="KnightArea" to="." method="_on_knight_area_mouse_entered"]
+[connection signal="mouse_exited" from="KnightArea" to="." method="_on_knight_area_mouse_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="animation_finished" from="ToolAnimation" to="." method="_on_tool_animation_animation_finished"]

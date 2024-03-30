@@ -9,6 +9,8 @@ var enemyarea
 var speed = 200
 var accel = 7
 var onnav = false
+var mouseenter = false
+var armysize = 1
 var hp = 10
 var dead = false
 var attack = false
@@ -16,12 +18,15 @@ var attack = false
 
 
 func _physics_process(delta):
+	if GameManager.currentsoldiers.has(self):
+		
 		var direction = Vector3()
 		nav.target_position = mousepos
 		direction = nav.get_next_path_position() - global_position
 		#if direction.length() >10:
-		if nav.distance_to_target() > 5 :
-			onnav = true
+		
+		if nav.distance_to_target() > 30 * armysize:
+			#onnav = true
 			direction = direction.normalized()
 			velocity = velocity.lerp(direction * speed, accel * delta)
 			move_and_slide()
@@ -31,23 +36,26 @@ func _physics_process(delta):
 				$VisualAnimation.play("RunLeft")
 		else:
 			$VisualAnimation.play("Idle")
-			onnav = false
-		if currentdetectedenenmy != null and enemyarea == null and onnav == false:
-			velocity = currentdetectedenenmy.global_position - global_position
+			#onnav = false
+	#if currentdetectedenenmy != null and enemyarea == null and onnav == false:
+			#velocity = currentdetectedenenmy.global_position - global_position
+			#print(velocity)
 			#velocity.normalized()
-			if velocity != Vector2(0,0) and attack == false:
-				if mousepos.x > global_position.x:
-					$VisualAnimation.play("RunRight")
-				else:
-					$VisualAnimation.play("RunLeft")
-			else:
-				$VisualAnimation.play("Idle")
+			#if velocity != Vector2(0,0) and attack == false:
+				#if mousepos.x > global_position.x:
+					#$VisualAnimation.play("RunRight")
+				#else:
+					#$VisualAnimation.play("RunLeft")
+			#else:
+				#$VisualAnimation.play("Idle")
 			
 		
 
 func _process(delta):
 	if Input.is_action_just_pressed("LeftClick"):
-		mousepos = get_global_mouse_position()
+		if GameManager.global_mouse_entered == false:
+			mousepos = get_global_mouse_position()
+
 	
 
 func _on_detected_area_area_entered(area):
@@ -113,8 +121,27 @@ func _on_tool_animation_animation_finished(anim_name):
 
 
 func _on_selected_touch_pressed():
+	
 	if GameManager.currentsoldiers.has(self) == false:
 		GameManager.currentsoldiers.append(self)
-	print(GameManager.currentsoldiers)
+		armysize = GameManager.currentsoldiers.size()
+		GameManager.currentwarriors +=1
+		mousepos = position
+	else:
+		for i in GameManager.currentsoldiers:
+			if i == self:
+				GameManager.currentsoldiers.erase(i)
+				GameManager.currentwarriors -=1
+	Gui.select_warrior()
+
 	
 
+
+
+func _on_knight_area_mouse_entered():
+	GameManager.global_mouse_entered = true
+
+
+
+func _on_knight_area_mouse_exited():
+	GameManager.global_mouse_entered = false
