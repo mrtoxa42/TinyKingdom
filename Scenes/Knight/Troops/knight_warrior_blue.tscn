@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dtk4gqhw1f1eq"]
+[gd_scene load_steps=22 format=3 uid="uid://dtk4gqhw1f1eq"]
 
 [ext_resource type="Texture2D" uid="uid://cgh7us1d8yo5u" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_kau31"]
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_warrior_blue.gd" id="1_x50d5"]
 [ext_resource type="Texture2D" uid="uid://cdturbcgk57ww" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="2_qtv2w"]
 [ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="2_v2f2g"]
+[ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png" id="5_6cbsn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a13i7"]
 radius = 22.0
@@ -397,7 +398,14 @@ vframes = 2
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-debug_enabled = true
+
+[node name="ArmySelected" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0.486275, 0.486275, 0.6)
+z_index = 1
+position = Vector2(1, -68)
+scale = Vector2(2, 2)
+texture = ExtResource("5_6cbsn")
 
 [connection signal="pressed" from="SelectedTouch" to="." method="_on_selected_touch_pressed"]
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]

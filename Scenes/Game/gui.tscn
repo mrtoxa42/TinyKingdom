@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=10 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_2ppbm"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_8kdi0"]
 [ext_resource type="Texture2D" uid="uid://ljw513ni5alo" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Banner_Connection_Down.png" id="3_b6x6k"]
 [ext_resource type="Texture2D" uid="uid://cr8jqmlw271ub" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightWarrirorBlueSingle.png" id="4_q4tl5"]
 [ext_resource type="FontFile" uid="uid://coiaqb8xwuaic" path="res://addons/ridiculous_coding/gravity_bold_8.ttf" id="5_7k44b"]
+[ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="6_j0tsf"]
+[ext_resource type="Texture2D" uid="uid://dlyvvg6m5u4d8" path="res://Assets/Tiny Swords (Update 010)/GUI/MultipleCircle.png" id="7_tsi1q"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("5_7k44b")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2w4n"]
+radius = 0.01
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_2ppbm")
@@ -24,6 +29,7 @@ texture = ExtResource("1_8kdi0")
 position = Vector2(72, -65)
 
 [node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
+visible = false
 position = Vector2(-69, 48)
 metadata/_edit_group_ = true
 
@@ -47,3 +53,28 @@ uppercase = true
 [node name="ArmyInfo" type="Node2D" parent="."]
 
 [node name="TabAnimation" type="AnimationPlayer" parent="."]
+
+[node name="MultipleSelectionArmy" type="Node2D" parent="."]
+
+[node name="MultipleSelectionArmyTouch" type="TouchScreenButton" parent="MultipleSelectionArmy"]
+modulate = Color(1, 1, 1, 0.00392157)
+z_index = -1
+scale = Vector2(9.00781, 5.40625)
+texture_normal = ExtResource("6_j0tsf")
+
+[node name="MultipleSelectionArmyArea" type="Area2D" parent="MultipleSelectionArmy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelectionArmy/MultipleSelectionArmyArea"]
+shape = SubResource("CircleShape2D_n2w4n")
+
+[node name="MultipleCircle" type="Sprite2D" parent="MultipleSelectionArmy/MultipleSelectionArmyArea"]
+position = Vector2(0, -2)
+texture = ExtResource("7_tsi1q")
+
+[node name="MultipleSelectionArmyTimer" type="Timer" parent="MultipleSelectionArmy"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="MultipleSelectionArmy/MultipleSelectionArmyTouch" to="." method="_on_multiple_selection_army_touch_pressed"]
+[connection signal="released" from="MultipleSelectionArmy/MultipleSelectionArmyTouch" to="." method="_on_multiple_selection_army_touch_released"]
+[connection signal="timeout" from="MultipleSelectionArmy/MultipleSelectionArmyTimer" to="." method="_on_multiple_selection_army_timer_timeout"]

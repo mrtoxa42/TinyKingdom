@@ -122,7 +122,11 @@ func _on_tool_animation_animation_finished(anim_name):
 
 func _on_selected_touch_pressed():
 	
+	army_selected()
+	
+func army_selected():
 	if GameManager.currentsoldiers.has(self) == false:
+		$ArmySelected.show()
 		GameManager.currentsoldiers.append(self)
 		armysize = GameManager.currentsoldiers.size()
 		GameManager.currentwarriors +=1
@@ -132,10 +136,9 @@ func _on_selected_touch_pressed():
 			if i == self:
 				GameManager.currentsoldiers.erase(i)
 				GameManager.currentwarriors -=1
+				$ArmySelected.hide()
+
 	Gui.select_warrior()
-
-	
-
 
 
 func _on_knight_area_mouse_entered():
