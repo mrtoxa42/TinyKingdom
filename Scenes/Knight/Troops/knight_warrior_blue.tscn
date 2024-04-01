@@ -345,8 +345,8 @@ script = ExtResource("1_x50d5")
 
 [node name="SelectedTouch" type="TouchScreenButton" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(-16, -45)
-scale = Vector2(0.351563, 0.632813)
+position = Vector2(-18, -45)
+scale = Vector2(0.398437, 0.632813)
 texture_normal = ExtResource("2_v2f2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -358,7 +358,7 @@ y_sort_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectedArea"]
 shape = SubResource("CircleShape2D_xgg0k")
 
-[node name="KnightArea" type="Area2D" parent="." groups=["Knight"]]
+[node name="KnightArea" type="Area2D" parent="." groups=["Knight", "Soldier"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnightArea"]
 shape = SubResource("CircleShape2D_266c0")

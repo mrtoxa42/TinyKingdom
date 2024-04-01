@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=8 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="1_1s2rt"]
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
-[ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="4_4fafi"]
-[ext_resource type="PackedScene" uid="uid://bq8rjxjltbv58" path="res://Scenes/Knight/Buildings/archer_tower_blue.tscn" id="5_bb5f3"]
 [ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="5_s5sa5"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 
@@ -554,9 +552,6 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 1, 131072, 65536
 [node name="Finish" type="Marker2D" parent="."]
 position = Vector2(1230, 351)
 
-[node name="GoblinTorchRed" parent="." instance=ExtResource("4_4fafi")]
-position = Vector2(237, 323)
-
 [node name="KnightWarriorBlue" parent="." instance=ExtResource("5_s5sa5")]
 position = Vector2(941, 290)
 
@@ -569,9 +564,6 @@ position = Vector2(822, 526)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_0selm")
-
-[node name="ArcherTowerBlue" parent="NavigationRegion2D" instance=ExtResource("5_bb5f3")]
-position = Vector2(359, 185)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

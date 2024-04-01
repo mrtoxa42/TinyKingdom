@@ -14,6 +14,8 @@ var start_zoom
 var start_angle
 var current_angle
 
+func _process(delta):
+	GameManager.global_mouse_position = get_global_mouse_position()
 func _input(event):
 	if event is InputEventScreenTouch:
 		handle_touch(event)

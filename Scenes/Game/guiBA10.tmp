@@ -73,10 +73,9 @@ position = Vector2(0, -2)
 texture = ExtResource("7_tsi1q")
 
 [node name="MultipleSelectionArmyTimer" type="Timer" parent="MultipleSelectionArmy"]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [connection signal="pressed" from="MultipleSelectionArmy/MultipleSelectionArmyTouch" to="." method="_on_multiple_selection_army_touch_pressed"]
 [connection signal="released" from="MultipleSelectionArmy/MultipleSelectionArmyTouch" to="." method="_on_multiple_selection_army_touch_released"]
-[connection signal="area_entered" from="MultipleSelectionArmy/MultipleSelectionArmyArea" to="." method="_on_multiple_selection_army_area_area_entered"]
 [connection signal="timeout" from="MultipleSelectionArmy/MultipleSelectionArmyTimer" to="." method="_on_multiple_selection_army_timer_timeout"]
