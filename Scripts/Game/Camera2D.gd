@@ -15,8 +15,9 @@ var start_angle
 var current_angle
 
 func _process(delta):
-	GameManager.global_mouse_position = get_global_mouse_position()
+	pass
 func _input(event):
+	GameManager.global_mouse_position = event.position
 	if event is InputEventScreenTouch:
 		handle_touch(event)
 	elif event is InputEventScreenDrag:

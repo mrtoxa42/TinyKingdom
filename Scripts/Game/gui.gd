@@ -16,7 +16,7 @@ func _process(delta):
 		$MultipleSelectionArmy.global_position = GameManager.global_mouse_position
 		#$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.scale 
 		
-		$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.scale = Vector2($MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius,$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius) / 15
+		$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.scale = Vector2($MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius,$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius) / 14
 	else:
 		$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius = 0
 		$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.scale = Vector2(0,0)
@@ -52,3 +52,11 @@ func _on_multiple_selection_army_area_area_entered(area):
 func _on_multiple_selection_army_timer_timeout():
 	touchcounter = 0
 	print("a")
+
+
+func _on_touch_selected_knight_pressed():
+	$ArmySelection/ArmySelectionKnight/KnightSelectAnimation.play("AniSelectedKnight")
+
+
+func _on_touch_selected_knight_released():
+	$ArmySelection/ArmySelectionKnight/KnightSelectAnimation.play("AniUnSelectedKnight")
