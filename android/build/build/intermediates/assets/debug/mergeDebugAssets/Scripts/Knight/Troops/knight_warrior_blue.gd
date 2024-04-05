@@ -121,23 +121,28 @@ func _on_tool_animation_animation_finished(anim_name):
 
 
 func _on_selected_touch_pressed():
-	
 	if GameManager.currentsoldiers.has(self) == false:
+		army_selected()
+	else:
+		army_removed()
+	
+func army_selected():
+	if GameManager.currentsoldiers.has(self) == false:
+		$ArmySelected.show()
 		GameManager.currentsoldiers.append(self)
 		armysize = GameManager.currentsoldiers.size()
 		GameManager.currentwarriors +=1
 		mousepos = position
-	else:
-		for i in GameManager.currentsoldiers:
+	
+		Gui.select_warrior()
+
+func army_removed():
+	for i in GameManager.currentsoldiers:
 			if i == self:
 				GameManager.currentsoldiers.erase(i)
 				GameManager.currentwarriors -=1
-	Gui.select_warrior()
-
-	
-
-
-
+				$ArmySelected.hide()
+				Gui.select_warrior()
 func _on_knight_area_mouse_entered():
 	GameManager.global_mouse_entered = true
 

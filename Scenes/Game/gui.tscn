@@ -16,7 +16,7 @@ base_font = ExtResource("5_7k44b")
 size = Vector2(35, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
-size = Vector2(40, 45)
+size = Vector2(68, 93)
 
 [sub_resource type="Animation" id="Animation_kt0yu"]
 resource_name = "AniSelectedKnight"
@@ -34,21 +34,6 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.2, 1.2)]
 }
 
-[sub_resource type="Animation" id="Animation_svnn7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_jyvsa"]
 resource_name = "AniUnSelectedKnight"
 length = 0.1
@@ -63,6 +48,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_svnn7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3r26c"]
@@ -89,6 +89,7 @@ texture = ExtResource("1_8kdi0")
 [node name="ArmySelection" type="Node2D" parent="."]
 
 [node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
+visible = false
 position = Vector2(1022, 209)
 metadata/_edit_group_ = true
 
@@ -128,7 +129,7 @@ texture = ExtResource("6_sil6n")
 [node name="KnightSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionKnight"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionKnight/KnightSelectionArea"]
-position = Vector2(1, 1.5)
+position = Vector2(1, 5.5)
 shape = SubResource("RectangleShape2D_7hlhe")
 
 [node name="KnightSelectAnimation" type="AnimationPlayer" parent="ArmySelection/ArmySelectionKnight"]
@@ -157,5 +158,7 @@ one_shot = true
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionKnight/TouchSelectedKnight" to="." method="_on_touch_selected_knight_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/TouchSelectedKnight" to="." method="_on_touch_selected_knight_released"]
+[connection signal="mouse_shape_entered" from="ArmySelection/ArmySelectionKnight/KnightSelectionArea" to="." method="_on_knight_selection_area_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="ArmySelection/ArmySelectionKnight/KnightSelectionArea" to="." method="_on_knight_selection_area_mouse_shape_exited"]
 [connection signal="area_entered" from="MultipleSelectionArmy/MultipleSelectionArmyArea" to="." method="_on_multiple_selection_army_area_area_entered"]
 [connection signal="timeout" from="MultipleSelectionArmy/MultipleSelectionArmyTimer" to="." method="_on_multiple_selection_army_timer_timeout"]

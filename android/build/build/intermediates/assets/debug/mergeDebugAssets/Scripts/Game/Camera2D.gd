@@ -14,7 +14,10 @@ var start_zoom
 var start_angle
 var current_angle
 
+func _process(delta):
+	pass
 func _input(event):
+	GameManager.global_mouse_position = event.position
 	if event is InputEventScreenTouch:
 		handle_touch(event)
 	elif event is InputEventScreenDrag:
@@ -22,38 +25,41 @@ func _input(event):
 		pass
 		
 func handle_touch(event: InputEventScreenTouch):
-	if event.pressed:
-		touch_points[event.index] = event.position
-	else:
-		touch_points.erase(event.index)
-	
-	if touch_points.size() == 2:
-		var touch_point_positions = touch_points.values()
-		start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
-		start_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
-		start_zoom = zoom
-	elif touch_points.size() < 2:
-		start_distance = 0
+	if GameManager.global_mouse_entered == false:
+		if event.pressed:
+			touch_points[event.index] = event.position
+		else:
+			touch_points.erase(event.index)
+		
+		if touch_points.size() == 2:
+			var touch_point_positions = touch_points.values()
+			start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
+			start_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
+			start_zoom = zoom
+		elif touch_points.size() < 2:
+			start_distance = 0
 		
 func handle_drag(event: InputEventScreenDrag):
-	touch_points[event.index] = event.position
-	
-	if touch_points.size() == 1:
-		if can_pan:
-			offset -= event.relative.rotated(rotation) * pan_speed
-			
-	elif touch_points.size() == 2:
-		var touch_point_positions = touch_points.values()
-		var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
-		var current_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
-		var zoom_factor = start_distance / current_dist
+	if GameManager.global_mouse_entered == false:
+		touch_points[event.index] = event.position
 		
-		if can_zoom:
-			zoom = start_zoom / zoom_factor
-		if can_rotate:
-			rotation -= (current_angle - start_angle) * rotation_speed
-			start_angle = current_angle
-		limit_zoom(zoom)
+		if touch_points.size() == 1:
+			if can_pan:
+				offset -= event.relative.rotated(rotation) * pan_speed
+				
+		elif touch_points.size() == 2:
+			print("ameak")
+			var touch_point_positions = touch_points.values()
+			var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
+			var current_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
+			var zoom_factor = start_distance / current_dist
+			
+			if can_zoom:
+				zoom = start_zoom / zoom_factor
+			if can_rotate:
+				rotation -= (current_angle - start_angle) * rotation_speed
+				start_angle = current_angle
+			limit_zoom(zoom)
 
 func limit_zoom(new_zoom):
 	if new_zoom.x < 0.1:

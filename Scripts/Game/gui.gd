@@ -51,7 +51,7 @@ func _on_multiple_selection_army_area_area_entered(area):
 
 func _on_multiple_selection_army_timer_timeout():
 	touchcounter = 0
-	print("a")
+
 
 
 func _on_touch_selected_knight_pressed():
@@ -60,3 +60,10 @@ func _on_touch_selected_knight_pressed():
 
 func _on_touch_selected_knight_released():
 	$ArmySelection/ArmySelectionKnight/KnightSelectAnimation.play("AniUnSelectedKnight")
+
+
+func _on_knight_selection_area_mouse_shape_entered(shape_idx):
+	GameManager.global_mouse_entered = true
+
+func _on_knight_selection_area_mouse_shape_exited(shape_idx):
+	GameManager.global_mouse_entered = false

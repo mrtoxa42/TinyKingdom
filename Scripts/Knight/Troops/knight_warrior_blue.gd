@@ -9,6 +9,7 @@ var enemyarea
 var speed = 200
 var accel = 7
 var onnav = false
+var onceselected = false
 var mouseenter = false
 var armysize = 1
 var hp = 10
@@ -18,8 +19,8 @@ var attack = false
 
 
 func _physics_process(delta):
-	if GameManager.currentsoldiers.has(self):
-		
+	if GameManager.currentsoldiers.has(self) or onceselected == true:
+		onceselected = true
 		var direction = Vector3()
 		nav.target_position = mousepos
 		direction = nav.get_next_path_position() - global_position
@@ -142,7 +143,7 @@ func army_removed():
 				GameManager.currentsoldiers.erase(i)
 				GameManager.currentwarriors -=1
 				$ArmySelected.hide()
-
+				Gui.select_warrior()
 func _on_knight_area_mouse_entered():
 	GameManager.global_mouse_entered = true
 
@@ -150,3 +151,7 @@ func _on_knight_area_mouse_entered():
 
 func _on_knight_area_mouse_exited():
 	GameManager.global_mouse_entered = false
+
+
+func _on_navigation_agent_2d_navigation_finished():
+	onceselected = false

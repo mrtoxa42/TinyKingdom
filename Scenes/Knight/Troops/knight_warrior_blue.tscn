@@ -415,3 +415,4 @@ texture = ExtResource("5_6cbsn")
 [connection signal="mouse_exited" from="KnightArea" to="." method="_on_knight_area_mouse_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="animation_finished" from="ToolAnimation" to="." method="_on_tool_animation_animation_finished"]
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
