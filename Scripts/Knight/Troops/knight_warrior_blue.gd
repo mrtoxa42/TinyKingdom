@@ -9,7 +9,6 @@ var enemyarea
 var speed = 200
 var accel = 7
 var onnav = false
-var onceselected = false
 var mouseenter = false
 var armysize = 1
 var hp = 10
@@ -19,8 +18,7 @@ var attack = false
 
 
 func _physics_process(delta):
-	if GameManager.currentsoldiers.has(self) or onceselected == true:
-		onceselected = true
+	if GameManager.currentknights.has(self):
 		var direction = Vector3()
 		nav.target_position = mousepos
 		direction = nav.get_next_path_position() - global_position
@@ -122,28 +120,30 @@ func _on_tool_animation_animation_finished(anim_name):
 
 
 func _on_selected_touch_pressed():
-	if GameManager.currentsoldiers.has(self) == false:
+	if GameManager.currentknights.has(self) == false:
 		army_selected()
 	else:
 		army_removed()
 	
 func army_selected():
-	if GameManager.currentsoldiers.has(self) == false:
+	if GameManager.currentknights.has(self) == false:
 		$ArmySelected.show()
-		GameManager.currentsoldiers.append(self)
-		armysize = GameManager.currentsoldiers.size()
+		GameManager.currentknights.append(self)
+		armysize = GameManager.currentknights.size()
 		GameManager.currentwarriors +=1
 		mousepos = position
 	
 		Gui.select_warrior()
 
 func army_removed():
-	for i in GameManager.currentsoldiers:
+	for i in GameManager.currentknights:
 			if i == self:
-				GameManager.currentsoldiers.erase(i)
+				GameManager.currentknights.erase(i)
 				GameManager.currentwarriors -=1
 				$ArmySelected.hide()
 				Gui.select_warrior()
+				print("removede ulaşıldı")
+				
 func _on_knight_area_mouse_entered():
 	GameManager.global_mouse_entered = true
 
@@ -154,4 +154,4 @@ func _on_knight_area_mouse_exited():
 
 
 func _on_navigation_agent_2d_navigation_finished():
-	onceselected = false
+	pass

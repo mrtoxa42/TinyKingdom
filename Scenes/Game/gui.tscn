@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=15 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_2ppbm"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_8kdi0"]
 [ext_resource type="Texture2D" uid="uid://ljw513ni5alo" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Banner_Connection_Down.png" id="3_b6x6k"]
-[ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="3_rv6hw"]
 [ext_resource type="Texture2D" uid="uid://cr8jqmlw271ub" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightWarrirorBlueSingle.png" id="4_q4tl5"]
 [ext_resource type="FontFile" uid="uid://coiaqb8xwuaic" path="res://addons/ridiculous_coding/gravity_bold_8.ttf" id="5_7k44b"]
 [ext_resource type="Texture2D" uid="uid://cj41sbhdb78o3" path="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png" id="6_sil6n"]
@@ -11,9 +10,6 @@
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("5_7k44b")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8jef"]
-size = Vector2(35, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
 size = Vector2(68, 93)
@@ -89,14 +85,8 @@ texture = ExtResource("1_8kdi0")
 [node name="ArmySelection" type="Node2D" parent="."]
 
 [node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
-visible = false
-position = Vector2(1022, 209)
+position = Vector2(1058, 209)
 metadata/_edit_group_ = true
-
-[node name="TouchSelectedKnight" type="TouchScreenButton" parent="ArmySelection/ArmySelectionKnight"]
-modulate = Color(1, 1, 1, 0.00392157)
-position = Vector2(-63, -45)
-texture_normal = ExtResource("3_rv6hw")
 
 [node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight"]
 texture = ExtResource("3_b6x6k")
@@ -115,17 +105,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SelectRemovedArea" type="Area2D" parent="ArmySelection/ArmySelectionKnight"]
-position = Vector2(112, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionKnight/SelectRemovedArea"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_j8jef")
-
-[node name="RedClose" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight/SelectRemovedArea"]
-position = Vector2(0, 1)
-texture = ExtResource("6_sil6n")
-
 [node name="KnightSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionKnight"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionKnight/KnightSelectionArea"]
@@ -136,6 +115,10 @@ shape = SubResource("RectangleShape2D_7hlhe")
 libraries = {
 "": SubResource("AnimationLibrary_3r26c")
 }
+
+[node name="KnightRemovedButton" type="TouchScreenButton" parent="ArmySelection/ArmySelectionKnight"]
+position = Vector2(32, -72)
+texture_normal = ExtResource("6_sil6n")
 
 [node name="ArmyInfo" type="Node2D" parent="."]
 
@@ -156,9 +139,8 @@ texture = ExtResource("7_tsi1q")
 wait_time = 0.3
 one_shot = true
 
-[connection signal="pressed" from="ArmySelection/ArmySelectionKnight/TouchSelectedKnight" to="." method="_on_touch_selected_knight_pressed"]
-[connection signal="released" from="ArmySelection/ArmySelectionKnight/TouchSelectedKnight" to="." method="_on_touch_selected_knight_released"]
 [connection signal="mouse_shape_entered" from="ArmySelection/ArmySelectionKnight/KnightSelectionArea" to="." method="_on_knight_selection_area_mouse_shape_entered"]
 [connection signal="mouse_shape_exited" from="ArmySelection/ArmySelectionKnight/KnightSelectionArea" to="." method="_on_knight_selection_area_mouse_shape_exited"]
+[connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
 [connection signal="area_entered" from="MultipleSelectionArmy/MultipleSelectionArmyArea" to="." method="_on_multiple_selection_army_area_area_entered"]
 [connection signal="timeout" from="MultipleSelectionArmy/MultipleSelectionArmyTimer" to="." method="_on_multiple_selection_army_timer_timeout"]
