@@ -9,6 +9,8 @@ var enemyarea
 var speed = 200
 var accel = 7
 var onnav = false
+var direction = Vector3.ZERO
+var oncetouchpos = Vector3.ZERO
 var mouseenter = false
 var armysize = 1
 var hp = 10
@@ -18,13 +20,13 @@ var attack = false
 
 
 func _physics_process(delta):
-	if GameManager.currentknights.has(self):
-		var direction = Vector3()
+	if GameManager.currentknights.has(self) or onnav == true:
+		direction = Vector3()
 		nav.target_position = mousepos
 		direction = nav.get_next_path_position() - global_position
 		#if direction.length() >10:
 		
-		if nav.distance_to_target() > 30 * armysize:
+		if nav.distance_to_target() > 25 * armysize:
 			#onnav = true
 			direction = direction.normalized()
 			velocity = velocity.lerp(direction * speed, accel * delta)
@@ -35,27 +37,25 @@ func _physics_process(delta):
 				$VisualAnimation.play("RunLeft")
 		else:
 			$VisualAnimation.play("Idle")
-			#onnav = false
-	#if currentdetectedenenmy != null and enemyarea == null and onnav == false:
-			#velocity = currentdetectedenenmy.global_position - global_position
-			#print(velocity)
-			#velocity.normalized()
-			#if velocity != Vector2(0,0) and attack == false:
-				#if mousepos.x > global_position.x:
-					#$VisualAnimation.play("RunRight")
-				#else:
-					#$VisualAnimation.play("RunLeft")
-			#else:
-				#$VisualAnimation.play("Idle")
+
+	
 			
 		
 
-func _process(delta):
-	if Input.is_action_just_pressed("LeftClick"):
-		if GameManager.global_mouse_entered == false:
-			mousepos = get_global_mouse_position()
+#func _process(delta):
+	#if Input.is_action_just_pressed("LeftClick") and GameManager.currentknights.has(self):
+		#if GameManager.global_mouse_entered == false:5
+			#mousepos = get_global_mouse_position()
+			#onnav = true
+func _input(event):
+	if event.is_released():
+		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentknights.has(self):
+			if GameManager.global_mouse_entered == false:
+				mousepos = get_global_mouse_position()
+				onnav = true
+			
 
-	
+		
 
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy") and enemyarea == null:
@@ -144,6 +144,8 @@ func army_removed():
 				Gui.select_warrior()
 				print("removede ulaşıldı")
 				
+	
+				
 func _on_knight_area_mouse_entered():
 	GameManager.global_mouse_entered = true
 
@@ -153,5 +155,4 @@ func _on_knight_area_mouse_exited():
 	GameManager.global_mouse_entered = false
 
 
-func _on_navigation_agent_2d_navigation_finished():
-	pass
+

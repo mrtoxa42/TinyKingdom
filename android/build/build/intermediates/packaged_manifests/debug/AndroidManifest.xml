@@ -44,7 +44,7 @@
             android:excludeFromRecents="false"
             android:exported="true"
             android:label="@string/godot_project_name_string"
-            android:launchMode="singleTask"
+            android:launchMode="singleInstancePerTask"
             android:resizeableActivity="true"
             android:screenOrientation="landscape"
             android:theme="@style/GodotAppSplashTheme" >

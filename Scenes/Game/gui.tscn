@@ -12,7 +12,7 @@
 base_font = ExtResource("5_7k44b")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
-size = Vector2(68, 93)
+size = Vector2(99, 124)
 
 [sub_resource type="Animation" id="Animation_kt0yu"]
 resource_name = "AniSelectedKnight"
@@ -75,9 +75,9 @@ radius = 0.01
 script = ExtResource("1_2ppbm")
 
 [node name="TowerInfo" type="Node2D" parent="."]
+visible = false
 
 [node name="Carved3Slides" type="Sprite2D" parent="TowerInfo"]
-visible = false
 position = Vector2(574, 564)
 scale = Vector2(6, 2)
 texture = ExtResource("1_8kdi0")
@@ -108,7 +108,7 @@ uppercase = true
 [node name="KnightSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionKnight"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionKnight/KnightSelectionArea"]
-position = Vector2(1, 5.5)
+position = Vector2(16.5, -10)
 shape = SubResource("RectangleShape2D_7hlhe")
 
 [node name="KnightSelectAnimation" type="AnimationPlayer" parent="ArmySelection/ArmySelectionKnight"]

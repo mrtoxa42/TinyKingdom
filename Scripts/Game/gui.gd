@@ -69,6 +69,7 @@ func _on_knight_selection_area_mouse_shape_exited(shape_idx):
 
 
 func _on_knight_removed_button_pressed():
-	for i in GameManager.currentknights:
+	var copycurrentknights = GameManager.currentknights.duplicate()
+	for i in copycurrentknights:
 		i.army_removed()
-	GameManager.currentknights.clear()
+

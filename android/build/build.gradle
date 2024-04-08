@@ -68,18 +68,18 @@ dependencies {
     // Godot user plugins local dependencies
     String[] pluginsBinaries = getGodotPluginsLocalBinaries()
     if (pluginsBinaries != null && pluginsBinaries.size() > 0) {
-        implementation files(pluginsBinaries)
+        implementation files(pluginsBinaries)   
     }
 }
 
 android {
     compileSdkVersion versions.compileSdk
-    buildToolsVersion versions.buildTools
+    buildToolsVersion "21.0.1"
     ndkVersion versions.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility versions.javaVersion
+        targetCompatibility versions.javaVersion
     }
 
     kotlinOptions {

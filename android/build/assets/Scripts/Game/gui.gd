@@ -7,6 +7,10 @@ var multipletouch = false
 var touchcounter = 0
 var mutliplecollision = 0
 var touch_points = {}
+var start_position_knight_tab = Vector2.ZERO
+
+func _ready():
+	start_position_knight_tab = $ArmySelection/ArmySelectionKnight.global_position
 func _process(delta):
 	$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
 	if multipletouch == true:
@@ -26,6 +30,8 @@ func _process(delta):
 func _input(event):
 	if event is InputEventScreenTouch:
 		handle_touch(event)
+ 
+
 	
 func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
@@ -54,16 +60,16 @@ func _on_multiple_selection_army_timer_timeout():
 
 
 
-func _on_touch_selected_knight_pressed():
-	$ArmySelection/ArmySelectionKnight/KnightSelectAnimation.play("AniSelectedKnight")
-
-
-func _on_touch_selected_knight_released():
-	$ArmySelection/ArmySelectionKnight/KnightSelectAnimation.play("AniUnSelectedKnight")
-
-
 func _on_knight_selection_area_mouse_shape_entered(shape_idx):
 	GameManager.global_mouse_entered = true
 
 func _on_knight_selection_area_mouse_shape_exited(shape_idx):
 	GameManager.global_mouse_entered = false
+	
+
+
+func _on_knight_removed_button_pressed():
+	var copycurrentknights = GameManager.currentknights.duplicate()
+	for i in copycurrentknights:
+		i.army_removed()
+

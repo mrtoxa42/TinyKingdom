@@ -4,24 +4,7 @@
             "outputFile": "com.godot.game-mergeDebugResources-9:/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\emirc\\OneDrive\\Masaüstü\\Godot4.0 Projeleri\\TinyKingdom\\android\\build\\res\\values-pt\\godot_project_name_string.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "1",
-                        "startOffsets": "112",
-                        "endColumns": "63",
-                        "endOffsets": "174"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "66",
-                        "endOffsets": "117"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\emirc\\.gradle\\caches\\transforms-3\\9bcb1a65f5938aad264f4d73e9a06f28\\transformed\\core-1.2.0\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\Emircan\\.gradle\\caches\\transforms-3\\9bcb1a65f5938aad264f4d73e9a06f28\\transformed\\core-1.2.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -35,6 +18,23 @@
                         "startOffsets": "122",
                         "endColumns": "100",
                         "endOffsets": "218"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Emircan\\Desktop\\Godot4Projeleri\\TinkyKingdom\\android\\build\\res\\values-pt\\godot_project_name_string.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "1",
+                        "startOffsets": "112",
+                        "endColumns": "63",
+                        "endOffsets": "174"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
                     }
                 }
             ]
