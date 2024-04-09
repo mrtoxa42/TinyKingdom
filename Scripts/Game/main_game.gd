@@ -5,6 +5,7 @@ extends Node2D
 func _ready():
 	GameManager.currentfinish = $Finish
 	GameManager.currentlevel = self
+	$NavigationRegion2D.bake_navigation_polygon(true)
 	 
 func create_bake_polygon():
 	$NavigationRegion2D.bake_navigation_polygon(true)

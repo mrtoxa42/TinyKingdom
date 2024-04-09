@@ -1,36 +1,61 @@
 extends CharacterBody2D
 
-var speed = 20
+var speed = 200
 var currentenemy = null
 var enemyarea = null
 var attack = false
 var hp = 3
+var mousedistance = Vector2.ZERO
+var mousepos = Vector2.ZERO
+var accel = 7
+var onnav = false
+var direction = Vector3.ZERO
+var oncetouchpos = Vector3.ZERO
+var mouseenter = false
+var armysize = 1
 var dead = false
 var enemydistance
 var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
+@onready var nav = $NavigationAgent2D
 
 
 func _physics_process(delta):
-	if currentenemy !=null and dead == false:
-		enemydistance = currentenemy.global_position - global_position
-		var distancelenght = enemydistance.length()
-		if distancelenght > 600:
-			enemyarea = null
-			attack = false
-		elif distancelenght < 350:
-			enemyarea = currentenemy
-			if attack == false:
-				Attack()
-		if enemyarea == null:
-			velocity = enemydistance
-			velocity.normalized()
-			move_and_slide()
-			if velocity != Vector2(0,0) and attack == false:
+	if currentenemy == null:
+		if GameManager.currentarchers.has(self) or onnav == true:
+			direction = Vector3()
+			nav.target_position = mousepos
+			direction = nav.get_next_path_position() - global_position
+			#if direction.length() >10:
+			
+			if nav.distance_to_target() > 25 * armysize:
+				#onnav = true
+				direction = direction.normalized()
+				velocity = velocity.lerp(direction * speed, accel * delta)
+				move_and_slide()
+				if mousepos.x > global_position.x:
+					$VisualAnimation.play("RunRight")
+				else:
+					$VisualAnimation.play("RunLeft")
+			else:
+				$VisualAnimation.play("Idle")
+	else:
+		direction = currentenemy.global_position - global_position
+		direction.normalized()
+		velocity = direction
+		if velocity != Vector2(0,0) and attack == false:
 				if currentenemy.global_position.x > global_position.x:
 					$VisualAnimation.play("RunRight")
 				else:
 					$VisualAnimation.play("RunLeft")
+				move_and_slide()
 
+
+func _input(event):
+	if event.is_released():
+		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentarchers.has(self):
+			if GameManager.global_mouse_entered == false:
+				mousepos = get_global_mouse_position()
+				onnav = true
 
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy"):
@@ -109,9 +134,38 @@ func _on_detected_area_area_exited(area):
 	
 
 
+func _on_selected_touch_pressed():
+	if GameManager.currentarchers.has(self) == false:
+		army_selected()
+	else:
+		army_removed()
+		
+func army_selected():
+	if GameManager.currentarchers.has(self) == false:
+		$ArmySelected.show()
+		GameManager.currentarchers.append(self)
+		armysize = GameManager.currentarchers.size()
+		
+		GameManager.currentarrows +=1
+		mousepos = position
+		Gui.select_archer()
+
+func army_removed():
+	for i in GameManager.currentarchers:
+			if i == self:
+				GameManager.currentarchers.erase(i)
+				GameManager.currentarrows -=1
+				$ArmySelected.hide()
+				Gui.select_archer()
+				
+
+
+func _on_archer_area_mouse_entered():
+	GameManager.global_mouse_entered = true
+
+
+func _on_archer_area_mouse_exited():
+	GameManager.global_mouse_entered = false
 
 
 
-
-
- 

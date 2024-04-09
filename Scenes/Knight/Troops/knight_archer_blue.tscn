@@ -1,8 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgy7tuyuu5us3"]
+[gd_scene load_steps=26 format=3 uid="uid://dgy7tuyuu5us3"]
 
 [ext_resource type="Texture2D" uid="uid://d1w57dt7vdrtw" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Blue/Archer_Blue.png" id="1_g3e68"]
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_archer_blue.gd" id="1_y3hd6"]
+[ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="2_ufqk7"]
 [ext_resource type="Texture2D" uid="uid://cdturbcgk57ww" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="3_r7yir"]
+[ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png" id="4_hyjf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oxng"]
 
@@ -34,7 +36,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.01, 900.0]
+"values": [0.01, 300.0]
 }
 
 [sub_resource type="Animation" id="Animation_xtjaf"]
@@ -392,7 +394,13 @@ radius = 37.3363
 
 [node name="KnightArcherBlue" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 0
 script = ExtResource("1_y3hd6")
+
+[node name="SelectedTouch" type="TouchScreenButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.00392157)
+position = Vector2(-35, -48)
+texture_normal = ExtResource("2_ufqk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8oxng")
@@ -423,7 +431,7 @@ shape = SubResource("CircleShape2D_e4ldn")
 [node name="AttackTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="ArcherArea" type="Area2D" parent="." groups=["Archer"]]
+[node name="ArcherArea" type="Area2D" parent="." groups=["Archer", "Soldier"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArcherArea"]
 shape = SubResource("CircleShape2D_wqol4")
@@ -442,7 +450,21 @@ hframes = 7
 vframes = 2
 frame = 1
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="ArmySelected" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0.721569, 0.721569, 1)
+position = Vector2(0, -57)
+scale = Vector2(2, 2)
+texture = ExtResource("4_hyjf8")
+
+[connection signal="pressed" from="SelectedTouch" to="." method="_on_selected_touch_pressed"]
 [connection signal="animation_finished" from="ToolAnimation" to="." method="_on_tool_animation_animation_finished"]
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
 [connection signal="area_exited" from="DetectedArea" to="." method="_on_detected_area_area_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="mouse_entered" from="ArcherArea" to="." method="_on_archer_area_mouse_entered"]
+[connection signal="mouse_exited" from="ArcherArea" to="." method="_on_archer_area_mouse_exited"]

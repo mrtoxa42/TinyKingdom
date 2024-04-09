@@ -13,6 +13,7 @@ func _ready():
 	start_position_knight_tab = $ArmySelection/ArmySelectionKnight.global_position
 func _process(delta):
 	$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
+	$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
 	if multipletouch == true:
 		$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius +=10
 		$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = false
@@ -48,7 +49,11 @@ func select_warrior():
 	else:
 		$ArmySelection/ArmySelectionKnight.hide()
 
-
+func select_archer():
+	if GameManager.currentarrows >= 1:
+		$ArmySelection/ArmySelectionArcher.show()
+	else:
+		$ArmySelection/ArmySelectionArcher.hide()
 
 func _on_multiple_selection_army_area_area_entered(area):
 	if area.is_in_group("Soldier"):
@@ -73,3 +78,17 @@ func _on_knight_removed_button_pressed():
 	for i in copycurrentknights:
 		i.army_removed()
 
+
+
+func _on_archer_selection_area_area_entered(area):
+	GameManager.global_mouse_entered = true
+
+
+func _on_archer_selection_area_area_exited(area):
+	GameManager.global_mouse_entered = false
+
+
+func _on_archer_removed_button_pressed():
+	var copycurrentarchers = GameManager.currentarchers.duplicate()
+	for i in copycurrentarchers:
+		i.army_removed()

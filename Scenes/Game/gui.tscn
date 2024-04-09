@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=17 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_2ppbm"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_8kdi0"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://coiaqb8xwuaic" path="res://addons/ridiculous_coding/gravity_bold_8.ttf" id="5_7k44b"]
 [ext_resource type="Texture2D" uid="uid://cj41sbhdb78o3" path="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png" id="6_sil6n"]
 [ext_resource type="Texture2D" uid="uid://dlyvvg6m5u4d8" path="res://Assets/Tiny Swords (Update 010)/GUI/MultipleCircle.png" id="7_tsi1q"]
+[ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="8_hpd2u"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("5_7k44b")
@@ -68,6 +69,9 @@ _data = {
 "RESET": SubResource("Animation_svnn7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05n32"]
+size = Vector2(104, 136)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2w4n"]
 radius = 0.01
 
@@ -85,6 +89,7 @@ texture = ExtResource("1_8kdi0")
 [node name="ArmySelection" type="Node2D" parent="."]
 
 [node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
+visible = false
 position = Vector2(1058, 209)
 metadata/_edit_group_ = true
 
@@ -120,6 +125,45 @@ libraries = {
 position = Vector2(32, -72)
 texture_normal = ExtResource("6_sil6n")
 
+[node name="ArmySelectionArcher" type="Node2D" parent="ArmySelection"]
+visible = false
+position = Vector2(1058, 382)
+metadata/_edit_group_ = true
+
+[node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionArcher"]
+texture = ExtResource("3_b6x6k")
+
+[node name="ArchersSelectionLabel" type="Label" parent="ArmySelection/ArmySelectionArcher"]
+offset_left = -43.0
+offset_top = 67.0
+offset_right = 43.0
+offset_bottom = 90.0
+theme_override_fonts/font = SubResource("FontVariation_p2byf")
+text = "X10"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="KnightSelectAnimation" type="AnimationPlayer" parent="ArmySelection/ArmySelectionArcher"]
+libraries = {
+"": SubResource("AnimationLibrary_3r26c")
+}
+
+[node name="ArcherSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionArcher"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionArcher/ArcherSelectionArea"]
+position = Vector2(14, -21)
+shape = SubResource("RectangleShape2D_05n32")
+
+[node name="ArcherRemovedButton" type="TouchScreenButton" parent="ArmySelection/ArmySelectionArcher"]
+position = Vector2(22, -80)
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("6_sil6n")
+
+[node name="KnightArcherBlueSingle" type="Sprite2D" parent="ArmySelection/ArmySelectionArcher"]
+position = Vector2(4, 6)
+texture = ExtResource("8_hpd2u")
+
 [node name="ArmyInfo" type="Node2D" parent="."]
 
 [node name="TabAnimation" type="AnimationPlayer" parent="."]
@@ -142,5 +186,8 @@ one_shot = true
 [connection signal="mouse_shape_entered" from="ArmySelection/ArmySelectionKnight/KnightSelectionArea" to="." method="_on_knight_selection_area_mouse_shape_entered"]
 [connection signal="mouse_shape_exited" from="ArmySelection/ArmySelectionKnight/KnightSelectionArea" to="." method="_on_knight_selection_area_mouse_shape_exited"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
+[connection signal="area_entered" from="ArmySelection/ArmySelectionArcher/ArcherSelectionArea" to="." method="_on_archer_selection_area_area_entered"]
+[connection signal="area_exited" from="ArmySelection/ArmySelectionArcher/ArcherSelectionArea" to="." method="_on_archer_selection_area_area_exited"]
+[connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="area_entered" from="MultipleSelectionArmy/MultipleSelectionArmyArea" to="." method="_on_multiple_selection_army_area_area_entered"]
 [connection signal="timeout" from="MultipleSelectionArmy/MultipleSelectionArmyTimer" to="." method="_on_multiple_selection_army_timer_timeout"]

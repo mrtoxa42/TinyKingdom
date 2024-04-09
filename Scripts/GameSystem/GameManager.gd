@@ -10,7 +10,9 @@ var global_mouse_entered = false
 var currentfinish = null
 var currentsoldiers = []
 var currentknights = []
+var currentarchers = []
 var currentwarriors = 0
+var currentarrows = 0
 var mousetouchpos = Vector2.ZERO
 
 

@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 
-var currentdetectedenenmy 
+
 var currentenemy
+var enemydistance
 var mousedistance = Vector2.ZERO
 var mousepos = Vector2.ZERO
 var enemyarea
@@ -20,25 +21,35 @@ var attack = false
 
 
 func _physics_process(delta):
-	if GameManager.currentknights.has(self) or onnav == true:
-		direction = Vector3()
-		nav.target_position = mousepos
-		direction = nav.get_next_path_position() - global_position
-		#if direction.length() >10:
+	if currentenemy == null:
 		
-		if nav.distance_to_target() > 25 * armysize:
-			#onnav = true
-			direction = direction.normalized()
-			velocity = velocity.lerp(direction * speed, accel * delta)
-			move_and_slide()
-			if mousepos.x > global_position.x:
-				$VisualAnimation.play("RunRight")
+		if GameManager.currentknights.has(self) or onnav == true:
+			direction = Vector3()
+			nav.target_position = mousepos
+			direction = nav.get_next_path_position() - global_position
+			#if direction.length() >10:
+			
+			if nav.distance_to_target() > 25 * armysize:
+				#onnav = true
+				direction = direction.normalized()
+				velocity = velocity.lerp(direction * speed, accel * delta)
+				move_and_slide()
+				if mousepos.x > global_position.x:
+					$VisualAnimation.play("RunRight")
+				else:
+					$VisualAnimation.play("RunLeft")
 			else:
-				$VisualAnimation.play("RunLeft")
-		else:
-			$VisualAnimation.play("Idle")
-
-	
+				$VisualAnimation.play("Idle")
+	else:
+		direction = currentenemy.global_position - global_position
+		direction.normalized()
+		velocity = direction
+		if velocity != Vector2(0,0) and attack == false:
+				if currentenemy.global_position.x > global_position.x:
+					$VisualAnimation.play("RunRight")
+				else:
+					$VisualAnimation.play("RunLeft")
+				move_and_slide()
 			
 		
 
@@ -53,14 +64,14 @@ func _input(event):
 			if GameManager.global_mouse_entered == false:
 				mousepos = get_global_mouse_position()
 				onnav = true
-			
+
 
 		
 
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy") and enemyarea == null:
-		if currentdetectedenenmy == null:
-			currentdetectedenenmy = area
+		if currentenemy == null:
+			currentenemy = area
 			
 func take_damage():
 
@@ -89,7 +100,7 @@ func _on_attack_timer_timeout():
 func _on_knight_area_area_exited(area):
 	if area == enemyarea:
 		enemyarea = null
-		currentdetectedenenmy = null
+		currentenemy = null
 		$ToolAnimation.play("Detected")
 	
 	
@@ -132,7 +143,6 @@ func army_selected():
 		armysize = GameManager.currentknights.size()
 		GameManager.currentwarriors +=1
 		mousepos = position
-	
 		Gui.select_warrior()
 
 func army_removed():
@@ -142,7 +152,6 @@ func army_removed():
 				GameManager.currentwarriors -=1
 				$ArmySelected.hide()
 				Gui.select_warrior()
-				print("removede ulaşıldı")
 				
 	
 				
