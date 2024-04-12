@@ -80,15 +80,17 @@ func _on_knight_removed_button_pressed():
 
 
 
-func _on_archer_selection_area_area_entered(area):
-	GameManager.global_mouse_entered = true
-
-
-func _on_archer_selection_area_area_exited(area):
-	GameManager.global_mouse_entered = false
 
 
 func _on_archer_removed_button_pressed():
 	var copycurrentarchers = GameManager.currentarchers.duplicate()
 	for i in copycurrentarchers:
 		i.army_removed()
+
+
+func _on_archer_selection_area_mouse_entered():
+	GameManager.global_mouse_entered = true
+
+
+func _on_archer_selection_area_mouse_exited():
+	GameManager.global_mouse_entered = false

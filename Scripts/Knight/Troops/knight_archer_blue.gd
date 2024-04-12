@@ -8,11 +8,12 @@ var hp = 3
 var mousedistance = Vector2.ZERO
 var mousepos = Vector2.ZERO
 var accel = 7
-var onnav = false
+var onnav = false	
 var direction = Vector3.ZERO
 var oncetouchpos = Vector3.ZERO
 var mouseenter = false
 var armysize = 1
+var army_line
 var dead = false
 var enemydistance
 var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
@@ -27,9 +28,12 @@ func _physics_process(delta):
 			direction = nav.get_next_path_position() - global_position
 			#if direction.length() >10:
 			
-			if nav.distance_to_target() > 25 * armysize:
+					
+			if nav.distance_to_target() > 25:
 				#onnav = true
+				
 				direction = direction.normalized()
+				
 				velocity = velocity.lerp(direction * speed, accel * delta)
 				move_and_slide()
 				if mousepos.x > global_position.x:
@@ -51,11 +55,15 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event.is_released():
+	if event.is_pressed():
 		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentarchers.has(self):
 			if GameManager.global_mouse_entered == false:
-				mousepos = get_global_mouse_position()
+				army_line = GameManager.currentarchers.find(self)
+				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationArcher/Formation" + str(army_line)).global_position
+				mousepos = armypos
 				onnav = true
+				
+			
 
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy"):
@@ -142,10 +150,11 @@ func _on_selected_touch_pressed():
 		
 func army_selected():
 	if GameManager.currentarchers.has(self) == false:
+		army_line = GameManager.currentarchers
 		$ArmySelected.show()
 		GameManager.currentarchers.append(self)
-		armysize = GameManager.currentarchers.size()
-		
+		GameManager.currentsoldiers.append(self)
+		armysize = GameManager.currentsoldiers.size()
 		GameManager.currentarrows +=1
 		mousepos = position
 		Gui.select_archer()
@@ -155,6 +164,7 @@ func army_removed():
 			if i == self:
 				GameManager.currentarchers.erase(i)
 				GameManager.currentarrows -=1
+				GameManager.currentsoldiers.erase(i)
 				$ArmySelected.hide()
 				Gui.select_archer()
 				

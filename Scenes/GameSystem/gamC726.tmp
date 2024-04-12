@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt6x52g3xtxkv"]
+
+[ext_resource type="Script" path="res://Scripts/GameSystem/game_system.gd" id="1_vgdru"]
+[ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="2_0jsw0"]
+
+[node name="GameSystem" type="Node2D"]
+script = ExtResource("1_vgdru")
+
+[node name="ArmyFormation" type="Node2D" parent="."]
+position = Vector2(0, 12)
+
+[node name="Formation1" type="Sprite2D" parent="ArmyFormation"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_0jsw0")
+
+[node name="Formation2" type="Sprite2D" parent="ArmyFormation"]
+position = Vector2(0, -13)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_0jsw0")
+
+[node name="Formation3" type="Sprite2D" parent="ArmyFormation"]
+position = Vector2(0, -26)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_0jsw0")

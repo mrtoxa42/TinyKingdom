@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Scripts/GameSystem/GameManager.gd"
 Gui="*res://Scenes/Game/gui.tscn"
+GameSystem="*res://Scenes/GameSystem/game_system.tscn"
 
 [display]
 

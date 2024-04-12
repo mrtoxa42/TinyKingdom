@@ -8,6 +8,8 @@ var currentlevel
 var global_mouse_position
 var global_mouse_entered = false
 var currentfinish = null
+var liveknights = 0
+var livearchers = 0
 var currentsoldiers = []
 var currentknights = []
 var currentarchers = []

@@ -15,3 +15,5 @@ func _process(delta):
 #func _on_game_started_timeout():
 	#$NavigationRegion2D.bake_navigation_polygon(true)
 
+func new_bake_navigation():
+	$NavigationRegion2D.bake_navigation_polygon(true)

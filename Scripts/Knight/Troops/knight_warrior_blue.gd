@@ -14,13 +14,19 @@ var direction = Vector3.ZERO
 var oncetouchpos = Vector3.ZERO
 var mouseenter = false
 var armysize = 1
+var army_line
 var hp = 10
 var dead = false
 var attack = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 
+func _ready():
+	GameManager.liveknights +=1
+
+
 func _physics_process(delta):
+	
 	if currentenemy == null:
 		
 		if GameManager.currentknights.has(self) or onnav == true:
@@ -29,7 +35,8 @@ func _physics_process(delta):
 			direction = nav.get_next_path_position() - global_position
 			#if direction.length() >10:
 			
-			if nav.distance_to_target() > 25 * armysize:
+			#if nav.distance_to_target() > 25 * armysize:
+			if nav.distance_to_target() > 25:
 				#onnav = true
 				direction = direction.normalized()
 				velocity = velocity.lerp(direction * speed, accel * delta)
@@ -40,7 +47,9 @@ func _physics_process(delta):
 					$VisualAnimation.play("RunLeft")
 			else:
 				$VisualAnimation.play("Idle")
+			
 	else:
+		
 		direction = currentenemy.global_position - global_position
 		direction.normalized()
 		velocity = direction
@@ -59,10 +68,12 @@ func _physics_process(delta):
 			#mousepos = get_global_mouse_position()
 			#onnav = true
 func _input(event):
-	if event.is_released():
+	if event.is_pressed():
 		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentknights.has(self):
 			if GameManager.global_mouse_entered == false:
-				mousepos = get_global_mouse_position()
+				army_line = GameManager.currentknights.find(self)
+				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationKnight/Formation" + str(army_line)).global_position
+				mousepos = armypos
 				onnav = true
 
 
@@ -82,6 +93,7 @@ func take_damage():
 		dead = true
 		$ExtraAnimation.play("dead")
 		$KnightArea/CollisionShape2D.disabled = true
+		GameManager.liveknights -= 1
 		await $ExtraAnimation.animation_finished
 		queue_free()
 		
@@ -138,9 +150,11 @@ func _on_selected_touch_pressed():
 	
 func army_selected():
 	if GameManager.currentknights.has(self) == false:
+		army_line = GameManager.currentwarriors
 		$ArmySelected.show()
 		GameManager.currentknights.append(self)
-		armysize = GameManager.currentknights.size()
+		GameManager.currentsoldiers.append(self)
+		armysize = GameManager.currentsoldiers.size()
 		GameManager.currentwarriors +=1
 		mousepos = position
 		Gui.select_warrior()
@@ -150,6 +164,7 @@ func army_removed():
 			if i == self:
 				GameManager.currentknights.erase(i)
 				GameManager.currentwarriors -=1
+				GameManager.currentsoldiers.erase(i)
 				$ArmySelected.hide()
 				Gui.select_warrior()
 				
