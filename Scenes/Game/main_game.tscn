@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=8 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
 [ext_resource type="PackedScene" uid="uid://dgy7tuyuu5us3" path="res://Scenes/Knight/Troops/knight_archer_blue.tscn" id="5_po41u"]
-[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="5_s5sa5"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
@@ -624,75 +623,3 @@ position = Vector2(328, 334)
 
 [node name="KnightArcherBlue46" parent="." instance=ExtResource("5_po41u")]
 position = Vector2(585, 311)
-
-[node name="KnightWarriorBlue" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue2" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue3" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue4" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue5" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue6" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue7" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue8" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue9" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue10" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue11" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue12" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue13" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue14" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue15" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue16" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue17" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue18" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue19" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue20" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue21" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue22" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue23" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
-
-[node name="KnightWarriorBlue24" parent="." instance=ExtResource("5_s5sa5")]
-position = Vector2(646, 577)
