@@ -13,6 +13,11 @@ var start_distance
 var start_zoom
 var start_angle
 var current_angle
+var moved = false
+
+func _ready():
+	GameManager.camera2d = self
+
 
 func _process(delta):
 	pass
@@ -22,7 +27,9 @@ func _input(event):
 		handle_touch(event)
 	elif event is InputEventScreenDrag:
 		handle_drag(event)
-		pass
+
+
+
 		
 func handle_touch(event: InputEventScreenTouch):
 	if GameManager.global_mouse_entered == false:
@@ -46,7 +53,7 @@ func handle_drag(event: InputEventScreenDrag):
 		if touch_points.size() == 1:
 			if can_pan:
 				offset -= event.relative.rotated(rotation) * pan_speed
-				
+
 		elif touch_points.size() == 2:
 			print("ameak")
 			var touch_point_positions = touch_points.values()

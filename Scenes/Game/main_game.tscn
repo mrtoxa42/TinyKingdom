@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=9 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
 [ext_resource type="PackedScene" uid="uid://dgy7tuyuu5us3" path="res://Scenes/Knight/Troops/knight_archer_blue.tscn" id="5_po41u"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
+[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="6_u6q04"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
 texture = ExtResource("2_v162d")
@@ -561,65 +562,17 @@ script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true
 
-[node name="KnightArcherBlue" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(253, 547)
+[node name="KnightArcherBlue49" parent="." instance=ExtResource("5_po41u")]
+position = Vector2(700, 271)
 
-[node name="KnightArcherBlue2" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(510, 524)
+[node name="KnightArcherBlue50" parent="." instance=ExtResource("5_po41u")]
+position = Vector2(836, 399)
 
-[node name="KnightArcherBlue3" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(666, 519)
+[node name="KnightWarriorBlue" parent="." instance=ExtResource("6_u6q04")]
+position = Vector2(571, 416)
 
-[node name="KnightArcherBlue4" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(886, 557)
+[node name="KnightWarriorBlue2" parent="." instance=ExtResource("6_u6q04")]
+position = Vector2(193, 308)
 
-[node name="KnightArcherBlue5" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(253, 411)
-
-[node name="KnightArcherBlue6" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(510, 388)
-
-[node name="KnightArcherBlue7" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(666, 383)
-
-[node name="KnightArcherBlue8" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(886, 421)
-
-[node name="KnightArcherBlue9" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(253, 291)
-
-[node name="KnightArcherBlue10" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(510, 268)
-
-[node name="KnightArcherBlue11" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(666, 263)
-
-[node name="KnightArcherBlue12" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(886, 301)
-
-[node name="KnightArcherBlue13" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(253, 339)
-
-[node name="KnightArcherBlue14" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(510, 316)
-
-[node name="KnightArcherBlue15" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(666, 311)
-
-[node name="KnightArcherBlue16" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(886, 349)
-
-[node name="KnightArcherBlue17" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(333, 339)
-
-[node name="KnightArcherBlue24" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(966, 349)
-
-[node name="KnightArcherBlue35" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(745, 309)
-
-[node name="KnightArcherBlue45" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(328, 334)
-
-[node name="KnightArcherBlue46" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(585, 311)
+[node name="KnightWarriorBlue3" parent="." instance=ExtResource("6_u6q04")]
+position = Vector2(440, 254)

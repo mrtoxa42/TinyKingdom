@@ -4,11 +4,12 @@ var speed = 200
 var currentenemy = null
 var enemyarea = null
 var attack = false
+var shot_range = 200
 var hp = 3
 var mousedistance = Vector2.ZERO
 var mousepos = Vector2.ZERO
 var accel = 7
-var onnav = false	
+var onnav = false
 var direction = Vector3.ZERO
 var oncetouchpos = Vector3.ZERO
 var mouseenter = false
@@ -43,22 +44,26 @@ func _physics_process(delta):
 			else:
 				$VisualAnimation.play("Idle")
 	else:
-		direction = currentenemy.global_position - global_position
-		direction.normalized()
-		velocity = direction
-		if velocity != Vector2(0,0) and attack == false:
-				if currentenemy.global_position.x > global_position.x:
-					$VisualAnimation.play("RunRight")
-				else:
-					$VisualAnimation.play("RunLeft")
-				move_and_slide()
-
+		if (currentenemy.global_position - global_position).length() > shot_range:
+			direction = currentenemy.global_position - global_position
+			direction.normalized()
+			velocity = direction
+			if velocity != Vector2(0,0) and attack == false:
+					if currentenemy.global_position.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+					else:
+						$VisualAnimation.play("RunLeft")
+					move_and_slide()
+		else:
+			enemyarea = currentenemy
+			Attack()
 
 func _input(event):
 	if event.is_pressed():
 		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentarchers.has(self):
 			if GameManager.global_mouse_entered == false:
 				army_line = GameManager.currentarchers.find(self)
+				
 				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationArcher/Formation" + str(army_line)).global_position
 				mousepos = armypos
 				onnav = true
@@ -171,11 +176,14 @@ func army_removed():
 
 
 func _on_archer_area_mouse_entered():
+	GameManager.current_mouse_area = "Archer"
 	GameManager.global_mouse_entered = true
 
 
 func _on_archer_area_mouse_exited():
+	GameManager.current_mouse_area = null
 	GameManager.global_mouse_entered = false
+
 
 
 

@@ -338,7 +338,7 @@ _data = {
 "take_damage": SubResource("Animation_kld1o")
 }
 
-[node name="KnightWarriorBlue" type="CharacterBody2D"]
+[node name="KnightWarriorBlue" type="CharacterBody2D" groups=["Knight"]]
 y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_x50d5")

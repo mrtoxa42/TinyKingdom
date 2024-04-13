@@ -30,6 +30,10 @@ window/stretch/aspect="ignore"
 
 movie_writer/movie_file="C:/Users/emirc/OneDrive/Masaüstü/Godot4.0 Projeleri/TinyKingdom/Movie/Movi2.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
+
 [input]
 
 LeftClick={

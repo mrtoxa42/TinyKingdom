@@ -392,7 +392,7 @@ radius = 500.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqol4"]
 radius = 37.3363
 
-[node name="KnightArcherBlue" type="CharacterBody2D"]
+[node name="KnightArcherBlue" type="CharacterBody2D" groups=["Archer"]]
 y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_y3hd6")

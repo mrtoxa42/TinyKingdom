@@ -1,17 +1,34 @@
 extends Node2D
 
 
-
+var twice_click = false
 
 func _process(delta):
 	$CanvasLayer/ArmyFormationKnight.global_position = get_global_mouse_position()
-	$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position() - Vector2(25,25)
+	if GameManager.currentwarriors !=0:
+		$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position()
+	else:
+		$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position() - Vector2(-8,-68)
 
+
+func _input(event):
+	if event.is_pressed() and event is InputEventScreenTouch:
+		if GameManager.current_mouse_area == "Knight" or "Archer":
+			if twice_click == false:
+				twice_click = true
+				var timer = get_tree().create_timer(1)
+				timer.connect("timeout",time_out)
+			elif twice_click == true:
+				if GameManager.current_mouse_area == "Knight":
+					all_knight_selected()
+				elif GameManager.current_mouse_area == "Archer":
+					all_archer_selected()
 	
-
-
+func time_out():
+	twice_click = false
 func all_knight_selected():
-	pass
-	
+	get_tree().call_group("Knight","army_selected")
 func all_archer_selected():
-	pass
+	get_tree().call_group("Archer","army_selected")
+	
+
