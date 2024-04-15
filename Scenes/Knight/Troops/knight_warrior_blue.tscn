@@ -409,6 +409,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_6cbsn")
 
 [connection signal="pressed" from="SelectedTouch" to="." method="_on_selected_touch_pressed"]
+[connection signal="released" from="SelectedTouch" to="." method="_on_selected_touch_released"]
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
 [connection signal="area_entered" from="KnightArea" to="." method="_on_knight_area_area_entered"]
 [connection signal="area_exited" from="KnightArea" to="." method="_on_knight_area_area_exited"]

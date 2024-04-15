@@ -2,7 +2,7 @@ extends Node2D
 
 
 var twice_click = false
-
+var zoom_touch = false
 func _process(delta):
 	$CanvasLayer/ArmyFormationKnight.global_position = get_global_mouse_position()
 	if GameManager.currentwarriors !=0:
@@ -16,7 +16,7 @@ func _input(event):
 		if GameManager.current_mouse_area == "Knight" or "Archer":
 			if twice_click == false:
 				twice_click = true
-				var timer = get_tree().create_timer(1)
+				var timer = get_tree().create_timer(0,6)
 				timer.connect("timeout",time_out)
 			elif twice_click == true:
 				if GameManager.current_mouse_area == "Knight":

@@ -68,7 +68,7 @@ func _physics_process(delta):
 			#mousepos = get_global_mouse_position()
 			#onnav = true
 func _input(event):
-	if event.is_pressed():
+	if event.is_released():
 		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentknights.has(self):
 			if GameManager.global_mouse_entered == false and GameManager.camera2d.moved == false:
 				army_line = GameManager.currentknights.find(self)
@@ -77,7 +77,8 @@ func _input(event):
 				onnav = true
 
 
-		
+
+
 
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy") and enemyarea == null:
@@ -143,6 +144,8 @@ func _on_tool_animation_animation_finished(anim_name):
 
 
 func _on_selected_touch_pressed():
+	GameManager.current_mouse_area = true
+	GameManager.current_mouse_area = "Knight"
 	if GameManager.currentknights.has(self) == false:
 		army_selected()
 	else:
@@ -158,7 +161,6 @@ func army_selected():
 		GameManager.currentwarriors +=1
 		mousepos = position
 		Gui.select_warrior()
-
 func army_removed():
 	for i in GameManager.currentknights:
 			if i == self:
@@ -171,14 +173,19 @@ func army_removed():
 	
 				
 func _on_knight_area_mouse_entered():
-	GameManager.current_mouse_area = "Knight"
-	GameManager.global_mouse_entered = true
-
+	#GameManager.current_mouse_area = "Knight"
+	#GameManager.global_mouse_entered = true
+	pass
 
 
 func _on_knight_area_mouse_exited():
-	GameManager.current_mouse_area = null
+	pass
+
+
+
+
+func _on_selected_touch_released():
+	var timer = get_tree().create_timer(0,5)
+	await timer.timeout
 	GameManager.global_mouse_entered = false
-
-
-
+	GameManager.current_mouse_area = null

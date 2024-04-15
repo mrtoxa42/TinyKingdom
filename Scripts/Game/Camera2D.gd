@@ -9,7 +9,7 @@ extends Camera2D
 @export var can_rotate: bool
 
 var touch_points: Dictionary = {}
-var start_distance
+var start_distance = 0
 var start_zoom
 var start_angle
 var current_angle
@@ -32,7 +32,6 @@ func _input(event):
 
 		
 func handle_touch(event: InputEventScreenTouch):
-	if GameManager.global_mouse_entered == false:
 		if event.pressed:
 			touch_points[event.index] = event.position
 		else:
@@ -55,7 +54,6 @@ func handle_drag(event: InputEventScreenDrag):
 				offset -= event.relative.rotated(rotation) * pan_speed
 
 		elif touch_points.size() == 2:
-			print("ameak")
 			var touch_point_positions = touch_points.values()
 			var current_dist = touch_point_positions[0].distance_to(touch_point_positions[1])
 			var current_angle = get_angle(touch_point_positions[0], touch_point_positions[1])

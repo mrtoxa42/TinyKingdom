@@ -462,6 +462,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_hyjf8")
 
 [connection signal="pressed" from="SelectedTouch" to="." method="_on_selected_touch_pressed"]
+[connection signal="released" from="SelectedTouch" to="." method="_on_selected_touch_released"]
 [connection signal="animation_finished" from="ToolAnimation" to="." method="_on_tool_animation_animation_finished"]
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
 [connection signal="area_exited" from="DetectedArea" to="." method="_on_detected_area_area_exited"]

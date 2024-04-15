@@ -378,6 +378,7 @@ libraries = {
 autoplay = "reset"
 
 [node name="ExtraSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_6bt3r")
 hframes = 7
 vframes = 2
@@ -392,11 +393,11 @@ debug_enabled = true
 one_shot = true
 
 [node name="GoblinSprite" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("1_a5dpu")
+flip_h = true
 hframes = 7
 vframes = 5
-frame = 26
+frame = 2
 
 [connection signal="area_entered" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_entered"]
 [connection signal="area_exited" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_exited"]

@@ -59,11 +59,10 @@ func _physics_process(delta):
 			Attack()
 
 func _input(event):
-	if event.is_pressed():
+	if event.is_released():
 		if !event is InputEventScreenDrag and event is InputEventScreenTouch and GameManager.currentarchers.has(self):
 			if GameManager.global_mouse_entered == false:
 				army_line = GameManager.currentarchers.find(self)
-				
 				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationArcher/Formation" + str(army_line)).global_position
 				mousepos = armypos
 				onnav = true
@@ -148,6 +147,7 @@ func _on_detected_area_area_exited(area):
 
 
 func _on_selected_touch_pressed():
+
 	if GameManager.currentarchers.has(self) == false:
 		army_selected()
 	else:
@@ -176,14 +176,19 @@ func army_removed():
 
 
 func _on_archer_area_mouse_entered():
-	GameManager.current_mouse_area = "Archer"
-	GameManager.global_mouse_entered = true
+	pass
 
 
 func _on_archer_area_mouse_exited():
-	GameManager.current_mouse_area = null
+	pass
+
+
+
+
+
+
+func _on_selected_touch_released():
+	var timer = get_tree().create_timer(0,5)
+	await timer.timeout
 	GameManager.global_mouse_entered = false
-
-
-
-
+	GameManager.current_mouse_area = null
