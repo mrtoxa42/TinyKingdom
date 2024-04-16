@@ -45,6 +45,7 @@ func _physics_process(delta):
 				$VisualAnimation.play("Idle")
 	else:
 		if (currentenemy.global_position - global_position).length() > shot_range:
+			enemyarea = null
 			direction = currentenemy.global_position - global_position
 			direction.normalized()
 			velocity = direction
@@ -56,7 +57,6 @@ func _physics_process(delta):
 					move_and_slide()
 		else:
 			enemyarea = currentenemy
-			Attack()
 
 func _input(event):
 	if event.is_released():
@@ -73,6 +73,7 @@ func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy"):
 		if currentenemy == null:
 			currentenemy = area
+			Attack()
 
 
 func Attack():
@@ -92,6 +93,7 @@ func Attack():
 		$AttackTimer.start()
 	else:
 		$VisualAnimation.play("Idle")
+		$ToolAnimation.play("detected")
 		attack = false
 		
 func create_arrow():
@@ -105,14 +107,13 @@ func create_arrow():
 		
 
 func dead_enemy():
-	enemyarea = null
 	currentenemy = null
 	attack = false
 	
 
 func take_damage():
 	if hp >=1:
-		hp -= 1
+		hp -= 17
 		$ExtraAnimation.play("take_damage")
 	else:
 		dead = true
@@ -125,10 +126,10 @@ func take_damage():
 	
 func _on_attack_timer_timeout():
 	if enemyarea != null:
-		
 		Attack()
-	#else:
-		#dead_enemy()
+	else:
+		attack = false
+		$ToolAnimation.play("detected")
  
 
 func _on_tool_animation_animation_finished(anim_name):
@@ -141,7 +142,7 @@ func _on_detected_area_area_exited(area):
 	if area == currentenemy:
 		$ToolAnimation.play("detected")
 		currentenemy = null
-		enemyarea = null
+		#enemyarea = null++
 		$VisualAnimation.play("Idle")
 	
 

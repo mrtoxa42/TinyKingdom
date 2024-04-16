@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dgy7tuyuu5us3"]
+[gd_scene load_steps=24 format=3 uid="uid://dgy7tuyuu5us3"]
 
 [ext_resource type="Texture2D" uid="uid://d1w57dt7vdrtw" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Blue/Archer_Blue.png" id="1_g3e68"]
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_archer_blue.gd" id="1_y3hd6"]
@@ -7,21 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png" id="4_hyjf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oxng"]
-
-[sub_resource type="Animation" id="Animation_kjt7d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DetectedArea/CollisionShape2D:shape:radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [500.0]
-}
 
 [sub_resource type="Animation" id="Animation_6r7x6"]
 resource_name = "detected"
@@ -39,27 +24,9 @@ tracks/0/keys = {
 "values": [0.01, 300.0]
 }
 
-[sub_resource type="Animation" id="Animation_xtjaf"]
-resource_name = "take_damage"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwam6"]
 _data = {
-"RESET": SubResource("Animation_kjt7d"),
-"detected": SubResource("Animation_6r7x6"),
-"take_damage": SubResource("Animation_xtjaf")
+"detected": SubResource("Animation_6r7x6")
 }
 
 [sub_resource type="Animation" id="Animation_uv14d"]
@@ -387,7 +354,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4ldn"]
-radius = 500.0
+radius = 0.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqol4"]
 radius = 37.3363

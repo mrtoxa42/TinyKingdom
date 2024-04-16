@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=18 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_2ppbm"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_8kdi0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cj41sbhdb78o3" path="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png" id="6_sil6n"]
 [ext_resource type="Texture2D" uid="uid://dlyvvg6m5u4d8" path="res://Assets/Tiny Swords (Update 010)/GUI/MultipleCircle.png" id="7_tsi1q"]
 [ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="8_hpd2u"]
+[ext_resource type="Texture2D" uid="uid://bkl2hxeyfx02x" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightPawnBlueSingle.png" id="8_kwbnj"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("5_7k44b")
@@ -165,6 +166,45 @@ texture = ExtResource("8_hpd2u")
 position = Vector2(17.5, -9.5)
 shape = SubResource("RectangleShape2D_517tx")
 
+[node name="ArmySelectionPawner" type="Node2D" parent="ArmySelection"]
+visible = false
+position = Vector2(79, 201)
+metadata/_edit_group_ = true
+
+[node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionPawner"]
+texture = ExtResource("3_b6x6k")
+
+[node name="PawnersSelectionLabel" type="Label" parent="ArmySelection/ArmySelectionPawner"]
+offset_left = -43.0
+offset_top = 67.0
+offset_right = 43.0
+offset_bottom = 90.0
+theme_override_fonts/font = SubResource("FontVariation_p2byf")
+text = "X10"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="KnightSelectAnimation" type="AnimationPlayer" parent="ArmySelection/ArmySelectionPawner"]
+libraries = {
+"": SubResource("AnimationLibrary_3r26c")
+}
+
+[node name="KnightPawnBlueSingle" type="Sprite2D" parent="ArmySelection/ArmySelectionPawner"]
+position = Vector2(4, 6)
+texture = ExtResource("8_kwbnj")
+
+[node name="PawnSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionPawner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionPawner/PawnSelectionArea"]
+position = Vector2(17.5, -9.5)
+shape = SubResource("RectangleShape2D_517tx")
+
+[node name="PawnRemovedButton" type="TouchScreenButton" parent="ArmySelection/ArmySelectionPawner"]
+position = Vector2(24, -77)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("6_sil6n")
+
 [node name="ArmyInfo" type="Node2D" parent="."]
 
 [node name="TabAnimation" type="AnimationPlayer" parent="."]
@@ -188,5 +228,7 @@ one_shot = true
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]
+[connection signal="pressed" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_pressed"]
+[connection signal="released" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_released"]
 [connection signal="area_entered" from="MultipleSelectionArmy/MultipleSelectionArmyArea" to="." method="_on_multiple_selection_army_area_area_entered"]
 [connection signal="timeout" from="MultipleSelectionArmy/MultipleSelectionArmyTimer" to="." method="_on_multiple_selection_army_timer_timeout"]

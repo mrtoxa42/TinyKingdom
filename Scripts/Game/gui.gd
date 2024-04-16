@@ -16,6 +16,7 @@ func _process(delta):
 	
 		$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
 		$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
+		$ArmySelection/ArmySelectionPawner/PawnersSelectionLabel.text = "X" + str(GameManager.currentworkers)
 		if multipletouch == true:
 			$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius +=7
 			$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = false
@@ -93,6 +94,19 @@ func _on_knight_removed_button_released():
 
 
 func _on_archer_removed_button_released():
+	var timer = get_tree().create_timer(1)
+	await timer.timeout
+	GameManager.global_mouse_entered = false
+
+
+func _on_pawn_removed_button_pressed():
+	GameManager.global_mouse_entered = true
+	var copycurrentworkers = GameManager.currentworkers.duplicate()
+	for i in copycurrentworkers:
+		i.army_removed()
+
+
+func _on_pawn_removed_button_released():
 	var timer = get_tree().create_timer(1)
 	await timer.timeout
 	GameManager.global_mouse_entered = false

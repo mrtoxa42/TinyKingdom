@@ -19,4 +19,4 @@ func _input(event):
 
 func _on_selected_touched_pressed():
 	if !GameManager.currentpawn.has(self):
-		pass
+		
