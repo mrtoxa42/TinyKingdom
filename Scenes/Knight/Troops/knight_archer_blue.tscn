@@ -456,7 +456,7 @@ debug_enabled = true
 
 [node name="ArmySelected" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0, 0.721569, 0.721569, 1)
+modulate = Color(0, 0, 1, 1)
 position = Vector2(0, -57)
 scale = Vector2(2, 2)
 texture = ExtResource("4_hyjf8")

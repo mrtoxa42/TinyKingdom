@@ -147,7 +147,8 @@ func _on_detected_area_area_exited(area):
 
 
 func _on_selected_touch_pressed():
-
+	GameManager.global_mouse_entered = true
+	GameManager.current_mouse_area = "Knight"
 	if GameManager.currentarchers.has(self) == false:
 		army_selected()
 	else:

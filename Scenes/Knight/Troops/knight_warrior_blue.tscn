@@ -402,7 +402,7 @@ debug_enabled = true
 
 [node name="ArmySelected" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0, 0.431373, 0.741176, 0.6)
+modulate = Color(0, 0, 1, 1)
 z_index = 1
 position = Vector2(1, -68)
 scale = Vector2(2, 2)

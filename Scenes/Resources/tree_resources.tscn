@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5t8hrnx3l5rp"]
+
+[ext_resource type="Texture2D" uid="uid://b1qchfhrhy8jf" path="res://Assets/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_wjc6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dejjj"]
+
+[sub_resource type="Animation" id="Animation_jp1y4"]
+resource_name = "Idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_l8jlv"]
+resource_name = "take_damage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TreeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_gsmm4"]
+resource_name = "over"
+length = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgykh"]
+_data = {
+"Idle": SubResource("Animation_jp1y4"),
+"over": SubResource("Animation_gsmm4"),
+"take_damage": SubResource("Animation_l8jlv")
+}
+
+[node name="TreeResources" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dejjj")
+
+[node name="TreeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_wjc6p")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="VisualAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lgykh")
+}
+autoplay = "Idle"

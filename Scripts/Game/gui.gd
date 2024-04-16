@@ -87,12 +87,12 @@ func _on_archer_removed_button_pressed():
 
 
 func _on_knight_removed_button_released():
-	var timer = get_tree().create_timer(0,6)
+	var timer = get_tree().create_timer(1)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
 
 
 func _on_archer_removed_button_released():
-	var timer = get_tree().create_timer(0,6)
+	var timer = get_tree().create_timer(1)
 	await timer.timeout
 	GameManager.global_mouse_entered = false

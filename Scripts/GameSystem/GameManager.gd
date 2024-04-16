@@ -11,12 +11,15 @@ var global_mouse_entered = false
 var currentfinish = null
 var liveknights = 0
 var livearchers = 0
+var livepawner
 var current_mouse_area = null
 var currentsoldiers = []
 var currentknights = []
 var currentarchers = []
+var currentpawn = []
 var currentwarriors = 0
 var currentarrows = 0
+var currentworker = 0
 var mousetouchpos = Vector2.ZERO
 
 
