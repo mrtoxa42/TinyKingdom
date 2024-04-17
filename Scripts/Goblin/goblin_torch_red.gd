@@ -12,7 +12,6 @@ var enemyarea
 var archerarea
 var attack = false
 var enemydistance = null
-	 
 @onready var nav = $NavigationAgent2D
 
 

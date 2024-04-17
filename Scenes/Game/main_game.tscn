@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=7 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
-[ext_resource type="PackedScene" uid="uid://dgy7tuyuu5us3" path="res://Scenes/Knight/Troops/knight_archer_blue.tscn" id="5_po41u"]
-[ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="6_px4vr"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
@@ -561,27 +559,3 @@ anchor_mode = 0
 script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true
-
-[node name="KnightArcherBlue49" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(700, 271)
-
-[node name="KnightArcherBlue50" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(836, 399)
-
-[node name="KnightArcherBlue" parent="." instance=ExtResource("5_po41u")]
-position = Vector2(320, 330)
-
-[node name="GoblinTorchRed" parent="." instance=ExtResource("6_px4vr")]
-position = Vector2(210, 186)
-
-[node name="GoblinTorchRed2" parent="." instance=ExtResource("6_px4vr")]
-position = Vector2(772, 393)
-
-[node name="GoblinTorchRed3" parent="." instance=ExtResource("6_px4vr")]
-position = Vector2(846, 130)
-
-[node name="GoblinTorchRed4" parent="." instance=ExtResource("6_px4vr")]
-position = Vector2(656, 159)
-
-[node name="GoblinTorchRed5" parent="." instance=ExtResource("6_px4vr")]
-position = Vector2(303, 424)

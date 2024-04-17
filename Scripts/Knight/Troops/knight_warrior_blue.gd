@@ -84,6 +84,7 @@ func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy") and enemyarea == null:
 		if currentenemy == null:
 			currentenemy = area
+			print(name + str(currentenemy))
 			
 func take_damage():
 
