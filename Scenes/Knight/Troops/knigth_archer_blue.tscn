@@ -261,6 +261,7 @@ vframes = 2
 debug_enabled = true
 
 [node name="SelectedSprite" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(0, 0, 1, 1)
 position = Vector2(0, -56)
 scale = Vector2(2, 2)

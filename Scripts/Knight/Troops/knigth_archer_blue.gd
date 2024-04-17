@@ -48,13 +48,14 @@ func _input(event):
 
 func _on_selected_touched_pressed():
 	GameManager.global_mouse_entered = true
+	GameManager.current_mouse_area = "Archer"
 	if !GameManager.currentarchers.has(self):
 		army_selected()
 	
 
 
 func _on_selected_touched_released():
-	pass # Replace with function body.
+	var timer = get_tree()
 
 
 func army_selected():
@@ -74,3 +75,4 @@ func army_removed():
 				GameManager.currentsoldiers.erase(i)
 				GameManager.currentarrows -=1
 				$SelectedSprite.hide()
+
