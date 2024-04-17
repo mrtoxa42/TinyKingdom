@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=9 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
+[ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="4_fq583"]
+[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="5_odk83"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
@@ -559,3 +561,15 @@ anchor_mode = 0
 script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true
+
+[node name="KnigthArcherBlue" parent="." instance=ExtResource("4_fq583")]
+position = Vector2(770, 318)
+
+[node name="KnightWarriorBlue" parent="." instance=ExtResource("5_odk83")]
+position = Vector2(522, 405)
+
+[node name="KnightWarriorBlue2" parent="." instance=ExtResource("5_odk83")]
+position = Vector2(751, 456)
+
+[node name="KnightWarriorBlue3" parent="." instance=ExtResource("5_odk83")]
+position = Vector2(514, 226)
