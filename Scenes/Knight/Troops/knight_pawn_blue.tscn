@@ -314,4 +314,8 @@ position = Vector2(0, -44)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_tru4x")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
 [connection signal="pressed" from="SelectedTouched" to="." method="_on_selected_touched_pressed"]
+[connection signal="released" from="SelectedTouched" to="." method="_on_selected_touched_released"]

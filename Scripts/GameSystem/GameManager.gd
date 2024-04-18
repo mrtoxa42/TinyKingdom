@@ -11,7 +11,7 @@ var global_mouse_entered = false
 var currentfinish = null
 var liveknights = 0
 var livearchers = 0
-var livepawner
+var livepawner = 0
 var current_mouse_area = null
 var currentsoldiers = []
 var currentknights = []
