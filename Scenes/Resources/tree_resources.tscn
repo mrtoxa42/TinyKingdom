@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5t8hrnx3l5rp"]
+[gd_scene load_steps=9 format=3 uid="uid://c5t8hrnx3l5rp"]
 
+[ext_resource type="Script" path="res://Scripts/Resources/tree_resources.gd" id="1_nx8ej"]
 [ext_resource type="Texture2D" uid="uid://b1qchfhrhy8jf" path="res://Assets/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_wjc6p"]
+[ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="2_1sjnl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dejjj"]
 
 [sub_resource type="Animation" id="Animation_jp1y4"]
 resource_name = "Idle"
 length = 0.3
-loop_mode = 1
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,10 +22,45 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TreeSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TreeSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TreeSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_gsmm4"]
 resource_name = "over"
-length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,10 +68,22 @@ tracks/0/path = NodePath("TreeSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [8]
+"values": [1, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TreeSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.29476, 0.901943, 1.11676, 1.36664, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_l8jlv"]
@@ -61,18 +110,29 @@ _data = {
 }
 
 [node name="TreeResources" type="Area2D"]
+script = ExtResource("1_nx8ej")
+
+[node name="SelectedTouched" type="TouchScreenButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.00392157)
+position = Vector2(-40, -80)
+scale = Vector2(0.679688, 1.20313)
+texture_normal = ExtResource("2_1sjnl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dejjj")
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_wjc6p")
 hframes = 4
 vframes = 3
-frame = 8
+frame = 1
 
 [node name="VisualAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lgykh")
 }
 autoplay = "Idle"
+
+[connection signal="pressed" from="SelectedTouched" to="." method="_on_selected_touched_pressed"]
+[connection signal="released" from="SelectedTouched" to="." method="_on_selected_touched_released"]

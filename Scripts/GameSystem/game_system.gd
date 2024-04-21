@@ -5,6 +5,7 @@ var twice_click = false
 var zoom_touch = false
 func _process(delta):
 	$CanvasLayer/ArmyFormationKnight.global_position = get_global_mouse_position()
+	$CanvasLayer/ArmyFormationPawner.global_position = get_global_mouse_position() - Vector2(0,-75)
 	if GameManager.currentwarriors !=0:
 		$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position()
 	else:

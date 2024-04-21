@@ -1136,3 +1136,568 @@ scale = Vector2(0.1, 0.1)
 [node name="Formation139" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]
 position = Vector2(86.9998, -150)
 scale = Vector2(0.1, 0.1)
+
+[node name="ArmyFormationPawner" type="Node2D" parent="CanvasLayer"]
+position = Vector2(1.81899e-11, 40)
+rotation = 1.5708
+scale = Vector2(1.2, 1.5)
+
+[node name="Formation0" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68, 8.00018)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation1" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68, -11.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation2" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68, -31.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation3" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-67.9999, 28.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation4" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation5" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 8.00012)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation6" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -11.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation7" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -31.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation8" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 28.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation9" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation10" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-3.99997, 8.00017)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation11" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4.00006, -11.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation12" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-3.99994, -31.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation13" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4, 28.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation14" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation15" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-184, 8.00012)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation16" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-184, -11.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation17" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-184, -31.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation18" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-184, 28.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation19" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-184, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation20" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(56.0001, 8.00015)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation21" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(56.0001, -11.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation22" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(56.0001, -31.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation23" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(56.0001, 28.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation24" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(56.0001, -51.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation25" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-69, 112)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation26" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68.9999, 92.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation27" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68.9999, 72.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation28" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68.9999, 132)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation29" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-69, 52.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation30" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-69.0002, -95.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation31" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-69, -116)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation32" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-69.0001, -136)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation33" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-69, -76)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation34" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-68.9999, -156)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation35" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-5.00006, 112)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation36" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4.99997, 92.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation37" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-5.00009, 72.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation38" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4.99994, 132)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation39" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-5, 52)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation40" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-5.00024, -88.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation41" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-5, -109)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation42" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-5, -129)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation43" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4.99994, -68.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation44" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-4.99988, -149)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation45" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation46" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 90.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation47" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 70.0003)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation48" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation49" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, 50.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation50" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -89.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation51" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation52" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation53" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -69.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation54" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-127, -150)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation55" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, 110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation56" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, 90.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation57" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, 70.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation58" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, 130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation59" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, 50)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation60" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55.0001, -89.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation61" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55.0001, -110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation62" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, -130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation63" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55.0001, -70)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation64" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(54.9998, -150)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation65" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55.0001, -89.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation66" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55.0001, -110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation67" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55, -130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation68" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(55.0001, -70)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation69" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(54.9998, -150)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation70" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36, 8.00012)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation71" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36, -11.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation72" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36, -31.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation73" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36, 28.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation74" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation75" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, 8.00024)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation76" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, -11.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation77" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, -31.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation78" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-94.9999, 28.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation79" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation80" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(28, 8.00018)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation81" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(28, -11.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation82" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(28.0001, -31.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation83" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(28, 28.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation84" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(28.0001, -51.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation85" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-152, 8.00018)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation86" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-152, -11.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation87" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-152, -31.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation88" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-152, 28.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation89" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-152, -51.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation90" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(88.0001, 8.00012)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation91" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(88.0001, -11.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation92" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(88.0001, -31.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation93" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(88.0001, 28.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation94" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(88.0001, -51.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation95" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-37.0001, 112)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation96" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36.9999, 92.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation97" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36.9999, 72.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation98" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36.9999, 132)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation99" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-37, 52.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation100" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-37, -95.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation101" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36.9999, -116)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation102" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-37.0001, -136)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation103" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-37, -75.9998)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation104" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-36.9999, -156)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation105" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(26.9998, 112)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation106" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(27, 92.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation107" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(26.9999, 72.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation108" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(27, 132)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation109" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(27, 52.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation110" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(26.9999, -88.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation111" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(27.0001, -109)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation112" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(26.9999, -129)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation113" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(27, -68.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation114" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(27.0001, -149)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation115" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, 110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation116" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-94.9999, 90.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation117" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, 70.0003)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation118" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-94.9999, 130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation119" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-94.9999, 50.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation120" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95.0002, -89.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation121" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, -110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation122" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95.0001, -130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation123" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, -69.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation124" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(-95, -150)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation125" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87, 110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation126" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87, 90.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation127" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87.0001, 70.0002)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation128" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87, 130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation129" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87.0001, 50)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation130" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87, -89.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation131" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(86.9998, -110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation132" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(86.9998, -130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation133" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87.0001, -70)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation134" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(86.9998, -150)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation135" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87, -89.9999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation136" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(86.9998, -110)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation137" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(86.9998, -130)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation138" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(87.0001, -70)
+scale = Vector2(0.1, 0.1)
+
+[node name="Formation139" type="Marker2D" parent="CanvasLayer/ArmyFormationPawner"]
+position = Vector2(86.9998, -150)
+scale = Vector2(0.1, 0.1)

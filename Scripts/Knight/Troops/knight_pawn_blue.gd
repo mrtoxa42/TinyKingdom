@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
 
-var current_resources
+var current_resources = null
+var resources_type = ""
+var resources_area = false
 var speed = 200
 var accel = 7
+var onnav = false
+var work_metter = 0
 var resources_distance
 var direction 
 var mousepos = Vector2.ZERO
@@ -11,14 +15,14 @@ var army_line
 @onready var nav = $NavigationAgent2D
 
 
+
+
+func _process(delta):
+	pass
+
 func _physics_process(delta):
-	if current_resources != null:
-		resources_distance = current_resources.global_position - global_position
-		resources_distance.normalized()
-		velocity = resources_distance
-		move_and_slide()
-	else:
-		if GameManager.currentpawn.has(self):
+	if current_resources == null:
+		if GameManager.currentpawn.has(self) or onnav == true:
 			direction = Vector3()
 			nav.target_position = mousepos
 			direction = nav.get_next_path_position() - global_position
@@ -32,12 +36,40 @@ func _physics_process(delta):
 					$VisualAnimation.play("RunLeft")
 			else:
 				$VisualAnimation.play("Idle")
+				
+	else:
+		if current_resources != null:
+			direction = Vector3()
+			nav.target_position = current_resources.global_position
+			direction = nav.get_next_path_position() - global_position
+			if nav.distance_to_target() > 75:
+				direction = direction.normalized()
+				velocity = velocity.lerp(direction * speed, accel * delta)
+				move_and_slide()
+				if mousepos.x > global_position.x:
+					$VisualAnimation.play("RunRight")
+				else:
+					$VisualAnimation.play("RunLeft")
+			else:
+				if resources_area == false:
+					resources_area = true
+					start_working()
+				
+
+
 func _input(event):
+	
 	if event.is_released():
-		if GameManager.global_mouse_entered == false and GameManager.currentpawn.has(self) and event is InputEventScreenTouch:
+		if GameManager.global_mouse_entered == false and GameManager.currentpawn.has(self) and event is InputEventScreenTouch:      
 			army_line = GameManager.currentpawn.find(self)
-			var army_pos = GameSystem.get_node("CanvasLayer/ArmyFormationKnight/Formation" + str(army_line)).global_position
+			var army_pos = GameSystem.get_node("CanvasLayer/ArmyFormationPawner/Formation" + str(army_line)).global_position
 			mousepos = army_pos
+			onnav = true
+			if GameManager.current_mouse_area == "Resources":
+				pass
+			else:
+				current_resources = null
+
 
 func _on_selected_touched_pressed():
 	GameManager.global_mouse_entered = true
@@ -59,9 +91,33 @@ func worker_selected():
 		GameManager.currentpawn.append(self)
 		GameManager.currentworkers +=1
 		mousepos = position
+		Gui.select_pawner()
 		$SelectedSprite.show()
 func worker_removed():
 	if GameManager.currentpawn.has(self):
 		GameManager.currentpawn.erase(self)
 		GameManager.currentworkers -= 1
+		Gui.select_pawner()
 		$SelectedSprite.hide()
+
+func selected_resources():
+	print("Kaynak seçildi" + str(current_resources))
+
+func start_working():
+	work_metter +=1
+	
+	if current_resources.global_position.x > global_position.x:
+		$VisualAnimation.play("GatheringRight")
+	elif current_resources.global_position.x < global_position.x:
+		$VisualAnimation.play("GatheringLeft")
+	await  $VisualAnimation.animation_finished
+	if work_metter < 3:
+		start_working()
+	else:
+		$ResourcesSpirte.show()
+		if resources_type == "Tree":
+			$ResourcesSpirte.play("wood")
+			
+	
+func resources_damage():
+	current_resources.take_damage()

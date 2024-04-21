@@ -56,7 +56,11 @@ func select_archer():
 		$ArmySelection/ArmySelectionArcher.show()
 	else:
 		$ArmySelection/ArmySelectionArcher.hide()
-
+func select_pawner():
+	if GameManager.currentworkers >= 1:
+		$ArmySelection/ArmySelectionPawner.show()
+	else:
+		$ArmySelection/ArmySelectionPawner.hide()
 func _on_multiple_selection_army_area_area_entered(area):
 	if area.is_in_group("Soldier"):
 		area.get_owner().army_selected()
