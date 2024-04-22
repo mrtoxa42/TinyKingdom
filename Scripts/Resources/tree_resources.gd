@@ -18,7 +18,7 @@ func _on_selected_touched_pressed():
 			i.resources_type = "Tree"
 			#i.selected_resources()
 			i.worker_removed()
-
+			
 
 
 func _on_selected_touched_released():

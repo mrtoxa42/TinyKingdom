@@ -71,8 +71,9 @@ func _physics_process(delta):
 					else:
 						$VisualAnimation.play("GatheringRunLeft")
 						
-		if current_resources == null and gathering_resources == false:
+	if current_resources == null and gathering_resources == false and !GameManager.currentpawn.has(self):
 			$VisualAnimation.play("Idle")
+		
 
 func _input(event):
 	
@@ -82,6 +83,7 @@ func _input(event):
 			var army_pos = GameSystem.get_node("CanvasLayer/ArmyFormationPawner/Formation" + str(army_line)).global_position
 			mousepos = army_pos
 			onnav = true
+			current_resources = null
 			if GameManager.current_mouse_area == "Resources":
 				pass
 			else:
@@ -118,7 +120,7 @@ func worker_removed():
 		$SelectedSprite.hide()
 
 func selected_resources():
-	print("Kaynak seçildi" + str(current_resources))
+	pass
 
 func start_working():
 	if resources_type == "Tree":
@@ -140,7 +142,8 @@ func start_working():
 				$ResourcesSprite.global_position = $ResourcesPosition.global_position
 				gathering_resources = true
 				resources_area = false
-			
+				if current_resources.over == true:
+					current_resources = null
 			
 	if resources_type == "GoldMine":
 		hide()
@@ -154,6 +157,8 @@ func start_working():
 		gathering_resources = true
 		resources_area = false
 		show()
+		if current_resources.over == true:
+			current_resources = null
 		
 	
 func resources_damage():

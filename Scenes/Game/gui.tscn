@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=21 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_2ppbm"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_8kdi0"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dlyvvg6m5u4d8" path="res://Assets/Tiny Swords (Update 010)/GUI/MultipleCircle.png" id="7_tsi1q"]
 [ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="8_hpd2u"]
 [ext_resource type="Texture2D" uid="uid://bkl2hxeyfx02x" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightPawnBlueSingle.png" id="8_kwbnj"]
+[ext_resource type="Texture2D" uid="uid://bp02jfarufw4p" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/House/House_Blue.png" id="10_4fwyp"]
+[ext_resource type="Texture2D" uid="uid://dpbkss3g5r0af" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="11_wxpqw"]
+[ext_resource type="Texture2D" uid="uid://bkpl0lkeiaw8b" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="12_w6x50"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("5_7k44b")
@@ -80,9 +83,8 @@ radius = 0.01
 script = ExtResource("1_2ppbm")
 
 [node name="TowerInfo" type="Node2D" parent="."]
-visible = false
 
-[node name="Carved3Slides" type="Sprite2D" parent="TowerInfo"]
+[node name="BG" type="Sprite2D" parent="TowerInfo"]
 position = Vector2(574, 564)
 scale = Vector2(6, 2)
 texture = ExtResource("1_8kdi0")
@@ -223,6 +225,21 @@ texture = ExtResource("7_tsi1q")
 [node name="MultipleSelectionArmyTimer" type="Timer" parent="MultipleSelectionArmy"]
 wait_time = 0.3
 one_shot = true
+
+[node name="HouseBlue" type="Sprite2D" parent="."]
+position = Vector2(176, 559)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4fwyp")
+
+[node name="TowerBlue" type="Sprite2D" parent="."]
+position = Vector2(456, 554)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_wxpqw")
+
+[node name="CastleBlue" type="Sprite2D" parent="."]
+position = Vector2(765, 553)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_w6x50")
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]

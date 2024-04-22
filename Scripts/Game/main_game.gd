@@ -3,7 +3,7 @@ extends Node2D
 
 
 func _ready():
-	GameManager.maincastle = $MainCastle
+	GameManager.maincastle = $NavigationRegion2D/MainCastle
 	GameManager.currentfinish = $Finish
 	GameManager.currentlevel = self
 	$NavigationRegion2D.bake_navigation_polygon(true)
