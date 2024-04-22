@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://vv0rm7xg52jf"]
+[gd_scene load_steps=35 format=3 uid="uid://vv0rm7xg52jf"]
 
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_pawn_blue.gd" id="1_cxr5x"]
 [ext_resource type="Texture2D" uid="uid://dy6r1a2bnuiph" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="1_e5yuy"]
 [ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="2_8a42v"]
 [ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png" id="4_tru4x"]
+[ext_resource type="Texture2D" uid="uid://tx2cg4l7ig8s" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/G_Spawn.png" id="5_axnd6"]
 [ext_resource type="Texture2D" uid="uid://7113xt1bemnk" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/W_Spawn.png" id="5_itve1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gmhk"]
@@ -195,7 +196,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ResourcesSpirte:position")
+tracks/2/path = NodePath("ResourcesSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -235,7 +236,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ResourcesSpirte:position")
+tracks/2/path = NodePath("ResourcesSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -334,6 +335,34 @@ _data = {
 "RunRight": SubResource("Animation_3a2b0")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c706i"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_divp5"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u3im"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aobu"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmswk"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26jg3"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82o4k"]
+atlas = ExtResource("5_axnd6")
+region = Rect2(768, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwsk6"]
 atlas = ExtResource("5_itve1")
 region = Rect2(0, 0, 128, 128)
@@ -366,6 +395,32 @@ region = Rect2(768, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_c706i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_divp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u3im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aobu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmswk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26jg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82o4k")
+}],
+"loop": false,
+"name": &"gold",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bwsk6")
 }, {
 "duration": 1.0,
@@ -391,6 +446,10 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqanb"]
+radius = 28.0
+height = 69.0
+
 [node name="KnightPawnBlue" type="CharacterBody2D"]
 script = ExtResource("1_cxr5x")
 
@@ -406,10 +465,9 @@ shape = SubResource("CapsuleShape2D_4gmhk")
 [node name="PawnSprite" type="Sprite2D" parent="."]
 rotation = 5.93772e-05
 texture = ExtResource("1_e5yuy")
-flip_h = true
 hframes = 6
 vframes = 6
-frame = 21
+frame = 6
 
 [node name="VisualAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -427,13 +485,24 @@ texture = ExtResource("4_tru4x")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
-[node name="ResourcesSpirte" type="AnimatedSprite2D" parent="."]
+[node name="ResourcesSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(0, -1)
+z_index = 2
+position = Vector2(0, -61)
 sprite_frames = SubResource("SpriteFrames_0t76j")
-animation = &"wood"
+animation = &"gold"
 frame = 6
 frame_progress = 1.0
 
+[node name="ResourcesPosition" type="Marker2D" parent="."]
+position = Vector2(0, -35)
+
+[node name="KnightPawnBlueArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnightPawnBlueArea"]
+position = Vector2(3, -3)
+shape = SubResource("CapsuleShape2D_yqanb")
+
 [connection signal="pressed" from="SelectedTouched" to="." method="_on_selected_touched_pressed"]
 [connection signal="released" from="SelectedTouched" to="." method="_on_selected_touched_released"]
+[connection signal="area_entered" from="KnightPawnBlueArea" to="." method="_on_knight_pawn_blue_area_area_entered"]

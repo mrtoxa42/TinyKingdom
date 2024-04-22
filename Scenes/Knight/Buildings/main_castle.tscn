@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://0qw8qvs2cnck"]
+
+[ext_resource type="Texture2D" uid="uid://bkpl0lkeiaw8b" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="1_kq2cj"]
+[ext_resource type="Script" path="res://Scripts/Knight/Buildings/main_castle.gd" id="1_w0eau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81gfq"]
+size = Vector2(257, 171)
+
+[node name="MainCastle" type="Area2D" groups=["Castle"]]
+y_sort_enabled = true
+script = ExtResource("1_w0eau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 14.5)
+shape = SubResource("RectangleShape2D_81gfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 79)
+texture = ExtResource("1_kq2cj")
+offset = Vector2(0, -79)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-118, -33, -110, 87, 112, 85, 118, -42)

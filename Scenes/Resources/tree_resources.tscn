@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5t8hrnx3l5rp"]
+[gd_scene load_steps=11 format=3 uid="uid://c5t8hrnx3l5rp"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/tree_resources.gd" id="1_nx8ej"]
 [ext_resource type="Texture2D" uid="uid://b1qchfhrhy8jf" path="res://Assets/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_wjc6p"]
@@ -109,6 +109,13 @@ _data = {
 "take_damage": SubResource("Animation_l8jlv")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cn2l2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.701961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orxdw"]
+resource_name = "Sky"
+bg_color = Color(2.76752e-06, 0.469511, 0.39413, 1)
+
 [node name="TreeResources" type="Area2D"]
 script = ExtResource("1_nx8ej")
 
@@ -133,6 +140,17 @@ libraries = {
 "": SubResource("AnimationLibrary_lgykh")
 }
 autoplay = "Idle"
+
+[node name="ResourcesBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -38.0
+offset_top = -117.0
+offset_right = 39.0
+offset_bottom = -90.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cn2l2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_orxdw")
+value = 100.0
+show_percentage = false
 
 [connection signal="pressed" from="SelectedTouched" to="." method="_on_selected_touched_pressed"]
 [connection signal="released" from="SelectedTouched" to="." method="_on_selected_touched_released"]

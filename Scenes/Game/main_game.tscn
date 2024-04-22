@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=11 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
 [ext_resource type="PackedScene" uid="uid://vv0rm7xg52jf" path="res://Scenes/Knight/Troops/knight_pawn_blue.tscn" id="4_0tf2t"]
 [ext_resource type="PackedScene" uid="uid://c5t8hrnx3l5rp" path="res://Scenes/Resources/tree_resources.tscn" id="5_umxvo"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
+[ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="6_s2bkm"]
+[ext_resource type="PackedScene" uid="uid://miem7rj474q6" path="res://Scenes/Resources/gold_mine_resources.tscn" id="7_5ksjt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
 texture = ExtResource("2_v162d")
@@ -558,6 +560,9 @@ y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_0selm")
 metadata/_edit_lock_ = true
 
+[node name="MainCastle" parent="NavigationRegion2D" instance=ExtResource("6_s2bkm")]
+position = Vector2(363, 194)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1.57091, 0.799049)
 anchor_mode = 0
@@ -571,3 +576,6 @@ position = Vector2(728, 240)
 
 [node name="TreeResources" parent="." instance=ExtResource("5_umxvo")]
 position = Vector2(873, 149)
+
+[node name="GoldMineResources" parent="." instance=ExtResource("7_5ksjt")]
+position = Vector2(934, 423)

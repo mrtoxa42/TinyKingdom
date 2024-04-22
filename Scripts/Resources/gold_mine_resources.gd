@@ -1,0 +1,59 @@
+extends Area2D
+
+
+
+var count_resources = 100
+var over = false
+var actived = false
+@onready var resources_bar = $ResourcesBar
+
+
+func _process(delta):
+	resources_bar.value = count_resources
+
+
+func _on_selected_touched_pressed():
+	if GameManager.currentpawn != null and over == false:
+		for i in GameManager.currentpawn:
+			GameManager.current_mouse_area = "Resources"
+			i.current_resources = self
+			i.resources_type = "GoldMine"
+			i.selected_resources()
+			i.worker_removed()
+
+
+func _on_selected_touched_released():
+	var timer = get_tree().create_timer(0,6)
+	await timer.timeout
+	GameManager.current_mouse_area = null
+
+
+func Actived():
+	if actived == false:
+		resources_bar.show()
+		$AnimationPlayer.play("Activie")
+		actived = true
+	else:
+		$AnimationPlayer.play("DeActive")
+		actived = false
+		var timer = get_tree().create_timer(2)
+		await timer.timeout
+		resources_bar.hide()
+
+
+
+func pull_resources():
+	count_resources -= 30
+	if count_resources > 0 :
+		if count_resources > 80:
+			resources_bar.get("theme_override_styles/fill").bg_color = Color.GREEN
+		elif count_resources > 60:
+			resources_bar.get("theme_override_styles/fill").bg_color = Color.GREEN_YELLOW
+			
+		elif count_resources > 40:
+			resources_bar.get("theme_override_styles/fill").bg_color = Color.YELLOW
+		elif count_resources < 20:
+			resources_bar.get("theme_override_styles/fill").bg_color = Color.RED
+	else:
+		over = true
+		$AnimationPlayer.play("over")

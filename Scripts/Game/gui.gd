@@ -105,9 +105,9 @@ func _on_archer_removed_button_released():
 
 func _on_pawn_removed_button_pressed():
 	GameManager.global_mouse_entered = true
-	var copycurrentworkers = GameManager.currentworkers.duplicate()
-	for i in copycurrentworkers:
-		i.army_removed()
+	var copycurrentpawn = GameManager.currentpawn.duplicate()
+	for i in copycurrentpawn:
+		i.worker_removed()
 
 
 func _on_pawn_removed_button_released():
