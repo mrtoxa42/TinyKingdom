@@ -3,6 +3,7 @@ extends Area2D
 var resources_name = "Tree"
 var count_resources = 100
 var over = false
+var workers = []
 @onready var resources_bar = $ResourcesBar
 
 
@@ -17,6 +18,7 @@ func _on_selected_touched_pressed():
 			i.current_resources = self
 			i.resources_type = "Tree"
 			#i.selected_resources()
+			workers.append(i)
 
 
 
@@ -27,22 +29,27 @@ func _on_selected_touched_released():
 
 
 func take_damage():
-	count_resources -= 30
-	pull_resources()
-	if count_resources > 0 :
-		
-		$VisualAnimation.play("take_damage")
-		await $VisualAnimation.animation_finished
-		$VisualAnimation.play("Idle")
-	else:
-		if over == false:
-			over = true
-			$VisualAnimation.play("over")
-		
-	resources_bar.show()
-	var timer = get_tree().create_timer(2)
-	await timer.timeout
-	resources_bar.hide()
+	if over == false:
+		count_resources -= 30
+		pull_resources()
+		if count_resources > 0 :
+			
+			$VisualAnimation.play("take_damage")
+			await $VisualAnimation.animation_finished
+			$VisualAnimation.play("Idle")
+		else:
+			if over == false:
+				over = true
+				$VisualAnimation.play("over")
+				if workers !=null:
+					for i in workers:
+						i.current_resources = null
+				
+			
+		resources_bar.show()
+		var timer = get_tree().create_timer(2)
+		await timer.timeout
+		resources_bar.hide()
 func pull_resources():
 	
 	if count_resources > 80:

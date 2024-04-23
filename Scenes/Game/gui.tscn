@@ -83,11 +83,27 @@ radius = 0.01
 script = ExtResource("1_2ppbm")
 
 [node name="TowerInfo" type="Node2D" parent="."]
+visible = false
 
 [node name="BG" type="Sprite2D" parent="TowerInfo"]
 position = Vector2(574, 564)
 scale = Vector2(6, 2)
 texture = ExtResource("1_8kdi0")
+
+[node name="HouseBlue" type="Sprite2D" parent="TowerInfo"]
+position = Vector2(176, 559)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4fwyp")
+
+[node name="TowerBlue" type="Sprite2D" parent="TowerInfo"]
+position = Vector2(456, 554)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_wxpqw")
+
+[node name="CastleBlue" type="Sprite2D" parent="TowerInfo"]
+position = Vector2(765, 553)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_w6x50")
 
 [node name="ArmySelection" type="Node2D" parent="."]
 
@@ -225,21 +241,6 @@ texture = ExtResource("7_tsi1q")
 [node name="MultipleSelectionArmyTimer" type="Timer" parent="MultipleSelectionArmy"]
 wait_time = 0.3
 one_shot = true
-
-[node name="HouseBlue" type="Sprite2D" parent="."]
-position = Vector2(176, 559)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4fwyp")
-
-[node name="TowerBlue" type="Sprite2D" parent="."]
-position = Vector2(456, 554)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("11_wxpqw")
-
-[node name="CastleBlue" type="Sprite2D" parent="."]
-position = Vector2(765, 553)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_w6x50")
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]

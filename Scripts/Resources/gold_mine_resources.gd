@@ -5,6 +5,7 @@ extends Area2D
 var count_resources = 100
 var over = false
 var actived = false
+var workers = []
 @onready var resources_bar = $ResourcesBar
 
 
@@ -19,7 +20,7 @@ func _on_selected_touched_pressed():
 			i.current_resources = self
 			i.resources_type = "GoldMine"
 			#i.selected_resources()
-
+			workers.append(i)
 
 
 func _on_selected_touched_released():
@@ -57,3 +58,7 @@ func pull_resources():
 	else:
 		over = true
 		$AnimationPlayer.play("over")
+		if workers != null:
+			for i in workers:
+				i.current_resources = null
+				i.work_finished = true
