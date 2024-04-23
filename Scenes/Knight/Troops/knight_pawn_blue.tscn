@@ -450,7 +450,8 @@ animations = [{
 radius = 28.0
 height = 69.0
 
-[node name="KnightPawnBlue" type="CharacterBody2D"]
+[node name="KnightPawnBlue" type="CharacterBody2D" groups=["Pawn"]]
+collision_layer = 0
 script = ExtResource("1_cxr5x")
 
 [node name="SelectedTouched" type="TouchScreenButton" parent="."]

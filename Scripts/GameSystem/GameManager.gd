@@ -9,6 +9,7 @@ var camera2d
 var global_mouse_position
 var global_mouse_entered = false
 var maincastle
+var redflag
 var currentfinish = null
 var liveknights = 0
 var livearchers = 0

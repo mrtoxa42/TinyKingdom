@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://0qw8qvs2cnck"]
+[gd_scene load_steps=13 format=3 uid="uid://0qw8qvs2cnck"]
 
 [ext_resource type="Script" path="res://Scripts/Knight/Buildings/main_castle.gd" id="1_w0eau"]
 [ext_resource type="Texture2D" uid="uid://b8thabnxd27oj" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/MainCastle.png" id="2_fpjdr"]
 [ext_resource type="Texture2D" uid="uid://te3tst37hauq" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="3_nfv8u"]
+[ext_resource type="Texture2D" uid="uid://dmvb731r01cf" path="res://Assets/Tiny Swords (Update 010)/GUI/RedFlag.png" id="4_otipr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81gfq"]
 size = Vector2(257, 171)
@@ -80,8 +81,7 @@ position = Vector2(-45, -27)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_v4qt1")
 autoplay = "default"
-frame = 2
-frame_progress = 0.751288
+frame_progress = 0.227568
 
 [node name="Guardian2" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -90,3 +90,8 @@ scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_v4qt1")
 autoplay = "default"
 frame_progress = 0.919893
+
+[node name="RedFlag" type="Sprite2D" parent="."]
+position = Vector2(0, 184)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_otipr")

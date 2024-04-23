@@ -17,8 +17,7 @@ func _on_selected_touched_pressed():
 			i.current_resources = self
 			i.resources_type = "Tree"
 			#i.selected_resources()
-			i.worker_removed()
-			
+
 
 
 func _on_selected_touched_released():
@@ -36,8 +35,9 @@ func take_damage():
 		await $VisualAnimation.animation_finished
 		$VisualAnimation.play("Idle")
 	else:
-		over = true
-		$VisualAnimation.play("over")
+		if over == false:
+			over = true
+			$VisualAnimation.play("over")
 		
 	resources_bar.show()
 	var timer = get_tree().create_timer(2)

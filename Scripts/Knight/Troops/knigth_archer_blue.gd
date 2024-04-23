@@ -83,6 +83,8 @@ func army_selected():
 		mousepos = position
 		$SelectedSprite.show()
 		
+		if GameManager.currentpawn != null:
+			get_tree().call_group("Pawn", "worker_removed")
 
 func army_removed():
 	if GameManager.currentarchers.has(self):

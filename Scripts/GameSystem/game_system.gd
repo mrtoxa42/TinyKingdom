@@ -14,22 +14,25 @@ func _process(delta):
 
 func _input(event):
 	if event.is_pressed() and event is InputEventScreenTouch:
-		if GameManager.current_mouse_area == "Knight" or "Archer":
+		if GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
 			if twice_click == false:
 				twice_click = true
-				var timer = get_tree().create_timer(0,6)
+				var timer = get_tree().create_timer(0,7)
 				timer.connect("timeout",time_out)
 			elif twice_click == true:
 				if GameManager.current_mouse_area == "Knight":
 					all_knight_selected()
 				elif GameManager.current_mouse_area == "Archer":
 					all_archer_selected()
-	
+				elif GameManager.current_mouse_area == "Pawn":
+					all_pawn_selected()
+					
 func time_out():
 	twice_click = false
 func all_knight_selected():
 	get_tree().call_group("Knight","army_selected")
 func all_archer_selected():
 	get_tree().call_group("Archer","army_selected")
-	
+func all_pawn_selected():
+	get_tree().call_group("Pawn", "worker_selected")
 

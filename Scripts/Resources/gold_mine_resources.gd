@@ -18,8 +18,8 @@ func _on_selected_touched_pressed():
 			GameManager.current_mouse_area = "Resources"
 			i.current_resources = self
 			i.resources_type = "GoldMine"
-			i.selected_resources()
-			i.worker_removed()
+			#i.selected_resources()
+
 
 
 func _on_selected_touched_released():
@@ -43,7 +43,7 @@ func Actived():
 
 
 func pull_resources():
-	count_resources -= 30
+	count_resources -= 50
 	if count_resources > 0 :
 		if count_resources > 80:
 			resources_bar.get("theme_override_styles/fill").bg_color = Color.GREEN

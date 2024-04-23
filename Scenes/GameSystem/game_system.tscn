@@ -8,6 +8,7 @@ script = ExtResource("1_vgdru")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ArmyFormationKnight" type="Node2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(0, 11)
 rotation = 1.5708
 scale = Vector2(1.2, 1.5)
@@ -573,6 +574,7 @@ position = Vector2(147, -150)
 scale = Vector2(0.1, 0.1)
 
 [node name="ArmyFormationArcher" type="Node2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(0, 11)
 rotation = 1.5708
 scale = Vector2(1.2, 1.5)

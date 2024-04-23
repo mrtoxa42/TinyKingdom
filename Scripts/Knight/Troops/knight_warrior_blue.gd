@@ -161,12 +161,14 @@ func army_selected():
 		GameManager.currentwarriors +=1
 		mousepos = position
 		Gui.select_warrior()
+		
+		if GameManager.currentpawn != null:
+			get_tree().call_group("Pawn", "worker_removed")
 func army_removed():
-	for i in GameManager.currentknights:
-			if i == self:
-				GameManager.currentknights.erase(i)
+		if GameManager.currentknights.has(self):
+				GameManager.currentknights.erase(self)
 				GameManager.currentwarriors -=1
-				GameManager.currentsoldiers.erase(i)
+				GameManager.currentsoldiers.erase(self)
 				$ArmySelected.hide()
 				Gui.select_warrior()
 				

@@ -6,6 +6,7 @@ var gathering_resources = false
 var castle_area = false
 var resources_type = ""
 var resources_area = false
+var flag_pos
 var speed = 200
 var accel = 7
 var onnav = false
@@ -20,7 +21,9 @@ var army_line
 
 
 func _process(delta):
-	pass
+	if current_resources != null:
+		if current_resources.over == true:
+			current_resources = null
 
 func _physics_process(delta):
 	if current_resources == null and gathering_resources == false:
@@ -28,7 +31,7 @@ func _physics_process(delta):
 			direction = Vector3()
 			nav.target_position = mousepos
 			direction = nav.get_next_path_position() - global_position
-			if nav.distance_to_target() > 25:
+			if nav.distance_to_target() > 75:
 				direction = direction.normalized()
 				velocity = velocity.lerp(direction * speed, accel * delta)
 				move_and_slide()
@@ -70,10 +73,7 @@ func _physics_process(delta):
 						$VisualAnimation.play("GatheringRunRight")
 					else:
 						$VisualAnimation.play("GatheringRunLeft")
-						
-	if current_resources == null and gathering_resources == false and !GameManager.currentpawn.has(self):
-			$VisualAnimation.play("Idle")
-		
+
 
 func _input(event):
 	
@@ -83,7 +83,7 @@ func _input(event):
 			var army_pos = GameSystem.get_node("CanvasLayer/ArmyFormationPawner/Formation" + str(army_line)).global_position
 			mousepos = army_pos
 			onnav = true
-			current_resources = null
+			#current_resources = null
 			if GameManager.current_mouse_area == "Resources":
 				pass
 			else:
@@ -112,26 +112,34 @@ func worker_selected():
 		mousepos = position
 		Gui.select_pawner()
 		$SelectedSprite.show()
+		
+		if GameManager.currentknights != null:
+			get_tree().call_group("Knight", "army_removed")
+		if GameManager.currentarchers != null:
+			get_tree().call_group("Archer", "army_removed")
 func worker_removed():
 	if GameManager.currentpawn.has(self):
 		GameManager.currentpawn.erase(self)
 		GameManager.currentworkers -= 1
 		Gui.select_pawner()
 		$SelectedSprite.hide()
+		
+		
 
 func selected_resources():
 	pass
 
 func start_working():
-	if resources_type == "Tree":
+	if resources_type == "Tree" and current_resources != null:
 		work_metter +=1
 		if current_resources.global_position.x > global_position.x:
 			$VisualAnimation.play("GatheringRight")
 		elif current_resources.global_position.x < global_position.x:
 			$VisualAnimation.play("GatheringLeft")
 		await  $VisualAnimation.animation_finished
-		if work_metter < 3 and current_resources.over == false:
-			start_working()
+		if work_metter < 3 or current_resources != null:
+			if current_resources != null:
+				start_working()
 		else:
 			work_metter = 0
 			$ResourcesSprite.show()
@@ -142,25 +150,25 @@ func start_working():
 				$ResourcesSprite.global_position = $ResourcesPosition.global_position
 				gathering_resources = true
 				resources_area = false
-				if current_resources.over == true:
-					current_resources = null
+		
 			
-	if resources_type == "GoldMine":
+	if resources_type == "GoldMine" and current_resources != null:
 		hide()
 		current_resources.Actived()
 		var timer = get_tree().create_timer(1)
 		await timer.timeout
-		current_resources.Actived()
-		current_resources.pull_resources()
-		$ResourcesSprite.show()
-		$ResourcesSprite.global_position = $ResourcesPosition.global_position
-		gathering_resources = true
-		resources_area = false
-		show()
-		if current_resources.over == true:
-			current_resources = null
-		
+		if current_resources != null:
+			current_resources.Actived()
+			current_resources.pull_resources()
+			$ResourcesSprite.show()
+			$ResourcesSprite.global_position = $ResourcesPosition.global_position
+			gathering_resources = true
+			resources_area = false
+			show()
+			if current_resources.over == true:
+				current_resources = null
 	
+
 func resources_damage():
 	current_resources.take_damage()
 
@@ -170,4 +178,5 @@ func _on_knight_pawn_blue_area_area_entered(area):
 		if gathering_resources == true:
 			gathering_resources = false
 			$ResourcesSprite.hide()
-			
+		
+		
