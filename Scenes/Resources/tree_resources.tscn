@@ -154,3 +154,4 @@ show_percentage = false
 
 [connection signal="pressed" from="SelectedTouched" to="." method="_on_selected_touched_pressed"]
 [connection signal="released" from="SelectedTouched" to="." method="_on_selected_touched_released"]
+[connection signal="animation_finished" from="VisualAnimation" to="." method="_on_visual_animation_animation_finished"]

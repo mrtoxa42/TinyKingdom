@@ -44,7 +44,7 @@ func Actived():
 
 
 func pull_resources():
-	count_resources -= 50
+	count_resources -= 1
 	if count_resources > 0 :
 		if count_resources > 80:
 			resources_bar.get("theme_override_styles/fill").bg_color = Color.GREEN
@@ -60,5 +60,8 @@ func pull_resources():
 		$AnimationPlayer.play("over")
 		if workers != null:
 			for i in workers:
-				i.current_resources = null
-				i.work_finished = true
+				i.forget_resources()
+				i.exit_mine()
+				workers.erase(i)
+
+

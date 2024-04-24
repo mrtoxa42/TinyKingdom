@@ -30,7 +30,7 @@ func _on_selected_touched_released():
 
 func take_damage():
 	if over == false:
-		count_resources -= 30
+		count_resources -= 1
 		pull_resources()
 		if count_resources > 0 :
 			
@@ -43,13 +43,16 @@ func take_damage():
 				$VisualAnimation.play("over")
 				if workers !=null:
 					for i in workers:
-						i.current_resources = null
-				
+						i.forget_resources()
+						i.gathering_wood()
+						workers.erase(i)
+	else:
+		$VisualAnimation.play("over")
 			
-		resources_bar.show()
-		var timer = get_tree().create_timer(2)
-		await timer.timeout
-		resources_bar.hide()
+	resources_bar.show()
+	var timer = get_tree().create_timer(2)
+	await timer.timeout
+	resources_bar.hide()
 func pull_resources():
 	
 	if count_resources > 80:
@@ -64,3 +67,8 @@ func pull_resources():
 
 
 
+
+
+func _on_visual_animation_animation_finished(anim_name):
+	if over == true and anim_name != "over":
+		$VisualAnimation.play("over")

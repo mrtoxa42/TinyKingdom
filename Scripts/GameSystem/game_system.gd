@@ -14,7 +14,6 @@ func _process(delta):
 
 func _input(event):
 	if event.is_pressed() and event is InputEventScreenTouch:
-		print("bi")
 		if GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
 			if twice_click == false:
 				twice_click = true
