@@ -492,8 +492,6 @@ z_index = 2
 position = Vector2(0, -61)
 sprite_frames = SubResource("SpriteFrames_0t76j")
 animation = &"gold"
-frame = 6
-frame_progress = 1.0
 
 [node name="ResourcesPosition" type="Marker2D" parent="."]
 position = Vector2(0, -35)

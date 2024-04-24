@@ -172,8 +172,11 @@ func enter_mine():
 	exit_mine()
 func exit_mine():
 	if current_resources != null and resources_type == "GoldMine":
-		current_resources.Actived()
-		current_resources.pull_resources()
+		$ResourcesSprite.play("gold")
+		await  $ResourcesSprite.animation_finished
+		if current_resources !=null and resources_type == "GoldMine":
+			current_resources.Actived()
+			current_resources.pull_resources()
 		$ResourcesSprite.show()
 		$ResourcesSprite.global_position = $ResourcesPosition.global_position
 		gathering_resources = true

@@ -14,6 +14,7 @@ func _process(delta):
 func _on_selected_touched_pressed():
 	if GameManager.currentpawn != null and over == false:
 		for i in GameManager.currentpawn:
+			i.forget_resources()
 			GameManager.current_mouse_area = "Resources"
 			i.current_resources = self
 			i.resources_type = "Tree"

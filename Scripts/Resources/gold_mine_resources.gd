@@ -16,6 +16,7 @@ func _process(delta):
 func _on_selected_touched_pressed():
 	if GameManager.currentpawn != null and over == false:
 		for i in GameManager.currentpawn:
+			i.forget_resources()
 			GameManager.current_mouse_area = "Resources"
 			i.current_resources = self
 			i.resources_type = "GoldMine"
@@ -30,17 +31,11 @@ func _on_selected_touched_released():
 
 
 func Actived():
-	if actived == false:
-		resources_bar.show()
-		$AnimationPlayer.play("Activie")
-		actived = true
-	else:
+	$AnimationPlayer.play("Activie")
+	
+func DeActived():
+	if workers == null:
 		$AnimationPlayer.play("DeActive")
-		actived = false
-		var timer = get_tree().create_timer(2)
-		await timer.timeout
-		resources_bar.hide()
-
 
 
 func pull_resources():
@@ -63,5 +58,6 @@ func pull_resources():
 				i.forget_resources()
 				i.exit_mine()
 				workers.erase(i)
+		
 
 
