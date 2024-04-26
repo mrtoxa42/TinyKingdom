@@ -32,11 +32,19 @@ func _on_selected_touched_released():
 
 func Actived():
 	$AnimationPlayer.play("Activie")
+	resources_bar.show()
+	var timer = get_tree().create_timer(2)
+	await timer.timeout
+	resources_bar.hide()
+	
 	
 func DeActived():
 	if workers == null:
 		$AnimationPlayer.play("DeActive")
-
+	resources_bar.show()
+	var timer = get_tree().create_timer(2)
+	await timer.timeout
+	resources_bar.hide()
 
 func pull_resources():
 	count_resources -= 1

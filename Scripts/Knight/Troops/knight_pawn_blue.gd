@@ -157,11 +157,11 @@ func gathering_wood():
 		if resources_type == "Tree":
 			if current_resources != null:
 				$ResourcesSprite.global_position = current_resources.global_position
-			$ResourcesSprite.play("wood")
-			await $ResourcesSprite.animation_finished
-			$ResourcesSprite.global_position = $ResourcesPosition.global_position
-			gathering_resources = true
-			resources_area = false
+		$ResourcesSprite.play("wood")
+		await $ResourcesSprite.animation_finished
+		$ResourcesSprite.global_position = $ResourcesPosition.global_position
+		gathering_resources = true
+		resources_area = false
 		
 		
 func enter_mine():
@@ -188,7 +188,7 @@ func exit_mine():
 func feedback_resources():
 	current_resources = null
 func resources_damage():
-	if current_resources != null:
+	if current_resources != null and current_resources.over == false:
 		current_resources.take_damage()
 
 func forget_resources():

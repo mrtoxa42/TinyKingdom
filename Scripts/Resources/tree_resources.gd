@@ -1,7 +1,7 @@
 extends Area2D
 
 var resources_name = "Tree"
-var count_resources = 100
+var count_resources = 20
 var over = false
 var workers = []
 @onready var resources_bar = $ResourcesBar
@@ -48,6 +48,7 @@ func take_damage():
 						i.gathering_wood()
 						workers.erase(i)
 	else:
+		
 		$VisualAnimation.play("over")
 			
 	resources_bar.show()
