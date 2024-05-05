@@ -149,7 +149,30 @@ func start_working():
 				gathering_wood()
 		if resources_type == "GoldMine" and current_resources != null:
 			enter_mine()
-					
+
+	if current_resources != null:
+		if resources_type == "Sheep":
+			if current_resources.dead == false and current_resources.over == false:
+				if current_resources.global_position.x > global_position.x:
+					$VisualAnimation.play("GatheringRight")
+				else:
+					$VisualAnimation.play("GatheringLeft")
+				await  $VisualAnimation.animation_finished
+				if current_resources.dead == true:
+					start_working()
+			else:
+				if work_metter < 3  and current_resources.over == false:
+					work_metter +=1
+					if current_resources.global_position.x > global_position.x:
+						$VisualAnimation.play("BuildRight")
+					elif current_resources.global_position.x < global_position.x:
+						$VisualAnimation.play("BuildLeft")
+					await  $VisualAnimation.animation_finished
+					start_working()
+				else:
+					gathering_meat()
+
+
 func gathering_wood():
 	if work_metter > 0:
 		work_metter = 0
@@ -185,6 +208,20 @@ func exit_mine():
 	else:
 		show()
 		
+func gathering_meat():
+	current_resources.pull_resources()
+	work_metter = 0
+	$ResourcesSprite.show()
+	if current_resources != null:
+		$ResourcesSprite.play("meat")
+	else:
+		$ResourcesSprite.play("sheep")
+	if current_resources != null:
+		$ResourcesSprite.global_position = current_resources.global_position
+		await  $ResourcesSprite.animation_finished
+	$ResourcesSprite.global_position = $ResourcesPosition.global_position
+	gathering_resources = true
+	resources_area = false
 func feedback_resources():
 	current_resources = null
 func resources_damage():

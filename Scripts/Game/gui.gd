@@ -32,18 +32,12 @@ func _process(delta):
 			$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.hide()
 
 func _input(event):
-	if event is InputEventScreenTouch:
-		handle_touch(event)
-
-	
-func handle_touch(event: InputEventScreenTouch):
-	if event.pressed:
-		touchcounter +=1
-		if touchcounter == 2:
-			multipletouch = true
-		$MultipleSelectionArmy/MultipleSelectionArmyTimer.start()
-	else:
+	if event is InputEventScreenTouch and event.double_tap:
+		multipletouch = true
+	if event.is_released():
 		multipletouch = false
+	
+
 
 func select_warrior():
 	if GameManager.currentwarriors >=1:

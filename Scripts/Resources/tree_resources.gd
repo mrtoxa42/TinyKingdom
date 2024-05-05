@@ -37,7 +37,8 @@ func take_damage():
 			
 			$VisualAnimation.play("take_damage")
 			await $VisualAnimation.animation_finished
-			$VisualAnimation.play("Idle")
+			if over == false:
+				$VisualAnimation.play("Idle")
 		else:
 			if over == false:
 				over = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=26 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_2ppbm"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="1_8kdi0"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bp02jfarufw4p" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/House/House_Blue.png" id="10_4fwyp"]
 [ext_resource type="Texture2D" uid="uid://dpbkss3g5r0af" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="11_wxpqw"]
 [ext_resource type="Texture2D" uid="uid://bkpl0lkeiaw8b" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="12_w6x50"]
+[ext_resource type="Texture2D" uid="uid://btjpw6wp86a7i" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/M_Idle.png" id="13_q4u1c"]
+[ext_resource type="FontFile" uid="uid://cg0e6wx232qhj" path="res://Assets/Fonts/Jersey25-Regular.ttf" id="14_jdyxv"]
+[ext_resource type="Texture2D" uid="uid://bq2aib0014nv2" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/G_Idle.png" id="15_el8kb"]
+[ext_resource type="Texture2D" uid="uid://cd0wly2ye24vi" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/W_Idle.png" id="16_7cjc3"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("5_7k44b")
@@ -78,6 +82,9 @@ size = Vector2(91, 145)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2w4n"]
 radius = 0.01
+
+[sub_resource type="FontVariation" id="FontVariation_gt2hp"]
+base_font = ExtResource("14_jdyxv")
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_2ppbm")
@@ -241,6 +248,56 @@ texture = ExtResource("7_tsi1q")
 [node name="MultipleSelectionArmyTimer" type="Timer" parent="MultipleSelectionArmy"]
 wait_time = 0.3
 one_shot = true
+
+[node name="ResourcesUI" type="Node2D" parent="."]
+
+[node name="Meat" type="Node2D" parent="ResourcesUI"]
+position = Vector2(1128, 15)
+
+[node name="MeatSprite" type="Sprite2D" parent="ResourcesUI/Meat"]
+position = Vector2(-65, 1)
+texture = ExtResource("13_q4u1c")
+
+[node name="MeatLabel" type="Label" parent="ResourcesUI/Meat"]
+offset_left = -28.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 31.0
+theme_override_fonts/font = SubResource("FontVariation_gt2hp")
+theme_override_font_sizes/font_size = 32
+text = "X25"
+
+[node name="Gold" type="Node2D" parent="ResourcesUI"]
+position = Vector2(1128, 61)
+
+[node name="MeatSprite" type="Sprite2D" parent="ResourcesUI/Gold"]
+position = Vector2(-67, 2)
+texture = ExtResource("15_el8kb")
+
+[node name="MeatLabel" type="Label" parent="ResourcesUI/Gold"]
+offset_left = -28.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 29.0
+theme_override_fonts/font = SubResource("FontVariation_gt2hp")
+theme_override_font_sizes/font_size = 32
+text = "X25"
+
+[node name="Tree" type="Node2D" parent="ResourcesUI"]
+position = Vector2(1128, 97)
+
+[node name="MeatSprite" type="Sprite2D" parent="ResourcesUI/Tree"]
+position = Vector2(-65, 1)
+texture = ExtResource("16_7cjc3")
+
+[node name="MeatLabel" type="Label" parent="ResourcesUI/Tree"]
+offset_left = -28.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 35.0
+theme_override_fonts/font = SubResource("FontVariation_gt2hp")
+theme_override_font_sizes/font_size = 32
+text = "X25"
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]
