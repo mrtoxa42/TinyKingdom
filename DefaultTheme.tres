@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d5k6u8qy8wm"]
+
+[ext_resource type="FontFile" uid="uid://ddkrpbunb7p00" path="res://Fonts/PoetsenOne-Regular.ttf" id="1_qtjtv"]
+
+[resource]
+Label/fonts/font = ExtResource("1_qtjtv")

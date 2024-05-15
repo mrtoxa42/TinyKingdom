@@ -567,14 +567,9 @@ metadata/_edit_lock_ = true
 position = Vector2(1353, 944)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(990, 750)
+position = Vector2(2000, 1000)
 scale = Vector2(1.57091, 0.799049)
-anchor_mode = 0
 zoom = Vector2(0.8, 0.8)
-limit_left = 0
-limit_top = 0
-limit_right = 500
-limit_bottom = 500
 script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true

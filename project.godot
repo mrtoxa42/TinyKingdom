@@ -18,7 +18,7 @@ config/icon="res://Assets/Tiny Swords (Update 010)/Share/TinkyKingdomLogo2-expor
 [autoload]
 
 GameManager="*res://Scripts/GameSystem/GameManager.gd"
-Gui="*res://Scenes/Game/gui.tscn"
+Gui="*res://Scenes/Game/GUI.tscn"
 GameSystem="*res://Scenes/GameSystem/game_system.tscn"
 
 [display]
@@ -32,6 +32,10 @@ window/vsync/vsync_mode=2
 movie_writer/mix_rate=63000
 movie_writer/mjpeg_quality=1.0
 movie_writer/movie_file="C:/Users/Emircan/Desktop/Godot4Projeleri/TinyKingdom/Movie/Movi3.avi"
+
+[gui]
+
+theme/custom_font="res://Fonts/PoetsenOne-Regular.ttf"
 
 [input]
 

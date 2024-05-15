@@ -69,7 +69,7 @@ func _physics_process(delta):
 			#onnav = true
 func _input(event):
 	if event.is_released():
-		if GameManager.global_mouse_entered == false and GameManager.currentknights.has(self) and event is InputEventScreenTouch:
+		if GameManager.global_mouse_entered == false and GameManager.currentknights.has(self) and event is InputEventScreenTouch and GameManager.dragged == false:
 				army_line = GameManager.currentknights.find(self)
 				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationKnight/Formation" + str(army_line)).global_position
 				mousepos = armypos

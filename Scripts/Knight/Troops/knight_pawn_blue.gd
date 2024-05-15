@@ -76,9 +76,8 @@ func _physics_process(delta):
 
 
 func _input(event):
-	
-	if event.is_released():
-		if GameManager.global_mouse_entered == false and GameManager.currentpawn.has(self) and event is InputEventScreenTouch:      
+	if event.is_released() and event is InputEventScreenTouch and GameManager.dragged == false:
+		if GameManager.global_mouse_entered == false and GameManager.currentpawn.has(self):      
 			army_line = GameManager.currentpawn.find(self)
 			var army_pos = GameSystem.get_node("CanvasLayer/ArmyFormationPawner/Formation" + str(army_line)).global_position
 			mousepos = army_pos

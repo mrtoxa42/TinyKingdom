@@ -20,13 +20,17 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	print(GameManager.dragged)
 func _input(event):
 	if event is InputEventScreenTouch:
 		GameManager.global_mouse_position = event.position
 		handle_touch(event)
 	elif event is InputEventScreenDrag:
 		handle_drag(event)
+	if event.is_released() and event is InputEventScreenTouch:
+		print("Elim kalktı")
+		GameManager.dragged = false
+
 
 
 
@@ -52,6 +56,7 @@ func handle_drag(event: InputEventScreenDrag):
 		if touch_points.size() == 1:
 			if can_pan:
 				offset -= event.relative.rotated(rotation) * pan_speed
+				GameManager.dragged = true
 
 		elif touch_points.size() == 2:
 			var touch_point_positions = touch_points.values()
