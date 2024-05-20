@@ -59,6 +59,7 @@ func select_pawner():
 		$TowerInfo.hide()
 func _on_multiple_selection_army_area_area_entered(area):
 	if area.is_in_group("Soldier"):
+		print("ağmk")
 		area.get_owner().army_selected()
 
 

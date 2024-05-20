@@ -16,9 +16,6 @@
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("8_awd34")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
-size = Vector2(99, 124)
-
 [sub_resource type="Animation" id="Animation_kt0yu"]
 resource_name = "AniSelectedKnight"
 length = 0.1
@@ -76,6 +73,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_517tx"]
 size = Vector2(91, 145)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
+size = Vector2(99, 124)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2w4n"]
 radius = 0.01
 
@@ -107,44 +107,8 @@ texture = ExtResource("5_5437b")
 
 [node name="ArmySelection" type="Node2D" parent="."]
 
-[node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
-position = Vector2(1058, 209)
-metadata/_edit_group_ = true
-
-[node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight"]
-texture = ExtResource("6_jt232")
-
-[node name="KnightWarrirorBlueSingle" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight"]
-texture = ExtResource("7_4vw54")
-
-[node name="KnightSelectionLabel" type="Label" parent="ArmySelection/ArmySelectionKnight"]
-offset_left = -43.0
-offset_top = 43.0
-offset_right = 43.0
-offset_bottom = 66.0
-theme_override_fonts/font = SubResource("FontVariation_p2byf")
-text = "X10"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="KnightSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionKnight"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionKnight/KnightSelectionArea"]
-position = Vector2(16.5, -10)
-shape = SubResource("RectangleShape2D_7hlhe")
-
-[node name="KnightSelectAnimation" type="AnimationPlayer" parent="ArmySelection/ArmySelectionKnight"]
-libraries = {
-"": SubResource("AnimationLibrary_3r26c")
-}
-
-[node name="KnightRemovedButton" type="TouchScreenButton" parent="ArmySelection/ArmySelectionKnight"]
-position = Vector2(25, -72)
-scale = Vector2(1.3, 1.3)
-texture_normal = ExtResource("9_5gyh5")
-
 [node name="ArmySelectionArcher" type="Node2D" parent="ArmySelection"]
+visible = false
 position = Vector2(1058, 382)
 metadata/_edit_group_ = true
 
@@ -182,7 +146,46 @@ texture = ExtResource("10_ndh7u")
 position = Vector2(17.5, -9.5)
 shape = SubResource("RectangleShape2D_517tx")
 
+[node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
+visible = false
+position = Vector2(1058, 209)
+metadata/_edit_group_ = true
+
+[node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight"]
+texture = ExtResource("6_jt232")
+
+[node name="KnightWarrirorBlueSingle" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight"]
+texture = ExtResource("7_4vw54")
+
+[node name="KnightSelectionLabel" type="Label" parent="ArmySelection/ArmySelectionKnight"]
+offset_left = -43.0
+offset_top = 43.0
+offset_right = 43.0
+offset_bottom = 66.0
+theme_override_fonts/font = SubResource("FontVariation_p2byf")
+text = "X10"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="KnightSelectionArea" type="Area2D" parent="ArmySelection/ArmySelectionKnight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmySelection/ArmySelectionKnight/KnightSelectionArea"]
+position = Vector2(16.5, -10)
+shape = SubResource("RectangleShape2D_7hlhe")
+
+[node name="KnightSelectAnimation" type="AnimationPlayer" parent="ArmySelection/ArmySelectionKnight"]
+libraries = {
+"": SubResource("AnimationLibrary_3r26c")
+}
+
+[node name="KnightRemovedButton" type="TouchScreenButton" parent="ArmySelection/ArmySelectionKnight"]
+position = Vector2(25, -72)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("9_5gyh5")
+
 [node name="ArmySelectionPawner" type="Node2D" parent="ArmySelection"]
+visible = false
 position = Vector2(79, 201)
 metadata/_edit_group_ = true
 
@@ -221,6 +224,7 @@ scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("9_5gyh5")
 
 [node name="ArmyInfo" type="Node2D" parent="."]
+visible = false
 
 [node name="TabAnimation" type="AnimationPlayer" parent="."]
 
@@ -239,10 +243,10 @@ texture = ExtResource("12_hpg65")
 wait_time = 0.3
 one_shot = true
 
-[connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
-[connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]
+[connection signal="pressed" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_pressed"]
+[connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_released"]
 [connection signal="area_entered" from="MultipleSelectionArmy/MultipleSelectionArmyArea" to="." method="_on_multiple_selection_army_area_area_entered"]

@@ -20,7 +20,7 @@ func _ready():
 
 
 func _process(delta):
-	print(GameManager.dragged)
+	pass
 func _input(event):
 	if event is InputEventScreenTouch:
 		GameManager.global_mouse_position = event.position
@@ -28,7 +28,6 @@ func _input(event):
 	elif event is InputEventScreenDrag:
 		handle_drag(event)
 	if event.is_released() and event is InputEventScreenTouch:
-		print("Elim kalktı")
 		GameManager.dragged = false
 
 
