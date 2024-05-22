@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=15 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://miem7rj474q6" path="res://Scenes/Resources/gold_mine_resources.tscn" id="7_5ksjt"]
 [ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="8_2hxn4"]
 [ext_resource type="PackedScene" uid="uid://clgwwtq7ppnhn" path="res://Scenes/Resources/sheep_resources.tscn" id="9_hytw2"]
+[ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="10_iqebg"]
+[ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="11_0j6b1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
 texture = ExtResource("2_v162d")
@@ -567,7 +569,7 @@ metadata/_edit_lock_ = true
 position = Vector2(1353, 944)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2000, 1000)
+position = Vector2(1374, 1040)
 scale = Vector2(1.57091, 0.799049)
 zoom = Vector2(0.8, 0.8)
 script = ExtResource("6_rgkga")
@@ -614,7 +616,7 @@ position = Vector2(1064, 1248)
 position = Vector2(1177, 1276)
 
 [node name="KnightWarriorBlue4" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1369, 1257)
+position = Vector2(1150, 978)
 
 [node name="KnightWarriorBlue5" parent="." instance=ExtResource("8_2hxn4")]
 position = Vector2(1078, 1006)
@@ -639,3 +641,12 @@ position = Vector2(1299, 1294)
 
 [node name="SheepResources7" parent="." instance=ExtResource("9_hytw2")]
 position = Vector2(2075, 1294)
+
+[node name="GoblinTorchRed" parent="." instance=ExtResource("10_iqebg")]
+position = Vector2(1520, 1405)
+
+[node name="KnigthArcherBlue" parent="." instance=ExtResource("11_0j6b1")]
+position = Vector2(1780, 1050)
+
+[node name="KnigthArcherBlue2" parent="." instance=ExtResource("11_0j6b1")]
+position = Vector2(1805, 1155)

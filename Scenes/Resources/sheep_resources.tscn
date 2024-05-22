@@ -210,7 +210,6 @@ shape = SubResource("RectangleShape2D_7s74t")
 texture = ExtResource("4_uaugb")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="ResourcesBar" type="ProgressBar" parent="."]
 visible = false

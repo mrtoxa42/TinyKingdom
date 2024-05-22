@@ -10,30 +10,20 @@ var touch_points = {}
 var start_position_knight_tab = Vector2.ZERO
 var zoom_touch = false
 
+
+
+
 func _ready():
 	start_position_knight_tab = $ArmySelection/ArmySelectionKnight.global_position
+
+
 func _process(delta):
-	
-		$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
-		$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
-		$ArmySelection/ArmySelectionPawner/PawnersSelectionLabel.text = "X" + str(GameManager.currentworkers)
-		if multipletouch == true:
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius +=7
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = false
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.show()
-			$MultipleSelectionArmy.global_position = GameManager.global_mouse_position
-			#$MultipleSelectionArmy/MultipleSelectionArmyArea/Multipl-eCircle.scale 
-			
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.scale = Vector2($MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius,$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius) / 14
-		else:
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.shape.radius = 0
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.scale = Vector2(0,0)
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = true
-			$MultipleSelectionArmy/MultipleSelectionArmyArea/MultipleCircle.hide()
+	pass
 
 func _input(event):
 	if event is InputEventScreenTouch and event.double_tap:
 		multipletouch = true
+		$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = false
 	if event.is_released():
 		multipletouch = false
 	
@@ -57,10 +47,7 @@ func select_pawner():
 	else:
 		$ArmySelection/ArmySelectionPawner.hide()
 		$TowerInfo.hide()
-func _on_multiple_selection_army_area_area_entered(area):
-	if area.is_in_group("Soldier"):
-		print("ağmk")
-		area.get_owner().army_selected()
+
 
 
 func _on_multiple_selection_army_timer_timeout():
