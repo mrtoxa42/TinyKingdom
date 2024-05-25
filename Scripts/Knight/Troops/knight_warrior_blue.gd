@@ -18,6 +18,7 @@ var army_line
 var hp = 10
 var dead = false
 var attack = false
+
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 
@@ -26,7 +27,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	
+	print(currentenemy)
 	if currentenemy == null:
 		
 		if GameManager.currentknights.has(self) or onnav == true:
@@ -34,7 +35,7 @@ func _physics_process(delta):
 			nav.target_position = mousepos
 			direction = nav.get_next_path_position() - global_position
 			#if direction.length() >10:
-			
+
 			#if nav.distance_to_target() > 25 * armysize:
 			if nav.distance_to_target() > 25:
 				#onnav = true
@@ -49,9 +50,7 @@ func _physics_process(delta):
 				$VisualAnimation.play("Idle")
 			
 	else:
-		
 		direction = currentenemy.global_position - global_position
-		direction.normalized()
 		velocity = direction
 		if velocity != Vector2(0,0) and attack == false:
 				if currentenemy.global_position.x > global_position.x:
@@ -83,10 +82,8 @@ func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy") and enemyarea == null:
 		if currentenemy == null:
 			currentenemy = area
-			print(name + str(currentenemy))
 			
 func take_damage():
-
 	if hp >1:
 		hp-=1
 		$ExtraAnimation.play("take_damage")
@@ -191,3 +188,7 @@ func _on_selected_touch_released():
 	await timer.timeout
 	GameManager.global_mouse_entered = false
 	GameManager.current_mouse_area = null
+
+
+func _on_detected_area_area_exited(area):
+	pass

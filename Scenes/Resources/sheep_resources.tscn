@@ -173,13 +173,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7s74t"]
-size = Vector2(39, 30)
+size = Vector2(78, 56)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk4po"]
 bg_color = Color(1.92523e-07, 0.486609, 0.413484, 1)
 
 [node name="SheepResources" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 256
 script = ExtResource("1_1h4vh")
 
 [node name="SelectedTouched" type="TouchScreenButton" parent="."]
@@ -203,7 +203,6 @@ wait_time = 5.0
 [node name="SheepArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SheepArea"]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_7s74t")
 
 [node name="SheepSprite" type="Sprite2D" parent="."]

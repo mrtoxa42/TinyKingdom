@@ -22,6 +22,7 @@ func _on_selected_touched_pressed():
 			i.resources_type = "GoldMine"
 			#i.selected_resources()
 			workers.append(i)
+			
 
 
 func _on_selected_touched_released():

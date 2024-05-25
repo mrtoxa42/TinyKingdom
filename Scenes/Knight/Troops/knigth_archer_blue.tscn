@@ -9,7 +9,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0nlwt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qwcwn"]
-radius = 300.0
+resource_local_to_scene = true
+radius = 0.01
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xskkx"]
 radius = 22.0
@@ -20,7 +21,7 @@ radius = 1.0
 
 [sub_resource type="Animation" id="Animation_7ubnq"]
 resource_name = "detected"
-length = 0.2
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,7 +29,7 @@ tracks/0/path = NodePath("DetectedArea/CollisionShape2D:shape:radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.01, 300.0]
@@ -36,7 +37,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8dpup"]
 resource_name = "range"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,7 +45,7 @@ tracks/0/path = NodePath("RangeArea/CollisionShape2D:shape:radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 175.0]
@@ -263,6 +264,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExtraSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArcherSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_unw3y"]
 resource_name = "RunLeft"
@@ -370,6 +395,17 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_6w21k"]
 resource_name = "take_damage"
@@ -393,7 +429,7 @@ _data = {
 "take_damage": SubResource("Animation_6w21k")
 }
 
-[node name="KnigthArcherBlue" type="CharacterBody2D"]
+[node name="KnigthArcherBlue" type="CharacterBody2D" groups=["Archer"]]
 collision_layer = 0
 script = ExtResource("1_orub8")
 
@@ -420,6 +456,7 @@ shape = SubResource("CapsuleShape2D_xskkx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
 shape = SubResource("CircleShape2D_8bog7")
+debug_color = Color(0.998815, 0, 0.131853, 0.42)
 
 [node name="AttackTimer" type="Timer" parent="."]
 
@@ -444,7 +481,6 @@ libraries = {
 texture = ExtResource("2_fj21m")
 hframes = 8
 vframes = 7
-frame = 21
 
 [node name="ExtraSprite" type="Sprite2D" parent="."]
 visible = false
@@ -463,7 +499,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_2w0ky")
 
 [node name="ArrowMarker" type="Marker2D" parent="."]
-position = Vector2(6, -29)
+position = Vector2(3, 27)
 
 [connection signal="pressed" from="SelectedTouched" to="." method="_on_selected_touched_pressed"]
 [connection signal="released" from="SelectedTouched" to="." method="_on_selected_touched_released"]

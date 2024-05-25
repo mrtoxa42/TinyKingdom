@@ -15,6 +15,10 @@ var resources_distance
 var direction 
 var mousepos = Vector2.ZERO
 var army_line
+var enemyarea = null
+var hp = 3
+var attack = false
+var dead = false
 @onready var nav = $NavigationAgent2D
 
 
@@ -26,50 +30,52 @@ func _process(delta):
 			#current_resources = null
 	pass
 func _physics_process(delta):
-	if current_resources == null and gathering_resources == false:
-		if GameManager.currentpawn.has(self) or onnav == true:
-			direction = Vector3()
-			nav.target_position = mousepos
-			direction = nav.get_next_path_position() - global_position
-			if nav.distance_to_target() > 75:
-				direction = direction.normalized()
-				velocity = velocity.lerp(direction * speed, accel * delta)
-				move_and_slide()
-				if mousepos.x > global_position.x:
-					$VisualAnimation.play("RunRight")
+	if attack == false and dead == false:
+		if current_resources == null and gathering_resources == false:
+			if GameManager.currentpawn.has(self) or onnav == true:
+				direction = Vector3()
+				nav.target_position = mousepos
+				direction = nav.get_next_path_position() - global_position
+				if nav.distance_to_target() >= 75:
+					direction = direction.normalized()
+					velocity = velocity.lerp(direction * speed, accel * delta)
+					move_and_slide()
+					if mousepos.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+					else:
+						$VisualAnimation.play("RunLeft")
 				else:
-					$VisualAnimation.play("RunLeft")
-			else:
-				$VisualAnimation.play("Idle")
-				
-	else:
-		if current_resources != null and gathering_resources == false and current_resources.over == false:
-			direction = Vector3()
-			nav.target_position = current_resources.global_position
-			direction = nav.get_next_path_position() - global_position
-			if nav.distance_to_target() > 75:
-				direction = direction.normalized()
-				velocity = velocity.lerp(direction * speed, accel * delta)
-				move_and_slide()
-				if current_resources.global_position.x > global_position.x:
-					$VisualAnimation.play("RunRight")
-				else:
-					$VisualAnimation.play("RunLeft")
-			else:
-				if resources_area == false:
-					resources_area = true
-					start_working()
+					$VisualAnimation.play("Idle")
 					
+		else:
+			if current_resources != null and gathering_resources == false and current_resources.over == false:
+				direction = Vector3()
+				nav.target_position = current_resources.global_position
+				direction = nav.get_next_path_position() - global_position
+				if nav.distance_to_target() >= 75:
+					direction = direction.normalized()
+					velocity = velocity.lerp(direction * speed, accel * delta)
+					move_and_slide()
+					if current_resources.global_position.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+					else:
+						$VisualAnimation.play("RunLeft")
+				else:
+					if resources_area == false:
+						resources_area = true
+						start_working()
+						
 
 	if gathering_resources == true:
 		direction = Vector3()
-		nav.target_position = GameManager.maincastle.global_position
+		if GameManager.maincastle.CastleDoor != null:
+			nav.target_position = GameManager.maincastle.CastleDoor.global_position
 		direction = nav.get_next_path_position() - global_position
 		if nav.distance_to_target() > 75:
 			direction = direction.normalized()
 			velocity = velocity.lerp(direction * speed, accel * delta)
 			move_and_slide()
-			if GameManager.maincastle.global_position.x > global_position.x:
+			if GameManager.maincastle.CastleDoor.global_position.x > global_position.x:
 				$VisualAnimation.play("GatheringRunRight")
 			else:
 				$VisualAnimation.play("GatheringRunLeft")
@@ -89,6 +95,10 @@ func _input(event):
 					pass
 				else:
 					forget_resources()
+				if GameManager.current_mouse_area == "Resources":
+					worker_removed()
+					if resources_type == "Sheep":
+						mousepos = current_resources.global_position
 
 
 func _on_selected_touched_pressed():
@@ -127,7 +137,36 @@ func worker_removed():
 		$SelectedSprite.hide()
 		
 		
+func take_damage():
+	if dead == false:
+		hp -=1
+		if hp <= 0:
+			dead = true
+			$ExtraAnimation.play("dead")
+			$KnightPawnBlueArea/CollisionShape2D.disabled = true
+			await  $ExtraAnimation.animation_finished	
+			queue_free()
+		else:
+			$ExtraAnimation.play("take_damage")
+		
+	
 
+func deal_damage():
+	if enemyarea != null:
+		enemyarea.get_owner().take_damage()
+	
+func _attack():
+	attack = true
+	if enemyarea.global_position.x > global_position.x:
+		$VisualAnimation.play("AttackRight")
+	else:
+		$VisualAnimation.play("AttackLeft")
+		
+	await $VisualAnimation.animation_finished
+	if enemyarea !=null:
+		_attack()
+	else:
+		attack = true
 func selected_resources():
 	pass
 
@@ -236,9 +275,19 @@ func forget_resources():
 	resources_type = null
 
 func _on_knight_pawn_blue_area_area_entered(area):
-	if area.is_in_group("Castle"):
+	if area.is_in_group("CastleDoor"):
 		if gathering_resources == true:
 			gathering_resources = false
 			$ResourcesSprite.hide()
+	if area.is_in_group("Enemy") and enemyarea == null:
+		if gathering_resources == false:
+			enemyarea = area
+			_attack()
+
 		
-		
+
+
+func _on_knight_pawn_blue_area_area_exited(area):
+	if area == enemyarea:
+		enemyarea = null
+		attack = false

@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://vv0rm7xg52jf" path="res://Scenes/Knight/Troops/knight_pawn_blue.tscn" id="4_0tf2t"]
 [ext_resource type="PackedScene" uid="uid://c5t8hrnx3l5rp" path="res://Scenes/Resources/tree_resources.tscn" id="5_umxvo"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
-[ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="6_s2bkm"]
 [ext_resource type="PackedScene" uid="uid://miem7rj474q6" path="res://Scenes/Resources/gold_mine_resources.tscn" id="7_5ksjt"]
 [ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="8_2hxn4"]
 [ext_resource type="PackedScene" uid="uid://clgwwtq7ppnhn" path="res://Scenes/Resources/sheep_resources.tscn" id="9_hytw2"]
 [ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="10_iqebg"]
 [ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="11_0j6b1"]
+[ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="11_cf25h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
 texture = ExtResource("2_v162d")
@@ -540,8 +540,8 @@ texture = ExtResource("2_v162d")
 sources/0 = SubResource("TileSetAtlasSource_11ja2")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0selm"]
-vertices = PackedVector2Array(7, 13, 3520, 35, 1482, 892, 1224, 901, 10, 2696, 1234, 1041, 3527, 2696, 1475, 1039)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(1, 6, 7, 2)])
+vertices = PackedVector2Array(3520, 35, 3527, 2696, 10, 2696, 7, 13)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-3, 3, 1, 2706, 3538, 2707, 3530, 26)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
@@ -550,6 +550,7 @@ y_sort_enabled = true
 script = ExtResource("1_rl40a")
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 texture_filter = 1
 position = Vector2(990, 750)
 tile_set = SubResource("TileSet_yde4u")
@@ -565,9 +566,6 @@ y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_0selm")
 metadata/_edit_lock_ = true
 
-[node name="MainCastle" parent="NavigationRegion2D" instance=ExtResource("6_s2bkm")]
-position = Vector2(1353, 944)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1374, 1040)
 scale = Vector2(1.57091, 0.799049)
@@ -576,77 +574,32 @@ script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true
 
-[node name="KnightPawnBlue" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1718, 990)
-
-[node name="TreeResources" parent="." instance=ExtResource("5_umxvo")]
-position = Vector2(1863, 899)
-
-[node name="GoldMineResources" parent="." instance=ExtResource("7_5ksjt")]
-position = Vector2(1924, 1173)
-
-[node name="GoldMineResources2" parent="." instance=ExtResource("7_5ksjt")]
-position = Vector2(2004, 1061)
-
-[node name="KnightPawnBlue2" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1440, 1173)
-
-[node name="KnightPawnBlue4" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1607, 1125)
-
-[node name="KnightPawnBlue5" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1536, 1249)
-
-[node name="KnightPawnBlue6" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1309, 1139)
-
-[node name="KnightPawnBlue7" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1309, 1139)
-
-[node name="KnightPawnBlue3" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1245, 1234)
-
-[node name="KnightWarriorBlue" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1078, 1136)
-
-[node name="KnightWarriorBlue2" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1064, 1248)
-
-[node name="KnightWarriorBlue3" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1177, 1276)
-
-[node name="KnightWarriorBlue4" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1150, 978)
-
-[node name="KnightWarriorBlue5" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1078, 1006)
-
-[node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(1805, 1236)
-
-[node name="SheepResources2" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(1753, 881)
-
-[node name="SheepResources3" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(1418, 631)
-
-[node name="SheepResources4" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(744, 1121)
-
-[node name="SheepResources5" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(1523, 1032)
-
-[node name="SheepResources6" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(1299, 1294)
-
-[node name="SheepResources7" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(2075, 1294)
-
 [node name="GoblinTorchRed" parent="." instance=ExtResource("10_iqebg")]
-position = Vector2(1520, 1405)
+position = Vector2(1198, 1376)
 
-[node name="KnigthArcherBlue" parent="." instance=ExtResource("11_0j6b1")]
-position = Vector2(1780, 1050)
+[node name="GoblinTorchRed2" parent="." instance=ExtResource("10_iqebg")]
+position = Vector2(1548, 1334)
 
 [node name="KnigthArcherBlue2" parent="." instance=ExtResource("11_0j6b1")]
-position = Vector2(1805, 1155)
+position = Vector2(1540, 807)
+
+[node name="KnigthArcherBlue3" parent="." instance=ExtResource("11_0j6b1")]
+position = Vector2(1404, 823)
+
+[node name="KnightWarriorBlue" parent="." instance=ExtResource("8_2hxn4")]
+position = Vector2(1325, 1035)
+
+[node name="KnightPawnBlue" parent="." instance=ExtResource("4_0tf2t")]
+position = Vector2(1943, 982)
+
+[node name="TreeResources" parent="." instance=ExtResource("5_umxvo")]
+position = Vector2(1567, 902)
+
+[node name="GoldMineResources" parent="." instance=ExtResource("7_5ksjt")]
+position = Vector2(1558, 1143)
+
+[node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
+position = Vector2(1798, 890)
+
+[node name="MainCastle" parent="." instance=ExtResource("11_cf25h")]
+position = Vector2(1160, 883)

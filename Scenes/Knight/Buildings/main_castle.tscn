@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0qw8qvs2cnck"]
+[gd_scene load_steps=15 format=3 uid="uid://0qw8qvs2cnck"]
 
 [ext_resource type="Script" path="res://Scripts/Knight/Buildings/main_castle.gd" id="1_w0eau"]
 [ext_resource type="Texture2D" uid="uid://b8thabnxd27oj" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/MainCastle.png" id="2_fpjdr"]
@@ -58,6 +58,12 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtduh"]
+size = Vector2(126, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgxyn"]
+size = Vector2(297, 220)
+
 [node name="MainCastle" type="Area2D" groups=["Castle"]]
 y_sort_enabled = true
 script = ExtResource("1_w0eau")
@@ -95,3 +101,19 @@ frame_progress = 0.919893
 position = Vector2(0, 184)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_otipr")
+
+[node name="CastleDoor" type="Marker2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="CastleDoorArea" type="Area2D" parent="." groups=["CastleDoor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleDoorArea"]
+position = Vector2(0, 82.5)
+shape = SubResource("RectangleShape2D_gtduh")
+
+[node name="CastleStaticBody" type="StaticBody2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleStaticBody"]
+position = Vector2(-1.5, 43)
+shape = SubResource("RectangleShape2D_pgxyn")

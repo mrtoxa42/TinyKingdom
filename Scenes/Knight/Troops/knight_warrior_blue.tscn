@@ -386,9 +386,9 @@ libraries = {
 [node name="KnightSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture = ExtResource("1_kau31")
-flip_h = true
 hframes = 6
 vframes = 8
+frame = 17
 
 [node name="ExtraSprite" type="Sprite2D" parent="."]
 visible = false
@@ -411,6 +411,7 @@ texture = ExtResource("5_6cbsn")
 [connection signal="pressed" from="SelectedTouch" to="." method="_on_selected_touch_pressed"]
 [connection signal="released" from="SelectedTouch" to="." method="_on_selected_touch_released"]
 [connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
+[connection signal="area_exited" from="DetectedArea" to="." method="_on_detected_area_area_exited"]
 [connection signal="area_entered" from="KnightArea" to="." method="_on_knight_area_area_entered"]
 [connection signal="area_exited" from="KnightArea" to="." method="_on_knight_area_area_exited"]
 [connection signal="mouse_entered" from="KnightArea" to="." method="_on_knight_area_mouse_entered"]

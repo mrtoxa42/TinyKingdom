@@ -8,7 +8,7 @@ var camera2d
 #Oyun içi değişkenler
 var global_mouse_position
 var global_mouse_entered = false
-var maincastle
+var maincastle = null
 var redflag
 var currentfinish = null
 var liveknights = 0

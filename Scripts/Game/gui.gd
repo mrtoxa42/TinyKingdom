@@ -18,12 +18,14 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
+	$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
+	$ArmySelection/ArmySelectionPawner/PawnersSelectionLabel.text = "X" + str(GameManager.currentworkers)
 
 func _input(event):
 	if event is InputEventScreenTouch and event.double_tap:
 		multipletouch = true
-		$MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = false
+		#$CanvasLayer/MultipleSelectionArmy/MultipleSelectionArmyArea/CollisionShape2D.disabled = false
 	if event.is_released():
 		multipletouch = false
 	

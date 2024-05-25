@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcqjtui6y2r45"]
+[gd_scene load_steps=20 format=3 uid="uid://dcqjtui6y2r45"]
 
 [ext_resource type="Texture2D" uid="uid://07ch03hy0din" path="res://Assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_a5dpu"]
 [ext_resource type="Script" path="res://Scripts/Goblin/goblin_torch_red.gd" id="1_qbmch"]
 [ext_resource type="Texture2D" uid="uid://cdturbcgk57ww" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="3_6bt3r"]
+[ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="4_45k3n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xi04"]
 
@@ -397,8 +398,15 @@ texture = ExtResource("1_a5dpu")
 flip_h = true
 hframes = 7
 vframes = 5
-frame = 2
+frame = 19
+
+[node name="SelectedButton" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.00392157)
+position = Vector2(-36, -39)
+scale = Vector2(0.578125, 0.546875)
+texture_normal = ExtResource("4_45k3n")
 
 [connection signal="area_entered" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_entered"]
 [connection signal="area_exited" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="pressed" from="SelectedButton" to="." method="_on_selected_button_pressed"]

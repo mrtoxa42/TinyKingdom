@@ -12,6 +12,7 @@ var enemyarea
 var archerarea
 var attack = false
 var enemydistance = null
+var damaged 
 @onready var nav = $NavigationAgent2D
 
 
@@ -66,8 +67,8 @@ func Attack():
 
 func take_damage():
 	if dead == false:
-		hp -=1
-		if hp == 0:
+		hp -= damaged
+		if hp <= 0: 
 			dead = true
 			$ToolAnimation.play("dead")
 			$CollisionShape2D.disabled = true
@@ -90,6 +91,7 @@ func _on_goblin_torch_area_area_entered(area):
 	if enemyarea == null:
 		if area.is_in_group("Knight"):
 				currentenemy = area
+				damaged = 1
 				enemyarea = area.get_owner()
 				Attack()
 		if area.is_in_group("Arrow"):
@@ -97,13 +99,18 @@ func _on_goblin_torch_area_area_entered(area):
 				archerarea = area.myarcher
 				if currentenemy == null:
 					currentenemy = area.myarcher
+					damaged = 1
 		if area.is_in_group("Archer"):
 			if currentenemy == null:
 				currentenemy = area
 			if enemyarea == null:
 				enemyarea = area.get_owner()
 				Attack()
-			
+		if area.is_in_group("Pawn"):
+				currentenemy = area
+				enemyarea = area.get_owner()
+				damaged = 0.3
+				Attack()
 
 
 
@@ -116,9 +123,19 @@ func _on_goblin_torch_area_area_exited(area):
 		if area.get_owner() == enemyarea:
 			enemyarea = null
 			currentenemy = null
-			
+	if area.is_in_group("Pawn"):
+		if area.get_owner() == enemyarea:
+			enemyarea = null
+			currentenemy = null
 
 
 func _on_attack_timer_timeout():
 	if enemyarea !=null and dead == false:
 		Attack()
+
+
+func _on_selected_button_pressed():
+	if GameManager.currentsoldiers !=null:
+		for i in GameManager.currentsoldiers:
+			#i.navenemy = self
+			pass

@@ -13,42 +13,55 @@ var enemydistance
 var direction
 var army_line
 var onnav
+var navenemy
+@onready var tool: AnimationPlayer = $ToolAnimation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 var arrow = preload("res://Scenes/Knight/Items/archer_arrow_blue.tscn")
 
 
 
 func _physics_process(delta):
-	if currentenemy == null and dead == false:
-		if GameManager.currentarchers.has(self) or onnav == true:
-			direction = Vector3()
-			nav.target_position = mousepos
-			direction = nav.get_next_path_position() - global_position
-			#if direction.length() >10:
-			
-			#if nav.distance_to_target() > 25 * armysize:
-			if nav.distance_to_target() > 25:
-				#onnav = true
-				direction = direction.normalized()
-				velocity = velocity.lerp(direction * speed, accel * delta)
-				move_and_slide()
-				if mousepos.x > global_position.x:
-					$VisualAnimation.play("RunRight")
+	if dead == false and attack == false:
+		if currentenemy == null:
+			if GameManager.currentarchers.has(self) or onnav == true:
+				direction = Vector3()
+				if navenemy == null:
+					nav.target_position = mousepos
+					direction = nav.get_next_path_position() - global_position
 				else:
-					$VisualAnimation.play("RunLeft")
-			else:
-				$VisualAnimation.play("Idle")
-	else:
-		if enemyarea == null and dead == false:
-			enemydistance = currentenemy.global_position - global_position
-			direction = enemydistance
-			direction.normalized()
-			velocity = direction
-			if currentenemy.global_position.x > global_position.x:
-					$VisualAnimation.play("RunRight")
-			else:
-					$VisualAnimation.play("RunLeft")
-			move_and_slide()
+					nav.target_position = navenemy.global_position
+					direction = nav.get_next_path_position() - global_position
+				#if direction.length() >10:
+				direction.normalized()
+				
+				#if nav.distance_to_target() > 25 * armysize:
+				if nav.distance_to_target() > 25:
+					#onnav = true
+					direction = direction.normalized()
+					velocity = velocity.lerp(direction * speed, accel * delta)
+					move_and_slide()
+					if mousepos.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+					else:
+						$VisualAnimation.play("RunLeft")
+				else:
+					$VisualAnimation.play("Idle")
+		else:
+			if enemyarea == null and dead == false:
+				if navenemy == null:
+						enemydistance = currentenemy.global_position - global_position
+						direction = enemydistance
+						direction.normalized()
+						velocity = direction
+				else:
+					nav.target_position = navenemy.global_position
+					direction = nav.get_next_path_position() - global_position
+				
+				if currentenemy.global_position.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+				else:
+						$VisualAnimation.play("RunLeft")
+				move_and_slide()
 
 func _input(event):
 	if event.is_released():
@@ -103,19 +116,30 @@ func _on_tool_animation_animation_finished(anim_name):
 	if currentenemy == null:
 		$ToolAnimation.play("detected")
 	else:
-		if enemyarea == null:
+		if enemyarea == false:
 			$ToolAnimation.play("range")
-
+		else:
+			$RangeArea/CollisionShape2D.shape.radius = 300
+			
+			
+			
+			
 func _on_detected_area_area_entered(area):
 	if area.is_in_group("Enemy"):
 		if currentenemy == null:
 			currentenemy = area
-			
+			#tool.pause()
+			$DetectedArea/CollisionShape2D.shape.radius = 350
+	
+
 
 func _on_detected_area_area_exited(area):
 	if area == currentenemy:
 		currentenemy = null
-		$ToolAnimation.play("detected")
+		tool.play("detected")
+		#$RangeArea/CollisionShape2D.shape.radius = 200
+
+
 
 func Attack():
 	if enemyarea != null and dead == false:
@@ -153,6 +177,12 @@ func take_damage():
 		$ExtraAnimation.play("dead")
 		$ArcherArea/CollisionShape2D.disabled = true
 		GameManager.livearchers -= 1
+		if GameManager.currentarchers.has(self):
+			GameManager.currentarchers.erase(self)
+			GameManager.currentsoldiers.erase(self)
+			GameManager.currentarrows -=1
+			Gui.select_archer()
+			$SelectedSprite.hide()
 		await $ExtraAnimation.animation_finished
 		queue_free()
 
@@ -160,6 +190,9 @@ func take_damage():
 func _on_range_area_area_entered(area):
 	if area == currentenemy:
 		enemyarea = currentenemy
+		enemyarea.get_owner().damaged = 1
+		attack = true
+		$RangeArea/CollisionShape2D.shape.radius = 300
 		Attack()
 
 
@@ -167,4 +200,8 @@ func _on_range_area_area_exited(area):
 	if area == enemyarea:
 		#var timer = get_tree().create_timer(1)
 		#await timer.timeout 
+		$RangeArea/CollisionShape2D.shape.radius = 200
 		enemyarea = null
+		if area.get_owner() == navenemy:
+			mousepos = global_position
+			navenemy = null
