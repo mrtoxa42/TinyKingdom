@@ -135,7 +135,14 @@ func _on_attack_timer_timeout():
 
 
 func _on_selected_button_pressed():
+	#GameManager.global_mouse_entered = true
 	if GameManager.currentsoldiers !=null:
 		for i in GameManager.currentsoldiers:
-			#i.navenemy = self
-			pass
+			i.navenemy = self
+
+
+func _on_selected_button_released():
+	#var timer = get_tree().create_timer(0,6)
+	#await timer.timeout
+	#GameManager.global_mouse_entered = false
+	pass

@@ -18,7 +18,7 @@ var army_line
 var hp = 10
 var dead = false
 var attack = false
-
+var navenemy
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 
@@ -27,39 +27,45 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(currentenemy)
-	if currentenemy == null:
-		
-		if GameManager.currentknights.has(self) or onnav == true:
-			direction = Vector3()
-			nav.target_position = mousepos
-			direction = nav.get_next_path_position() - global_position
-			#if direction.length() >10:
-
-			#if nav.distance_to_target() > 25 * armysize:
-			if nav.distance_to_target() > 25:
-				#onnav = true
-				direction = direction.normalized()
-				velocity = velocity.lerp(direction * speed, accel * delta)
-				move_and_slide()
-				if mousepos.x > global_position.x:
-					$VisualAnimation.play("RunRight")
-				else:
-					$VisualAnimation.play("RunLeft")
-			else:
-				$VisualAnimation.play("Idle")
+	if attack == false:
+		if currentenemy == null:
 			
-	else:
-		direction = currentenemy.global_position - global_position
-		velocity = direction
-		if velocity != Vector2(0,0) and attack == false:
-				if currentenemy.global_position.x > global_position.x:
-					$VisualAnimation.play("RunRight")
+			if GameManager.currentknights.has(self) or onnav == true:
+				if navenemy == null:
+					direction = Vector3()
+					nav.target_position = mousepos
+					direction = nav.get_next_path_position() - global_position
 				else:
-					$VisualAnimation.play("RunLeft")
-				move_and_slide()
+					direction = Vector3()
+					nav.target_position = navenemy.global_position
+					direction = nav.get_next_path_position() - global_position
+				#if direction.length() >10:
+				
+				#if nav.distance_to_target() > 25 * armysize:
+				if nav.distance_to_target() > 25:
+					#onnav = true
+					direction = direction.normalized()
+					velocity = velocity.lerp(direction * speed, accel * delta)
+					move_and_slide()
+					if mousepos.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+					else:
+						$VisualAnimation.play("RunLeft")
+				else:
+					$VisualAnimation.play("Idle")
+				
+		else:
+			direction = currentenemy.global_position - global_position
+			direction.normalized()
+			velocity = direction
+			if velocity != Vector2(0,0) and attack == false:
+					if currentenemy.global_position.x > global_position.x:
+						$VisualAnimation.play("RunRight")
+					else:
+						$VisualAnimation.play("RunLeft")
+					move_and_slide()
+				
 			
-		
 
 #func _process(delta):
 	#if Input.is_action_just_pressed("LeftClick") and GameManager.currentknights.has(self):
@@ -84,6 +90,7 @@ func _on_detected_area_area_entered(area):
 			currentenemy = area
 			
 func take_damage():
+
 	if hp >1:
 		hp-=1
 		$ExtraAnimation.play("take_damage")
@@ -112,6 +119,10 @@ func _on_knight_area_area_exited(area):
 		enemyarea = null
 		currentenemy = null
 		$ToolAnimation.play("Detected")
+		attack = false
+		mousepos = global_position
+		if area.get_owner() == enemyarea:
+			enemyarea = null
 	
 	
 func Attack():
@@ -188,7 +199,3 @@ func _on_selected_touch_released():
 	await timer.timeout
 	GameManager.global_mouse_entered = false
 	GameManager.current_mouse_area = null
-
-
-func _on_detected_area_area_exited(area):
-	pass
