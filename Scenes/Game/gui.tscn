@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=20 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_esla1"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="2_fwv03"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cj41sbhdb78o3" path="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png" id="9_5gyh5"]
 [ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="10_ndh7u"]
 [ext_resource type="Texture2D" uid="uid://bkl2hxeyfx02x" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightPawnBlueSingle.png" id="11_eqyug"]
+[ext_resource type="Script" path="res://Scripts/Game/MutlipleSelection.gd" id="12_o8j0l"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("8_awd34")
@@ -223,6 +224,12 @@ texture_normal = ExtResource("9_5gyh5")
 visible = false
 
 [node name="TabAnimation" type="AnimationPlayer" parent="."]
+
+[node name="MultipleSelection" type="Node2D" parent="."]
+
+[node name="MutlipleSelectionColorRect" type="ColorRect" parent="MultipleSelection"]
+color = Color(0.341176, 1, 1, 0.584314)
+script = ExtResource("12_o8j0l")
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]

@@ -73,8 +73,8 @@ func _physics_process(delta):
 			#mousepos = get_global_mouse_position()
 			#onnav = true
 func _input(event):
-	if event.is_released():
-		if GameManager.global_mouse_entered == false and GameManager.currentknights.has(self) and event is InputEventScreenTouch and GameManager.dragged == false:
+	if event.is_released() and GameManager.selectedbox == false:
+		if GameManager.global_mouse_entered == false and GameManager.currentknights.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false:
 				army_line = GameManager.currentknights.find(self)
 				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationKnight/Formation" + str(army_line)).global_position
 				mousepos = armypos
@@ -121,6 +121,7 @@ func _on_knight_area_area_exited(area):
 		$ToolAnimation.play("Detected")
 		attack = false
 		mousepos = global_position
+		navenemy = null
 		if area.get_owner() == enemyarea:
 			enemyarea = null
 	

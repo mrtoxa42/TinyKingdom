@@ -540,8 +540,8 @@ texture = ExtResource("2_v162d")
 sources/0 = SubResource("TileSetAtlasSource_11ja2")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0selm"]
-vertices = PackedVector2Array(3520, 35, 3527, 2696, 10, 2696, 7, 13)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(1262, 958, 1059, 959, 1052, 859, 1267, 851, 1317, 1046, 1317, 806, 3520, 35, 3527, 2696, 7, 13, 1000, 806, 10, 2696, 1000, 1046)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 6, 5, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(7, 10, 11, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-3, 3, 1, 2706, 3538, 2707, 3530, 26)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
@@ -566,6 +566,9 @@ y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_0selm")
 metadata/_edit_lock_ = true
 
+[node name="MainCastle" parent="NavigationRegion2D" instance=ExtResource("11_cf25h")]
+position = Vector2(1160, 883)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1374, 1040)
 scale = Vector2(1.57091, 0.799049)
@@ -575,7 +578,7 @@ can_pan = true
 can_zoom = true
 
 [node name="GoblinTorchRed" parent="." instance=ExtResource("10_iqebg")]
-position = Vector2(1198, 1376)
+position = Vector2(786, 921)
 
 [node name="GoblinTorchRed2" parent="." instance=ExtResource("10_iqebg")]
 position = Vector2(1548, 1334)
@@ -600,6 +603,3 @@ position = Vector2(1558, 1143)
 
 [node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
 position = Vector2(1798, 890)
-
-[node name="MainCastle" parent="." instance=ExtResource("11_cf25h")]
-position = Vector2(1160, 883)

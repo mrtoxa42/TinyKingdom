@@ -24,6 +24,7 @@ var currentarrows = 0
 var currentworkers = 0
 var mousetouchpos = Vector2.ZERO
 var dragged = false
+var selectedbox = false
 
 
 

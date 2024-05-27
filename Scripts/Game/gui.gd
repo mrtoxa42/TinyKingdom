@@ -100,3 +100,6 @@ func _on_pawn_removed_button_released():
 	var timer = get_tree().create_timer(1)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
+
+
+

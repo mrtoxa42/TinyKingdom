@@ -22,15 +22,19 @@ func _ready():
 func _process(delta):
 	pass
 func _input(event):
-	if event is InputEventScreenTouch:
-		GameManager.global_mouse_position = event.position
-		handle_touch(event)
-	elif event is InputEventScreenDrag:
-		handle_drag(event)
-	if event.is_released() and event is InputEventScreenTouch:
-		GameManager.dragged = false
+	if event.is_action_pressed("ZoomIn"):
+		pass
+	if GameManager.selectedbox == false:
+		if event is InputEventScreenTouch:
+			GameManager.global_mouse_position = event.position
+			handle_touch(event)
+		elif event is InputEventScreenDrag:
+			handle_drag(event)
+		if event.is_released() and event is InputEventScreenTouch:
+			GameManager.dragged = false
 
 
+		
 
 
 		
