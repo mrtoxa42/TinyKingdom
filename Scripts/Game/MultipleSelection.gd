@@ -5,17 +5,23 @@ var mouse_start_pos: Vector2
 var mouse_end_pos: Vector2
 var nodes_in_rect = []
 @onready var multiple_collision = $"../MultipleArea/CollisionShape2D"
+var soldiers: Array = []
 
-
+func _ready():
+	soldiers = get_tree().get_nodes_in_group("Soldier")
+	
 func _process(delta):
-	multiple_collision.global_position = global_position
-	multiple_collision.shape.size = Vector2(mouse_start_pos - mouse_end_pos)
+	if GameManager.mouseboundary == "Right":
+		pass
 
 
 func _input(event):
+	soldiers = get_tree().get_nodes_in_group("Soldier")
 	if event is InputEventMouseButton:
 		if event.double_click and event.is_pressed():
 			GameManager.selectedbox = true
+
+				
 			if !mouse_down:
 				mouse_down = true
 				mouse_start_pos = event.global_position
@@ -27,20 +33,16 @@ func _input(event):
 				mouse_end_pos = event.global_position
 				scale = Vector2.ZERO
 				GameManager.selectedbox = false
+				select_units_in_rectangle()
 				#pressed_ended()
 				
-		if event.button_index == 2 and event.is_pressed():
-			for node in nodes_in_rect:
-				print("anğk")
 				
 	if event is InputEventMouseMotion:
+		select_units_in_rectangle()
 		if mouse_down:
 			_update()
 			
-			
-	if event is InputEventMouseMotion:
-		if mouse_down:
-			_update()
+
 
 	
 func _update():
@@ -62,4 +64,15 @@ func _update():
 	# bu da snapsiz
 	scale = (get_global_mouse_position() - mouse_start_pos)
 
-	
+func select_units_in_rectangle():
+	var rect_global_position = get_global_transform().origin
+	var rect_size = size
+	var selection_rect = Rect2(rect_global_position,rect_size)
+	for soldier in soldiers:
+			var soldier_pos = soldier.global_position
+			if selection_rect.has_point(soldier_pos):
+				print("Asker seçildi")
+				pass
+			else:
+				#print("Asker seçili değil")
+				pass

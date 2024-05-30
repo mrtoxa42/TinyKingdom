@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=24 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_esla1"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="2_fwv03"]
@@ -77,7 +77,7 @@ size = Vector2(91, 145)
 size = Vector2(99, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdmvu"]
-size = Vector2(50, 675)
+size = Vector2(52.5, 675)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hiaes"]
 size = Vector2(50, 667)
@@ -87,9 +87,6 @@ size = Vector2(1032, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k536"]
 size = Vector2(1040, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ijah"]
-size = Vector2(98, 74)
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_esla1")
@@ -254,7 +251,7 @@ script = ExtResource("12_hitrh")
 [node name="RightArea" type="Area2D" parent="MultipleSelection"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/RightArea"]
-position = Vector2(1125.5, 328)
+position = Vector2(1126.75, 328)
 shape = SubResource("RectangleShape2D_vdmvu")
 
 [node name="LeftArea" type="Area2D" parent="MultipleSelection"]
@@ -274,12 +271,6 @@ shape = SubResource("RectangleShape2D_4ucgn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/DownArea"]
 position = Vector2(576, 623.5)
 shape = SubResource("RectangleShape2D_4k536")
-
-[node name="MultipleArea" type="Area2D" parent="MultipleSelection"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/MultipleArea"]
-position = Vector2(39, 27)
-shape = SubResource("RectangleShape2D_4ijah")
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]

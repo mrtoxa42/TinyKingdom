@@ -24,6 +24,7 @@ func _process(delta):
 	if GameManager.selectedbox == true:
 		if GameManager.mouseboundary == "Right":
 			position.x += distancespeed * delta
+			get_global_mouse_position().x += distancespeed * delta
 		if GameManager.mouseboundary == "Left":
 			position.x -= distancespeed * delta
 		if GameManager.mouseboundary == "Up":
