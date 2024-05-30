@@ -6,6 +6,7 @@ var hp = 3
 var speed = 50
 var enemyspeed = 10
 var accel = 7
+var movetarget
 var dead = false
 var currentenemy 
 var enemyarea
@@ -15,13 +16,15 @@ var enemydistance = null
 var damaged 
 @onready var nav = $NavigationAgent2D
 
-
+func _ready():
+	if GameManager.maincastle != null:
+		movetarget = GameManager.maincastle.global_position
 func _physics_process(delta):
 	if dead == false:
 		if currentenemy == null and enemyarea == null:
 			var direction = Vector2()
 		
-			nav.target_position = GameManager.currentfinish.global_position
+			nav.target_position = movetarget
 		
 			direction = nav.get_next_path_position() - global_position
 			direction = direction.normalized()
@@ -70,13 +73,13 @@ func take_damage():
 		hp -= damaged
 		if hp <= 0: 
 			dead = true
-			$ToolAnimation.play("dead")
+			$ExtraAnimation.play("dead")
 			$CollisionShape2D.disabled = true
 			$GoblinTorchArea.queue_free()
-			await $ToolAnimation.animation_finished
+			await $ExtraAnimation.animation_finished
 			queue_free()
 		else:
-			$ToolAnimation.play("takedamage")
+			$ExtraAnimation.play("takedamage")
 
 
 func deal_damage():
@@ -115,18 +118,19 @@ func _on_goblin_torch_area_area_entered(area):
 
 
 func _on_goblin_torch_area_area_exited(area):
-	if area.is_in_group("Knight"):
-		if area.get_owner() == enemyarea:
-			enemyarea = null
-			currentenemy = null
-	if area.is_in_group("Archer"):
-		if area.get_owner() == enemyarea:
-			enemyarea = null
-			currentenemy = null
-	if area.is_in_group("Pawn"):
-		if area.get_owner() == enemyarea:
-			enemyarea = null
-			currentenemy = null
+	if area == enemyarea and area == currentenemy:
+		if area.is_in_group("Knight"):
+			if area.get_owner() == enemyarea:
+				enemyarea = null
+				currentenemy = null
+		if area.is_in_group("Archer"):
+			if area.get_owner() == enemyarea:
+				enemyarea = null
+				currentenemy = null
+		if area.is_in_group("Pawn"):
+			if area.get_owner() == enemyarea:
+				enemyarea = null
+				currentenemy = null
 
 
 func _on_attack_timer_timeout():
@@ -146,3 +150,13 @@ func _on_selected_button_released():
 	#await timer.timeout
 	#GameManager.global_mouse_entered = false
 	pass
+
+
+func _on_detected_area_area_entered(area):
+	if currentenemy == null:
+		if area.is_in_group("Structure"):
+			currentenemy = area
+
+
+func _on_detected_area_area_exited(area):
+	pass # Replace with function body.

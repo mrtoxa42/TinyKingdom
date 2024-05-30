@@ -4,8 +4,9 @@ extends Node
 #Tutulan Sahne Değişkenleri
 var currentlevel
 var camera2d
-
+var mouseboundary = ""
 #Oyun içi değişkenler
+var middlepoint
 var global_mouse_position
 var global_mouse_entered = false
 var maincastle = null

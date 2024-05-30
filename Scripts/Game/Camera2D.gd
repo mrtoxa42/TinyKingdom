@@ -14,16 +14,24 @@ var start_zoom
 var start_angle
 var current_angle
 var moved = false
-
-func _ready():
+var distancespeed = 200
+var mousepos
+func _ready(): 
 	GameManager.camera2d = self
 
 
 func _process(delta):
-	pass
+	if GameManager.selectedbox == true:
+		if GameManager.mouseboundary == "Right":
+			position.x += distancespeed * delta
+		if GameManager.mouseboundary == "Left":
+			position.x -= distancespeed * delta
+		if GameManager.mouseboundary == "Up":
+			position.y -= distancespeed * delta
+		if GameManager.mouseboundary == "Down":
+			position.y += distancespeed * delta
+
 func _input(event):
-	if event.is_action_pressed("ZoomIn"):
-		pass
 	if GameManager.selectedbox == false:
 		if event is InputEventScreenTouch:
 			GameManager.global_mouse_position = event.position
@@ -33,11 +41,9 @@ func _input(event):
 		if event.is_released() and event is InputEventScreenTouch:
 			GameManager.dragged = false
 
-
 		
 
-
-		
+	
 func handle_touch(event: InputEventScreenTouch):
 		if event.pressed:
 			touch_points[event.index] = event.position
@@ -73,6 +79,7 @@ func handle_drag(event: InputEventScreenDrag):
 				rotation -= (current_angle - start_angle) * rotation_speed
 				start_angle = current_angle
 			limit_zoom(zoom)
+
 
 func limit_zoom(new_zoom):
 	if new_zoom.x < 0.1:

@@ -15,9 +15,11 @@ var zoom_touch = false
 
 func _ready():
 	start_position_knight_tab = $ArmySelection/ArmySelectionKnight.global_position
+	GameManager.middlepoint = $ScreenMiddlePoint.global_position
 
 
 func _process(delta):
+	GameManager.middlepoint = $ScreenMiddlePoint.global_position
 	$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
 	$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
 	$ArmySelection/ArmySelectionPawner/PawnersSelectionLabel.text = "X" + str(GameManager.currentworkers)
@@ -103,3 +105,34 @@ func _on_pawn_removed_button_released():
 
 
 
+
+
+func _on_right_area_mouse_entered():
+	GameManager.mouseboundary = "Right"
+
+
+func _on_right_area_mouse_exited():
+	GameManager.mouseboundary = ""
+
+
+func _on_left_area_mouse_entered():
+	GameManager.mouseboundary = "Left"
+
+
+func _on_left_area_mouse_exited():
+	GameManager.mouseboundary = ""
+
+
+func _on_up_area_mouse_entered():
+	GameManager.mouseboundary = "Up"
+
+func _on_up_area_mouse_exited():
+	GameManager.mouseboundary = ""
+
+
+func _on_down_area_mouse_entered():
+	GameManager.mouseboundary = "Down"
+
+
+func _on_down_area_mouse_exited():
+	GameManager.mouseboundary = ""

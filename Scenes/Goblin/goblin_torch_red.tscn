@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcqjtui6y2r45"]
+[gd_scene load_steps=22 format=3 uid="uid://dcqjtui6y2r45"]
 
 [ext_resource type="Texture2D" uid="uid://07ch03hy0din" path="res://Assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_a5dpu"]
 [ext_resource type="Script" path="res://Scripts/Goblin/goblin_torch_red.gd" id="1_qbmch"]
@@ -8,11 +8,11 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xi04"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v3h26"]
-radius = 250.0
+radius = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40if3"]
-radius = 39.0
-height = 78.0
+radius = 31.0
+height = 76.0
 
 [sub_resource type="Animation" id="Animation_k0qau"]
 resource_name = "AttackDown"
@@ -244,6 +244,28 @@ _data = {
 "RunRight": SubResource("Animation_mu4b5")
 }
 
+[sub_resource type="Animation" id="Animation_usck2"]
+resource_name = "detected"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DetectedArea/CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1024.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orurm"]
+_data = {
+"detected": SubResource("Animation_usck2")
+}
+
 [sub_resource type="Animation" id="Animation_4cy0o"]
 resource_name = "dead"
 length = 1.1
@@ -356,7 +378,6 @@ script = ExtResource("1_qbmch")
 shape = SubResource("CapsuleShape2D_6xi04")
 
 [node name="DetectedArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectedArea"]
 shape = SubResource("CircleShape2D_v3h26")
@@ -374,6 +395,12 @@ autoplay = "Idle"
 
 [node name="ToolAnimation" type="AnimationPlayer" parent="."]
 libraries = {
+"": SubResource("AnimationLibrary_orurm")
+}
+autoplay = "detected"
+
+[node name="ExtraAnimation" type="AnimationPlayer" parent="."]
+libraries = {
 "": SubResource("AnimationLibrary_tn2xl")
 }
 autoplay = "reset"
@@ -383,11 +410,9 @@ visible = false
 texture = ExtResource("3_6bt3r")
 hframes = 7
 vframes = 2
-frame = 13
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
-path_postprocessing = 1
 debug_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -398,7 +423,6 @@ texture = ExtResource("1_a5dpu")
 flip_h = true
 hframes = 7
 vframes = 5
-frame = 19
 
 [node name="SelectedButton" type="TouchScreenButton" parent="."]
 modulate = Color(1, 1, 1, 0.00392157)
@@ -406,6 +430,8 @@ position = Vector2(-36, -39)
 scale = Vector2(0.578125, 0.546875)
 texture_normal = ExtResource("4_45k3n")
 
+[connection signal="area_entered" from="DetectedArea" to="." method="_on_detected_area_area_entered"]
+[connection signal="area_exited" from="DetectedArea" to="." method="_on_detected_area_area_exited"]
 [connection signal="area_entered" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_entered"]
 [connection signal="area_exited" from="GoblinTorchArea" to="." method="_on_goblin_torch_area_area_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

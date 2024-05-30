@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=13 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c5t8hrnx3l5rp" path="res://Scenes/Resources/tree_resources.tscn" id="5_umxvo"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 [ext_resource type="PackedScene" uid="uid://miem7rj474q6" path="res://Scenes/Resources/gold_mine_resources.tscn" id="7_5ksjt"]
-[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="8_2hxn4"]
 [ext_resource type="PackedScene" uid="uid://clgwwtq7ppnhn" path="res://Scenes/Resources/sheep_resources.tscn" id="9_hytw2"]
-[ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="10_iqebg"]
-[ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="11_0j6b1"]
+[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="9_sif4p"]
 [ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="11_cf25h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
@@ -577,21 +575,6 @@ script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true
 
-[node name="GoblinTorchRed" parent="." instance=ExtResource("10_iqebg")]
-position = Vector2(786, 921)
-
-[node name="GoblinTorchRed2" parent="." instance=ExtResource("10_iqebg")]
-position = Vector2(1548, 1334)
-
-[node name="KnigthArcherBlue2" parent="." instance=ExtResource("11_0j6b1")]
-position = Vector2(1540, 807)
-
-[node name="KnigthArcherBlue3" parent="." instance=ExtResource("11_0j6b1")]
-position = Vector2(1404, 823)
-
-[node name="KnightWarriorBlue" parent="." instance=ExtResource("8_2hxn4")]
-position = Vector2(1325, 1035)
-
 [node name="KnightPawnBlue" parent="." instance=ExtResource("4_0tf2t")]
 position = Vector2(1943, 982)
 
@@ -603,3 +586,6 @@ position = Vector2(1558, 1143)
 
 [node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
 position = Vector2(1798, 890)
+
+[node name="KnightWarriorBlue" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1328, 1181)

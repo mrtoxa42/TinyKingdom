@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=25 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_esla1"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="2_fwv03"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cj41sbhdb78o3" path="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png" id="9_5gyh5"]
 [ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="10_ndh7u"]
 [ext_resource type="Texture2D" uid="uid://bkl2hxeyfx02x" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightPawnBlueSingle.png" id="11_eqyug"]
-[ext_resource type="Script" path="res://Scripts/Game/MutlipleSelection.gd" id="12_o8j0l"]
+[ext_resource type="Script" path="res://Scripts/Game/MultipleSelection.gd" id="12_hitrh"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("8_awd34")
@@ -75,6 +75,21 @@ size = Vector2(91, 145)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
 size = Vector2(99, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdmvu"]
+size = Vector2(50, 675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hiaes"]
+size = Vector2(50, 667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ucgn"]
+size = Vector2(1032, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4k536"]
+size = Vector2(1040, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ijah"]
+size = Vector2(98, 74)
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_esla1")
@@ -225,11 +240,46 @@ visible = false
 
 [node name="TabAnimation" type="AnimationPlayer" parent="."]
 
+[node name="ScreenMiddlePoint" type="Marker2D" parent="."]
+position = Vector2(576, 324)
+
 [node name="MultipleSelection" type="Node2D" parent="."]
 
-[node name="MutlipleSelectionColorRect" type="ColorRect" parent="MultipleSelection"]
-color = Color(0.341176, 1, 1, 0.584314)
-script = ExtResource("12_o8j0l")
+[node name="ColorRect" type="ColorRect" parent="MultipleSelection"]
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(0.388235, 1, 1, 0.52549)
+script = ExtResource("12_hitrh")
+
+[node name="RightArea" type="Area2D" parent="MultipleSelection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/RightArea"]
+position = Vector2(1125.5, 328)
+shape = SubResource("RectangleShape2D_vdmvu")
+
+[node name="LeftArea" type="Area2D" parent="MultipleSelection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/LeftArea"]
+position = Vector2(24, 322.5)
+shape = SubResource("RectangleShape2D_hiaes")
+
+[node name="UpArea" type="Area2D" parent="MultipleSelection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/UpArea"]
+position = Vector2(572, 25.5)
+shape = SubResource("RectangleShape2D_4ucgn")
+
+[node name="DownArea" type="Area2D" parent="MultipleSelection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/DownArea"]
+position = Vector2(576, 623.5)
+shape = SubResource("RectangleShape2D_4k536")
+
+[node name="MultipleArea" type="Area2D" parent="MultipleSelection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/MultipleArea"]
+position = Vector2(39, 27)
+shape = SubResource("RectangleShape2D_4ijah")
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]
@@ -237,3 +287,11 @@ script = ExtResource("12_o8j0l")
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_released"]
+[connection signal="mouse_entered" from="MultipleSelection/RightArea" to="." method="_on_right_area_mouse_entered"]
+[connection signal="mouse_exited" from="MultipleSelection/RightArea" to="." method="_on_right_area_mouse_exited"]
+[connection signal="mouse_entered" from="MultipleSelection/LeftArea" to="." method="_on_left_area_mouse_entered"]
+[connection signal="mouse_exited" from="MultipleSelection/LeftArea" to="." method="_on_left_area_mouse_exited"]
+[connection signal="mouse_entered" from="MultipleSelection/UpArea" to="." method="_on_up_area_mouse_entered"]
+[connection signal="mouse_exited" from="MultipleSelection/UpArea" to="." method="_on_up_area_mouse_exited"]
+[connection signal="mouse_entered" from="MultipleSelection/DownArea" to="." method="_on_down_area_mouse_entered"]
+[connection signal="mouse_exited" from="MultipleSelection/DownArea" to="." method="_on_down_area_mouse_exited"]
