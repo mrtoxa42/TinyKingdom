@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=17 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="9_sif4p"]
 [ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="10_8secq"]
 [ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="11_cf25h"]
+[ext_resource type="Script" path="res://Scripts/Game/MultipleSelection.gd" id="11_ii7r4"]
+[ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="12_4guiu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
 texture = ExtResource("2_v162d")
@@ -544,6 +546,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-3, 3, 1, 2706, 3538, 2707, 3530, 26)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xc63"]
+size = Vector2(100, 100)
+
 [node name="MainGame" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_rl40a")
@@ -568,6 +573,12 @@ metadata/_edit_lock_ = true
 [node name="MainCastle" parent="NavigationRegion2D" instance=ExtResource("11_cf25h")]
 position = Vector2(1160, 883)
 
+[node name="TreeResources" parent="NavigationRegion2D" instance=ExtResource("5_umxvo")]
+position = Vector2(1567, 902)
+
+[node name="GoldMineResources" parent="NavigationRegion2D" instance=ExtResource("7_5ksjt")]
+position = Vector2(1558, 1143)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1374, 1040)
 scale = Vector2(1.57091, 0.799049)
@@ -579,12 +590,6 @@ can_zoom = true
 [node name="KnightPawnBlue" parent="." instance=ExtResource("4_0tf2t")]
 position = Vector2(1943, 982)
 
-[node name="TreeResources" parent="." instance=ExtResource("5_umxvo")]
-position = Vector2(1567, 902)
-
-[node name="GoldMineResources" parent="." instance=ExtResource("7_5ksjt")]
-position = Vector2(1558, 1143)
-
 [node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
 position = Vector2(1798, 890)
 
@@ -593,3 +598,29 @@ position = Vector2(1328, 1181)
 
 [node name="GoblinTorchRed" parent="." instance=ExtResource("10_8secq")]
 position = Vector2(1819, 1272)
+
+[node name="MultipleArea" type="Area2D" parent="." groups=["MultipleArea"]]
+script = ExtResource("11_ii7r4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleArea"]
+z_index = 1
+shape = SubResource("RectangleShape2D_6xc63")
+debug_color = Color(0.797362, 0.0312073, 2.88785e-07, 0.42)
+
+[node name="ColorRect" type="ColorRect" parent="MultipleArea/CollisionShape2D"]
+offset_left = -49.0
+offset_top = -49.0
+offset_bottom = -1.0
+scale = Vector2(2, 2)
+color = Color(0, 0.747641, 0.750856, 0.454902)
+
+[node name="KnightWarriorBlue2" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1117, 1144)
+
+[node name="KnigthArcherBlue" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1499, 1020)
+
+[node name="KnigthArcherBlue2" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1661, 1045)
+
+[connection signal="area_entered" from="MultipleArea" to="MultipleArea" method="_on_area_entered"]
