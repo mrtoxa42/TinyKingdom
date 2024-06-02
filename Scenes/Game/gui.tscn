@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=25 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_esla1"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="2_fwv03"]
@@ -75,6 +75,9 @@ size = Vector2(91, 145)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
 size = Vector2(99, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rafcs"]
+size = Vector2(100, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdmvu"]
 size = Vector2(52.5, 675)
@@ -245,8 +248,14 @@ position = Vector2(576, 324)
 [node name="ColorRect" type="ColorRect" parent="MultipleSelection"]
 offset_right = 1.0
 offset_bottom = 1.0
-color = Color(0.388235, 1, 1, 0.52549)
+color = Color(0.576471, 1, 1, 0.486275)
 script = ExtResource("12_hitrh")
+
+[node name="Area2D" type="Area2D" parent="MultipleSelection/ColorRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MultipleSelection/ColorRect/Area2D"]
+z_index = 1
+shape = SubResource("RectangleShape2D_rafcs")
 
 [node name="RightArea" type="Area2D" parent="MultipleSelection"]
 

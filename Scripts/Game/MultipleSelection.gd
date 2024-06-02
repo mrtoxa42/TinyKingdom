@@ -9,7 +9,7 @@ var soldiers: Array = []
 
 func _ready():
 	soldiers = get_tree().get_nodes_in_group("Soldier")
-	
+
 func _process(delta):
 	if GameManager.mouseboundary == "Right":
 		pass
@@ -63,16 +63,24 @@ func _update():
 	#scale = Vector2(snappedi(get_global_mouse_position().x-mouse_start_pos.x,32)*scale.x,snappedi(get_global_mouse_position().y-mouse_start_pos.y,32)*scale.y)
 	# bu da snapsiz
 	scale = (get_global_mouse_position() - mouse_start_pos)
-
+ 	
 func select_units_in_rectangle():
 	var rect_global_position = get_global_transform().origin
 	var rect_size = size
 	var selection_rect = Rect2(rect_global_position,rect_size)
+	$Area2D.global_position = get_global_mouse_position()
+	$Area2D/CollisionShape2D.global_position = get_global_mouse_position()
+	print($Area2D/CollisionShape2D.shape)
+	
 	for soldier in soldiers:
 			var soldier_pos = soldier.global_position
-			if selection_rect.has_point(soldier_pos):
+			#if selection_rect.has_point(soldier_pos):
+			if get_global_rect().has_point(soldier_pos):
 				print("Asker seçildi")
 				pass
 			else:
-				#print("Asker seçili değil")
+				print("Asker seçili değil")
 				pass
+	
+
+	
