@@ -65,9 +65,14 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_released():
-		if GameManager.global_mouse_entered == false and GameManager.currentarchers.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false:
+		if GameManager.global_mouse_entered == false and GameManager.currentarchers.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false and GameManager.current_mouse_area != "Resources":
 			army_line = GameManager.currentarchers.find(self)
-			var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationArcher/Formation" + str(army_line)).global_position
+			var armypos
+			if GameManager.currentwarriors == 0:
+				armypos = GameSystem.get_node("CanvasLayer/ArmyFormationArcher/Formation" + str(army_line)).global_position
+			else:
+				army_line += GameManager.currentwarriors
+				armypos = GameSystem.get_node("CanvasLayer/ArmyFormationArcher/Formation" + str(army_line)).global_position
 			mousepos = armypos
 			onnav = true
 			

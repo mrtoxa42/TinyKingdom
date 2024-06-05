@@ -62,7 +62,7 @@ animations = [{
 size = Vector2(126, 92)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgxyn"]
-size = Vector2(297, 197)
+size = Vector2(256, 183)
 
 [node name="MainCastle" type="Area2D" groups=["Castle"]]
 y_sort_enabled = true
@@ -116,5 +116,5 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CastleStaticBody"]
-position = Vector2(-1.5, 31.5)
+position = Vector2(2, 24.5)
 shape = SubResource("RectangleShape2D_pgxyn")

@@ -574,7 +574,6 @@ position = Vector2(147, -150)
 scale = Vector2(0.1, 0.1)
 
 [node name="ArmyFormationArcher" type="Node2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(0, 11)
 rotation = 1.5708
 scale = Vector2(1.2, 1.5)
@@ -620,23 +619,23 @@ position = Vector2(-127, -51.9999)
 scale = Vector2(0.1, 0.1)
 
 [node name="Formation10" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]
-position = Vector2(-3.99997, 8.00017)
+position = Vector2(-174, 8.00061)
 scale = Vector2(0.1, 0.1)
 
 [node name="Formation11" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]
-position = Vector2(-4.00006, -11.9998)
+position = Vector2(-174, -11.9991)
 scale = Vector2(0.1, 0.1)
 
 [node name="Formation12" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]
-position = Vector2(-3.99994, -31.9998)
+position = Vector2(-174, -31.9991)
 scale = Vector2(0.1, 0.1)
 
 [node name="Formation13" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]
-position = Vector2(-4, 28.0002)
+position = Vector2(-174, 28.0001)
 scale = Vector2(0.1, 0.1)
 
 [node name="Formation14" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]
-position = Vector2(-4, -51.9999)
+position = Vector2(-174, -51.999)
 scale = Vector2(0.1, 0.1)
 
 [node name="Formation15" type="Marker2D" parent="CanvasLayer/ArmyFormationArcher"]

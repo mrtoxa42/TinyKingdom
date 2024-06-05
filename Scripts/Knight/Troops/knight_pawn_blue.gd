@@ -111,7 +111,7 @@ func _on_selected_touched_pressed():
 
 
 func _on_selected_touched_released():
-	var timer = get_tree().create_timer(0,6)
+	var timer = get_tree().create_timer(0.6)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
 	GameManager.current_mouse_area = null
@@ -277,6 +277,7 @@ func forget_resources():
 func _on_knight_pawn_blue_area_area_entered(area):
 	if area.is_in_group("CastleDoor"):
 		if gathering_resources == true:
+			add_resources()
 			gathering_resources = false
 			$ResourcesSprite.hide()
 	if area.is_in_group("Enemy") and enemyarea == null:
@@ -284,7 +285,16 @@ func _on_knight_pawn_blue_area_area_entered(area):
 			enemyarea = area
 			_attack()
 
-		
+func add_resources():
+	gathering_resources = false
+	$ResourcesSprite.hide()
+	
+	if resources_type == "Tree":
+		GameManager.currentwood += 10
+	elif resources_type == "GoldMine":
+		GameManager.currentgold += 10
+	elif resources_type == "Sheep":
+		GameManager.currentmeat += 10
 
 
 func _on_knight_pawn_blue_area_area_exited(area):

@@ -541,8 +541,8 @@ texture = ExtResource("2_v162d")
 sources/0 = SubResource("TileSetAtlasSource_11ja2")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0selm"]
-vertices = PackedVector2Array(1262, 958, 1059, 959, 1052, 859, 1267, 851, 1317, 1046, 1317, 806, 3520, 35, 3527, 2696, 7, 13, 1000, 806, 10, 2696, 1000, 1046)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 6, 5, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(7, 10, 11, 4)])
+vertices = PackedVector2Array(1262, 958, 1059, 959, 1052, 859, 1267, 851, 1493, 1103, 1300, 1009, 1548, 986, 1589, 985, 1618, 1098, 3520, 35, 3527, 2696, 1629, 1142, 1588, 926, 7, 13, 1546, 926, 1300, 806, 1617, 1188, 1556, 1180, 10, 2696, 1497, 1187, 1548, 947, 1024, 806, 1024, 1009)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 8), PackedInt32Array(7, 12, 9, 8), PackedInt32Array(13, 9, 12, 14, 15), PackedInt32Array(16, 11, 10), PackedInt32Array(17, 16, 10, 18, 19), PackedInt32Array(20, 6, 5, 15, 14), PackedInt32Array(13, 15, 21), PackedInt32Array(18, 13, 21, 22), PackedInt32Array(19, 18, 22, 5, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-3, 3, 1, 2706, 3538, 2707, 3530, 26)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
@@ -590,11 +590,29 @@ can_zoom = true
 [node name="KnightPawnBlue" parent="." instance=ExtResource("4_0tf2t")]
 position = Vector2(1943, 982)
 
+[node name="KnightPawnBlue3" parent="." instance=ExtResource("4_0tf2t")]
+position = Vector2(935, 629)
+
+[node name="KnightPawnBlue4" parent="." instance=ExtResource("4_0tf2t")]
+position = Vector2(564, 873)
+
+[node name="KnightPawnBlue2" parent="." instance=ExtResource("4_0tf2t")]
+position = Vector2(1918, 624)
+
 [node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
 position = Vector2(1798, 890)
 
 [node name="KnightWarriorBlue" parent="." instance=ExtResource("9_sif4p")]
 position = Vector2(1328, 1181)
+
+[node name="KnightWarriorBlue6" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(838, 882)
+
+[node name="KnightWarriorBlue7" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1228, 695)
+
+[node name="KnightWarriorBlue3" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1490, 709)
 
 [node name="GoblinTorchRed" parent="." instance=ExtResource("10_8secq")]
 position = Vector2(1819, 1272)
@@ -615,12 +633,69 @@ scale = Vector2(2, 2)
 color = Color(0, 0.747641, 0.750856, 0.454902)
 
 [node name="KnightWarriorBlue2" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1117, 1144)
+position = Vector2(987, 1376)
+
+[node name="KnightWarriorBlue8" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1887, 1593)
+
+[node name="KnightWarriorBlue9" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1591, 1614)
+
+[node name="KnightWarriorBlue4" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(750, 1148)
+
+[node name="KnightWarriorBlue5" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1097, 1194)
 
 [node name="KnigthArcherBlue" parent="." instance=ExtResource("12_4guiu")]
 position = Vector2(1499, 1020)
 
 [node name="KnigthArcherBlue2" parent="." instance=ExtResource("12_4guiu")]
 position = Vector2(1661, 1045)
+
+[node name="KnigthArcherBlue3" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1461, 1369)
+
+[node name="KnigthArcherBlue6" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(2142, 1478)
+
+[node name="KnigthArcherBlue4" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1730, 596)
+
+[node name="KnigthArcherBlue5" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(2257, 974)
+
+[node name="KnightWarriorBlue10" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(883, 1416)
+
+[node name="KnightWarriorBlue11" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1783, 1633)
+
+[node name="KnightWarriorBlue12" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(1487, 1654)
+
+[node name="KnightWarriorBlue13" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(646, 1188)
+
+[node name="KnightWarriorBlue14" parent="." instance=ExtResource("9_sif4p")]
+position = Vector2(993, 1234)
+
+[node name="KnigthArcherBlue7" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1395, 1060)
+
+[node name="KnigthArcherBlue8" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1557, 1085)
+
+[node name="KnigthArcherBlue9" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1357, 1409)
+
+[node name="KnigthArcherBlue10" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(2038, 1518)
+
+[node name="KnigthArcherBlue11" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(1626, 636)
+
+[node name="KnigthArcherBlue12" parent="." instance=ExtResource("12_4guiu")]
+position = Vector2(2153, 1014)
 
 [connection signal="area_entered" from="MultipleArea" to="MultipleArea" method="_on_area_entered"]

@@ -119,6 +119,10 @@ bg_color = Color(2.76752e-06, 0.469511, 0.39413, 1)
 [node name="TreeResources" type="Area2D"]
 script = ExtResource("1_nx8ej")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-9, 44, -9, 74, 12, 73, 11, 34, -10, 34)
+
 [node name="SelectedTouched" type="TouchScreenButton" parent="."]
 self_modulate = Color(1, 1, 1, 0.00392157)
 position = Vector2(-40, -80)

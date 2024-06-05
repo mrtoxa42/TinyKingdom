@@ -41,6 +41,8 @@ func _input(event):
 		if event.is_released() and event is InputEventScreenTouch:
 			GameManager.dragged = false
 
+
+	
 		
 
 	

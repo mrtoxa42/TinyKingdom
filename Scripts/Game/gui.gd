@@ -10,7 +10,7 @@ var touch_points = {}
 var start_position_knight_tab = Vector2.ZERO
 var zoom_touch = false
 
-
+var touch_point = preload("res://Scenes/Extras/touch_point.tscn")
 
 
 func _ready():
@@ -23,6 +23,10 @@ func _process(delta):
 	$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
 	$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
 	$ArmySelection/ArmySelectionPawner/PawnersSelectionLabel.text = "X" + str(GameManager.currentworkers)
+	
+	$ResourcesGui/ResourcesHBox/WoodHBox/MarginContainer/WoodLabel.text = "X" + str(GameManager.currentwood)
+	$ResourcesGui/ResourcesHBox/GoldHBox/MarginContainer/GoldLabel.text = "X" + str(GameManager.currentgold)
+	$ResourcesGui/ResourcesHBox/MeatHBox/MarginContainer/MeatLabel.text = "X" + str(GameManager.currentmeat)
 
 func _input(event):
 	if event is InputEventScreenTouch and event.double_tap:
@@ -31,8 +35,26 @@ func _input(event):
 	if event.is_released():
 		multipletouch = false
 	
-
-
+	if event.is_pressed():
+		if GameManager.currentsoldiers.size() != 0 or GameManager.currentworkers != 0:
+			var timer = get_tree().create_timer(0.1)
+			await timer.timeout
+			if GameManager.dragged == false and GameManager.selectedbox == false:
+				if GameManager.current_mouse_area == null:
+					var TouchPoints = touch_point.instantiate()
+					TouchPoints.modulate = Color.WHITE
+					TouchPoints.global_position = GameManager.global_mouse_position
+					add_child(TouchPoints)
+				elif GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
+					var TouchPoints = touch_point.instantiate()
+					TouchPoints.modulate = Color.BLUE
+					TouchPoints.global_position = GameManager.global_mouse_position
+					add_child(TouchPoints)
+				if GameManager.current_mouse_area == "Resources":
+					var TouchPoints = touch_point.instantiate()
+					TouchPoints.modulate = Color.GREEN
+					TouchPoints.global_position = GameManager.global_mouse_position
+					add_child(TouchPoints)
 func select_warrior():
 	if GameManager.currentwarriors >=1:
 		$ArmySelection/ArmySelectionKnight.show()

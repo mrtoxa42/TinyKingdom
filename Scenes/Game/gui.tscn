@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=22 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_esla1"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="2_fwv03"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cj41sbhdb78o3" path="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png" id="9_5gyh5"]
 [ext_resource type="Texture2D" uid="uid://dvhy4w081hdd5" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png" id="10_ndh7u"]
 [ext_resource type="Texture2D" uid="uid://bkl2hxeyfx02x" path="res://Assets/Tiny Swords (Update 010)/GUI/KnightPawnBlueSingle.png" id="11_eqyug"]
+[ext_resource type="Texture2D" uid="uid://cd0wly2ye24vi" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/W_Idle.png" id="12_6mx6w"]
+[ext_resource type="Texture2D" uid="uid://bq2aib0014nv2" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/G_Idle.png" id="13_ueell"]
+[ext_resource type="Texture2D" uid="uid://btjpw6wp86a7i" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/M_Idle.png" id="14_cctso"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("8_awd34")
@@ -226,6 +229,92 @@ visible = false
 
 [node name="ScreenMiddlePoint" type="Marker2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="ResourcesGui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ResourcesHBox" type="HBoxContainer" parent="ResourcesGui"]
+layout_mode = 0
+offset_left = -275.0
+offset_top = -48.0
+offset_right = 183.0
+offset_bottom = 103.0
+scale = Vector2(0.7, 0.7)
+theme_override_constants/separation = -11
+
+[node name="MeatHBox" type="HBoxContainer" parent="ResourcesGui/ResourcesHBox"]
+layout_mode = 2
+theme_override_constants/separation = -31
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourcesGui/ResourcesHBox/MeatHBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="MeatLabel" type="Label" parent="ResourcesGui/ResourcesHBox/MeatHBox/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X10
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="ResourcesGui/ResourcesHBox/MeatHBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 23
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesGui/ResourcesHBox/MeatHBox/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("14_cctso")
+stretch_mode = 3
+
+[node name="GoldHBox" type="HBoxContainer" parent="ResourcesGui/ResourcesHBox"]
+layout_mode = 2
+theme_override_constants/separation = -31
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourcesGui/ResourcesHBox/GoldHBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="GoldLabel" type="Label" parent="ResourcesGui/ResourcesHBox/GoldHBox/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X10
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="ResourcesGui/ResourcesHBox/GoldHBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesGui/ResourcesHBox/GoldHBox/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("13_ueell")
+stretch_mode = 3
+
+[node name="WoodHBox" type="HBoxContainer" parent="ResourcesGui/ResourcesHBox"]
+layout_mode = 2
+theme_override_constants/separation = -31
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourcesGui/ResourcesHBox/WoodHBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="WoodLabel" type="Label" parent="ResourcesGui/ResourcesHBox/WoodHBox/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "X10
+"
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesGui/ResourcesHBox/WoodHBox"]
+layout_mode = 2
+texture = ExtResource("12_6mx6w")
+stretch_mode = 3
 
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]

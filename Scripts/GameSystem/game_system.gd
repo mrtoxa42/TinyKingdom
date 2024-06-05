@@ -3,6 +3,7 @@ extends Node2D
 
 var twice_click = false
 var zoom_touch = false
+
 func _process(delta):
 	$CanvasLayer/ArmyFormationKnight.global_position = get_global_mouse_position()
 	$CanvasLayer/ArmyFormationPawner.global_position = get_global_mouse_position() - Vector2(0,-75)
@@ -10,7 +11,6 @@ func _process(delta):
 		$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position()
 	else:
 		$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position() - Vector2(-8,-68)
-
 
 func _input(event):
 	if event is InputEventScreenTouch and event.double_tap:

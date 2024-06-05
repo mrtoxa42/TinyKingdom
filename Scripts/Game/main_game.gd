@@ -17,3 +17,6 @@ func _process(delta):
 
 func new_bake_navigation():
 	$NavigationRegion2D.bake_navigation_polygon(true)
+
+
+	

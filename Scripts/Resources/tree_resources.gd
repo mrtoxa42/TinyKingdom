@@ -24,7 +24,7 @@ func _on_selected_touched_pressed():
 
 
 func _on_selected_touched_released():
-	var timer = get_tree().create_timer(0,6)
+	var timer = get_tree().create_timer(0.6)
 	await timer.timeout
 	GameManager.current_mouse_area = null
 

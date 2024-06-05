@@ -66,4 +66,4 @@ func _update():
 func _on_area_entered(area):
 	if area.is_in_group("Soldier"):
 		area.get_owner().army_selected()
-	print(area)
+

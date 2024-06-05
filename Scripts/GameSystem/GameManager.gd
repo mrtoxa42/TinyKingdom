@@ -28,4 +28,13 @@ var dragged = false
 var selectedbox = false
 
 
+var currentwood = 0
+var currentgold = 0
+var currentmeat = 0
+
+
+#Kaydedilecek değerler (sınırsız mod)
+
+#Kaydedilecek oyun dataları
+
 
