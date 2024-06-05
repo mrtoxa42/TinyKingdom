@@ -69,7 +69,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.501961)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghg0w"]
 bg_color = Color(0.18966, 1, 0.508812, 1)
 
-[node name="GoldMineResources" type="Area2D"]
+[node name="GoldMineResources" type="Area2D" groups=["Resources"]]
 script = ExtResource("1_nrp1e")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

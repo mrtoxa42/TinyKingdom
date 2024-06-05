@@ -158,3 +158,16 @@ func _on_down_area_mouse_entered():
 
 func _on_down_area_mouse_exited():
 	GameManager.mouseboundary = ""
+
+
+
+
+
+func _on_house_blue_pressed():
+	GameManager.global_mouse_entered = true
+	GameManager.BuildSystem.ghost_house()
+	var timer = get_tree().create_timer(0.1)
+	await timer.timeout
+	GameManager.global_mouse_entered = false
+	print("biti")
+	

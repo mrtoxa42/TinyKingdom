@@ -5,6 +5,7 @@ extends Node
 var currentlevel
 var camera2d
 var mouseboundary = ""
+var BuildSystem
 #Oyun içi değişkenler
 var middlepoint
 var global_mouse_position

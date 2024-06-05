@@ -116,7 +116,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.701961)
 resource_name = "Sky"
 bg_color = Color(2.76752e-06, 0.469511, 0.39413, 1)
 
-[node name="TreeResources" type="Area2D"]
+[node name="TreeResources" type="Area2D" groups=["Resources"]]
 script = ExtResource("1_nx8ej")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

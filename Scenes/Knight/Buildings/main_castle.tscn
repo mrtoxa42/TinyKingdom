@@ -64,7 +64,7 @@ size = Vector2(126, 92)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgxyn"]
 size = Vector2(256, 183)
 
-[node name="MainCastle" type="Area2D" groups=["Castle"]]
+[node name="MainCastle" type="Area2D" groups=["Build", "Castle"]]
 y_sort_enabled = true
 script = ExtResource("1_w0eau")
 

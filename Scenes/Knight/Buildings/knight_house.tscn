@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://lau5ljq36lys"]
+[gd_scene load_steps=3 format=3 uid="uid://lau5ljq36lys"]
 
 [ext_resource type="Texture2D" uid="uid://bp02jfarufw4p" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Buildings/House/House_Blue.png" id="1_nk2q7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv5vm"]
+size = Vector2(115, 144)
 
 [node name="KnightHouse" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nk2q7")
+
+[node name="HouseArea" type="Area2D" parent="." groups=["Build"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseArea"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mv5vm")

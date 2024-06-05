@@ -200,7 +200,7 @@ autoplay = "Idle"
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="SheepArea" type="Area2D" parent="."]
+[node name="SheepArea" type="Area2D" parent="." groups=["Resources"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SheepArea"]
 shape = SubResource("RectangleShape2D_7s74t")

@@ -1,17 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=13 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
-[ext_resource type="PackedScene" uid="uid://vv0rm7xg52jf" path="res://Scenes/Knight/Troops/knight_pawn_blue.tscn" id="4_0tf2t"]
 [ext_resource type="PackedScene" uid="uid://c5t8hrnx3l5rp" path="res://Scenes/Resources/tree_resources.tscn" id="5_umxvo"]
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 [ext_resource type="PackedScene" uid="uid://miem7rj474q6" path="res://Scenes/Resources/gold_mine_resources.tscn" id="7_5ksjt"]
-[ext_resource type="PackedScene" uid="uid://clgwwtq7ppnhn" path="res://Scenes/Resources/sheep_resources.tscn" id="9_hytw2"]
-[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="9_sif4p"]
-[ext_resource type="PackedScene" uid="uid://dcqjtui6y2r45" path="res://Scenes/Goblin/goblin_torch_red.tscn" id="10_8secq"]
+[ext_resource type="PackedScene" uid="uid://vv0rm7xg52jf" path="res://Scenes/Knight/Troops/knight_pawn_blue.tscn" id="8_qvfh1"]
 [ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="11_cf25h"]
 [ext_resource type="Script" path="res://Scripts/Game/MultipleSelection.gd" id="11_ii7r4"]
-[ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="12_4guiu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
 texture = ExtResource("2_v162d")
@@ -587,36 +583,6 @@ script = ExtResource("6_rgkga")
 can_pan = true
 can_zoom = true
 
-[node name="KnightPawnBlue" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1943, 982)
-
-[node name="KnightPawnBlue3" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(935, 629)
-
-[node name="KnightPawnBlue4" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(564, 873)
-
-[node name="KnightPawnBlue2" parent="." instance=ExtResource("4_0tf2t")]
-position = Vector2(1918, 624)
-
-[node name="SheepResources" parent="." instance=ExtResource("9_hytw2")]
-position = Vector2(1798, 890)
-
-[node name="KnightWarriorBlue" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1328, 1181)
-
-[node name="KnightWarriorBlue6" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(838, 882)
-
-[node name="KnightWarriorBlue7" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1228, 695)
-
-[node name="KnightWarriorBlue3" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1490, 709)
-
-[node name="GoblinTorchRed" parent="." instance=ExtResource("10_8secq")]
-position = Vector2(1819, 1272)
-
 [node name="MultipleArea" type="Area2D" parent="." groups=["MultipleArea"]]
 script = ExtResource("11_ii7r4")
 
@@ -632,70 +598,10 @@ offset_bottom = -1.0
 scale = Vector2(2, 2)
 color = Color(0, 0.747641, 0.750856, 0.454902)
 
-[node name="KnightWarriorBlue2" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(987, 1376)
+[node name="KnightPawnBlue" parent="." instance=ExtResource("8_qvfh1")]
+position = Vector2(877, 1216)
 
-[node name="KnightWarriorBlue8" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1887, 1593)
-
-[node name="KnightWarriorBlue9" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1591, 1614)
-
-[node name="KnightWarriorBlue4" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(750, 1148)
-
-[node name="KnightWarriorBlue5" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1097, 1194)
-
-[node name="KnigthArcherBlue" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1499, 1020)
-
-[node name="KnigthArcherBlue2" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1661, 1045)
-
-[node name="KnigthArcherBlue3" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1461, 1369)
-
-[node name="KnigthArcherBlue6" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(2142, 1478)
-
-[node name="KnigthArcherBlue4" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1730, 596)
-
-[node name="KnigthArcherBlue5" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(2257, 974)
-
-[node name="KnightWarriorBlue10" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(883, 1416)
-
-[node name="KnightWarriorBlue11" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1783, 1633)
-
-[node name="KnightWarriorBlue12" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(1487, 1654)
-
-[node name="KnightWarriorBlue13" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(646, 1188)
-
-[node name="KnightWarriorBlue14" parent="." instance=ExtResource("9_sif4p")]
-position = Vector2(993, 1234)
-
-[node name="KnigthArcherBlue7" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1395, 1060)
-
-[node name="KnigthArcherBlue8" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1557, 1085)
-
-[node name="KnigthArcherBlue9" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1357, 1409)
-
-[node name="KnigthArcherBlue10" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(2038, 1518)
-
-[node name="KnigthArcherBlue11" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(1626, 636)
-
-[node name="KnigthArcherBlue12" parent="." instance=ExtResource("12_4guiu")]
-position = Vector2(2153, 1014)
+[node name="KnightPawnBlue2" parent="." instance=ExtResource("8_qvfh1")]
+position = Vector2(1040, 1385)
 
 [connection signal="area_entered" from="MultipleArea" to="MultipleArea" method="_on_area_entered"]
