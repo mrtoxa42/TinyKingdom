@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=15 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Game/Camera2D.gd" id="6_rgkga"]
 [ext_resource type="PackedScene" uid="uid://miem7rj474q6" path="res://Scenes/Resources/gold_mine_resources.tscn" id="7_5ksjt"]
 [ext_resource type="PackedScene" uid="uid://vv0rm7xg52jf" path="res://Scenes/Knight/Troops/knight_pawn_blue.tscn" id="8_qvfh1"]
+[ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="9_8dvpo"]
+[ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="10_x5jpg"]
 [ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="11_cf25h"]
 [ext_resource type="Script" path="res://Scripts/Game/MultipleSelection.gd" id="11_ii7r4"]
 
@@ -591,7 +593,7 @@ z_index = 1
 shape = SubResource("RectangleShape2D_6xc63")
 debug_color = Color(0.797362, 0.0312073, 2.88785e-07, 0.42)
 
-[node name="ColorRect" type="ColorRect" parent="MultipleArea/CollisionShape2D"]
+[node name="ColorRect" type="ColorRect" parent="MultipleArea"]
 offset_left = -49.0
 offset_top = -49.0
 offset_bottom = -1.0
@@ -604,4 +606,26 @@ position = Vector2(877, 1216)
 [node name="KnightPawnBlue2" parent="." instance=ExtResource("8_qvfh1")]
 position = Vector2(1040, 1385)
 
+[node name="KnightWarriorBlue" parent="." instance=ExtResource("9_8dvpo")]
+position = Vector2(1365, 1221)
+
+[node name="KnigthArcherBlue" parent="." instance=ExtResource("10_x5jpg")]
+position = Vector2(1595, 891)
+
+[node name="KnigthArcherBlue2" parent="." instance=ExtResource("10_x5jpg")]
+position = Vector2(705, 937)
+
+[node name="KnightWarriorBlue2" parent="." instance=ExtResource("9_8dvpo")]
+position = Vector2(1935, 1234)
+
+[node name="KnigthArcherBlue3" parent="." instance=ExtResource("10_x5jpg")]
+position = Vector2(1270, 1187)
+
+[node name="KnightWarriorBlue3" parent="." instance=ExtResource("9_8dvpo")]
+position = Vector2(1415, 767)
+
+[node name="KnightWarriorBlue4" parent="." instance=ExtResource("9_8dvpo")]
+position = Vector2(1861, 969)
+
 [connection signal="area_entered" from="MultipleArea" to="MultipleArea" method="_on_area_entered"]
+[connection signal="area_exited" from="MultipleArea" to="MultipleArea" method="_on_area_exited"]
