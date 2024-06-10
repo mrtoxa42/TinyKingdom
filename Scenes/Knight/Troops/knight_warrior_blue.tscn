@@ -361,6 +361,7 @@ shape = SubResource("CircleShape2D_xgg0k")
 [node name="KnightArea" type="Area2D" parent="." groups=["Knight", "Soldier"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnightArea"]
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_266c0")
 
 [node name="AttackTimer" type="Timer" parent="."]
