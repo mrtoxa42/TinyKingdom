@@ -20,7 +20,7 @@ func _input(event):
 			var House = house.instantiate()
 			get_tree().get_root().add_child(House)
 			House.global_position = get_global_mouse_position()
-			print("anğk")
+
 		
 		
 

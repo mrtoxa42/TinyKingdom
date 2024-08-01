@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnajk1j3ock7f"]
+[gd_scene load_steps=16 format=3 uid="uid://dnajk1j3ock7f"]
 
 [ext_resource type="Script" path="res://Scripts/Game/main_game.gd" id="1_rl40a"]
 [ext_resource type="Texture2D" uid="uid://lr2ts5b016l6" path="res://Assets/Tiny Swords (Update 010)/Terrain/Ground/Tilemap_Flat.png" id="2_v162d"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dtk4gqhw1f1eq" path="res://Scenes/Knight/Troops/knight_warrior_blue.tscn" id="9_8dvpo"]
 [ext_resource type="PackedScene" uid="uid://ck2tmtx5clibg" path="res://Scenes/Knight/Troops/knigth_archer_blue.tscn" id="10_x5jpg"]
 [ext_resource type="PackedScene" uid="uid://0qw8qvs2cnck" path="res://Scenes/Knight/Buildings/main_castle.tscn" id="11_cf25h"]
+[ext_resource type="PackedScene" uid="uid://b5vmb5g1tywpx" path="res://Scenes/Game/mini_map.tscn" id="11_en1vy"]
 [ext_resource type="Script" path="res://Scripts/Game/MultipleSelection.gd" id="11_ii7r4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11ja2"]
@@ -626,6 +627,10 @@ position = Vector2(1415, 767)
 
 [node name="KnightWarriorBlue4" parent="." instance=ExtResource("9_8dvpo")]
 position = Vector2(1861, 969)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MiniMap" parent="CanvasLayer" instance=ExtResource("11_en1vy")]
 
 [connection signal="area_entered" from="MultipleArea" to="MultipleArea" method="_on_area_entered"]
 [connection signal="area_exited" from="MultipleArea" to="MultipleArea" method="_on_area_exited"]

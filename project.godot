@@ -24,7 +24,7 @@ Gui="*res://Scenes/Game/gui.tscn"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
 [editor]

@@ -169,5 +169,5 @@ func _on_house_blue_pressed():
 	var timer = get_tree().create_timer(0.1)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
-	print("biti")
+
 	
