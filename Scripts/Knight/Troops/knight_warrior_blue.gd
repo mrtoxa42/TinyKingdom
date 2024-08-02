@@ -198,7 +198,7 @@ func _on_knight_area_mouse_exited():
 
 
 func _on_selected_touch_released():
-	var timer = get_tree().create_timer(0,6)
+	var timer = get_tree().create_timer(0.1)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
 	GameManager.current_mouse_area = null

@@ -35,21 +35,21 @@ func _input(event):
 	if event.is_released():
 		multipletouch = false
 	
-	if event.is_pressed():
+	if event.is_action_pressed("LeftClick"):
 		if GameManager.currentsoldiers.size() != 0 or GameManager.currentworkers != 0:
 			var timer = get_tree().create_timer(0.1)
 			await timer.timeout
 			if GameManager.dragged == false and GameManager.selectedbox == false:
 				if GameManager.current_mouse_area == null:
 					var TouchPoints = touch_point.instantiate()
-					TouchPoints.modulate = Color.WHITE
-					TouchPoints.global_position = GameManager.global_mouse_position
-					add_child(TouchPoints)
+					TouchPoints.global_position = event.global_position
+					get_tree().get_root().add_child(TouchPoints)
+				
 				elif GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
 					var TouchPoints = touch_point.instantiate()
-					TouchPoints.modulate = Color.BLUE
 					TouchPoints.global_position = GameManager.global_mouse_position
-					add_child(TouchPoints)
+					get_tree().get_root().add_child(TouchPoints)
+				
 				if GameManager.current_mouse_area == "Resources":
 					var TouchPoints = touch_point.instantiate()
 					TouchPoints.modulate = Color.GREEN
