@@ -12,3 +12,4 @@ func play_touch():
 func play_selected():
 	$AnimationPlayer.play("SelectAni")
 	show()
+	

@@ -42,7 +42,8 @@ func update_sprite_position(parent_node, game_object):
 	else:
 		# Yeni sprite oluştur ve ekle
 		var new_sprite = Sprite2D.new()
-		new_sprite.texture = preload("res://icon.svg")
+		new_sprite.texture = preload("res://Assets/Nothing.png")
+		new_sprite.modulate = Color.BLUE
 		new_sprite.name = sprite_name
 		new_sprite.position = game_object.position / 4
 		parent_node.add_child(new_sprite)

@@ -109,7 +109,7 @@ func _on_knight_area_area_entered(area):
 		enemyarea = area
 		Attack()
 	if area.is_in_group("MultipleArea"):
-		print("Mutlip")
+		pass
 		
 
 func _on_attack_timer_timeout():
