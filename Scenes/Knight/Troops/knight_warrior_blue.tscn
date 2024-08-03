@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Knight/Troops/knight_warrior_blue.gd" id="1_x50d5"]
 [ext_resource type="Texture2D" uid="uid://cdturbcgk57ww" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="2_qtv2w"]
 [ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="2_v2f2g"]
-[ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png" id="5_6cbsn"]
+[ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Scripts/GUI/ArmySelected.png" id="5_3lj50"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a13i7"]
 radius = 22.0
@@ -338,7 +338,7 @@ _data = {
 "take_damage": SubResource("Animation_kld1o")
 }
 
-[node name="KnightWarriorBlue" type="CharacterBody2D" groups=["Knight"]]
+[node name="KnightWarriorBlue" type="CharacterBody2D" groups=["Knight", "Soldiers"]]
 y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_x50d5")
@@ -406,7 +406,7 @@ modulate = Color(0, 0, 1, 1)
 z_index = 1
 position = Vector2(1, -68)
 scale = Vector2(2, 2)
-texture = ExtResource("5_6cbsn")
+texture = ExtResource("5_3lj50")
 
 [connection signal="pressed" from="SelectedTouch" to="." method="_on_selected_touch_pressed"]
 [connection signal="released" from="SelectedTouch" to="." method="_on_selected_touch_released"]

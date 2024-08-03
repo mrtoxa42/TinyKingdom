@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlyvvg6m5u4d8"
-path="res://.godot/imported/MultipleCircle.png-61dd6902143787af39fe17022386988b.ctex"
+uid="uid://bkl2hxeyfx02x"
+path="res://.godot/imported/KnightPawnBlueSingle.png-7dfcac5c353529ff0e169e77d049b9fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny Swords (Update 010)/GUI/MultipleCircle.png"
-dest_files=["res://.godot/imported/MultipleCircle.png-61dd6902143787af39fe17022386988b.ctex"]
+source_file="res://Scripts/GUI/KnightPawnBlueSingle.png"
+dest_files=["res://.godot/imported/KnightPawnBlueSingle.png-7dfcac5c353529ff0e169e77d049b9fb.ctex"]
 
 [params]
 

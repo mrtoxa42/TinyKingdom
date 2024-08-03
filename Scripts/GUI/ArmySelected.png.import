@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkd2hc6588f4e"
-path="res://.godot/imported/ArmySelected.png-9b3b908f7259d08c39eeb65e53197e19.ctex"
+path="res://.godot/imported/ArmySelected.png-27d747657c0daf2eab298025688e3963.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png"
-dest_files=["res://.godot/imported/ArmySelected.png-9b3b908f7259d08c39eeb65e53197e19.ctex"]
+source_file="res://Scripts/GUI/ArmySelected.png"
+dest_files=["res://.godot/imported/ArmySelected.png-27d747657c0daf2eab298025688e3963.ctex"]
 
 [params]
 

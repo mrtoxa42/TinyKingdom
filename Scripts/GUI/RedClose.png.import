@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkl2hxeyfx02x"
-path="res://.godot/imported/KnightPawnBlueSingle.png-f1ca9224c141c7eb106418d6aed82bcb.ctex"
+uid="uid://cj41sbhdb78o3"
+path="res://.godot/imported/RedClose.png-550f87fe9778177ed44b5558fb5f2a18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny Swords (Update 010)/GUI/KnightPawnBlueSingle.png"
-dest_files=["res://.godot/imported/KnightPawnBlueSingle.png-f1ca9224c141c7eb106418d6aed82bcb.ctex"]
+source_file="res://Scripts/GUI/RedClose.png"
+dest_files=["res://.godot/imported/RedClose.png-550f87fe9778177ed44b5558fb5f2a18.ctex"]
 
 [params]
 

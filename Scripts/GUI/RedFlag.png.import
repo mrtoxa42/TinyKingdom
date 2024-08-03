@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj41sbhdb78o3"
-path="res://.godot/imported/RedClose.png-9a6b46aaf3997c45c424232d7bc492f1.ctex"
+uid="uid://dmvb731r01cf"
+path="res://.godot/imported/RedFlag.png-dd24c0bb29db4a9cad42119722d8a4b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny Swords (Update 010)/GUI/RedClose.png"
-dest_files=["res://.godot/imported/RedClose.png-9a6b46aaf3997c45c424232d7bc492f1.ctex"]
+source_file="res://Scripts/GUI/RedFlag.png"
+dest_files=["res://.godot/imported/RedFlag.png-dd24c0bb29db4a9cad42119722d8a4b1.ctex"]
 
 [params]
 

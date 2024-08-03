@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvhy4w081hdd5"
-path="res://.godot/imported/KnightArcherBlueSingle.png-3427e966667806537f556c3dc6f8d8c5.ctex"
+uid="uid://cr8jqmlw271ub"
+path="res://.godot/imported/KnightWarrirorBlueSingle.png-c0d1d1e3eb01a2964a4fd753b40cd268.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny Swords (Update 010)/GUI/KnightArcherBlueSingle.png"
-dest_files=["res://.godot/imported/KnightArcherBlueSingle.png-3427e966667806537f556c3dc6f8d8c5.ctex"]
+source_file="res://Scripts/GUI/KnightWarrirorBlueSingle.png"
+dest_files=["res://.godot/imported/KnightWarrirorBlueSingle.png-c0d1d1e3eb01a2964a4fd753b40cd268.ctex"]
 
 [params]
 

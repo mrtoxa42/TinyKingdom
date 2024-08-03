@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bok8p2ooe82k5" path="res://icon.svg" id="1_prcmg"]
 [ext_resource type="Texture2D" uid="uid://d1w57dt7vdrtw" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Archer/Blue/Archer_Blue.png" id="2_fj21m"]
 [ext_resource type="Texture2D" uid="uid://cdturbcgk57ww" path="res://Assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Dead/Dead.png" id="3_0q3vk"]
-[ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Assets/Tiny Swords (Update 010)/GUI/ArmySelected.png" id="4_2w0ky"]
+[ext_resource type="Texture2D" uid="uid://dkd2hc6588f4e" path="res://Scripts/GUI/ArmySelected.png" id="5_3uhk5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0nlwt"]
 
@@ -429,7 +429,7 @@ _data = {
 "take_damage": SubResource("Animation_6w21k")
 }
 
-[node name="KnigthArcherBlue" type="CharacterBody2D" groups=["Archer"]]
+[node name="KnigthArcherBlue" type="CharacterBody2D" groups=["Archer", "Soldiers"]]
 collision_layer = 0
 script = ExtResource("1_orub8")
 
@@ -496,7 +496,7 @@ visible = false
 self_modulate = Color(0, 0, 1, 1)
 position = Vector2(0, -56)
 scale = Vector2(2, 2)
-texture = ExtResource("4_2w0ky")
+texture = ExtResource("5_3uhk5")
 
 [node name="ArrowMarker" type="Marker2D" parent="."]
 position = Vector2(3, 27)

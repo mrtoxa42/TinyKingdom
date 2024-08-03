@@ -42,9 +42,8 @@ func _input(event):
 			if GameManager.dragged == false and GameManager.selectedbox == false:
 				if GameManager.current_mouse_area == null:
 					var TouchPoints = touch_point.instantiate()
-					TouchPoints.global_position = event.global_position
 					get_tree().get_root().add_child(TouchPoints)
-				
+					TouchPoints.global_position = GameManager.global_mouse_position
 				elif GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
 					var TouchPoints = touch_point.instantiate()
 					TouchPoints.global_position = GameManager.global_mouse_position
@@ -52,7 +51,6 @@ func _input(event):
 				
 				if GameManager.current_mouse_area == "Resources":
 					var TouchPoints = touch_point.instantiate()
-					TouchPoints.modulate = Color.GREEN
 					TouchPoints.global_position = GameManager.global_mouse_position
 					add_child(TouchPoints)
 func select_warrior():
