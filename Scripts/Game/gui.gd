@@ -44,15 +44,17 @@ func _input(event):
 					var TouchPoints = touch_point.instantiate()
 					get_tree().get_root().add_child(TouchPoints)
 					TouchPoints.global_position = GameManager.global_mouse_position
-				elif GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
+				if GameManager.current_mouse_area == "Knight" or GameManager.current_mouse_area == "Archer" or GameManager.current_mouse_area == "Pawn":
 					var TouchPoints = touch_point.instantiate()
 					TouchPoints.global_position = GameManager.global_mouse_position
 					get_tree().get_root().add_child(TouchPoints)
+					
 				
 				if GameManager.current_mouse_area == "Resources":
 					var TouchPoints = touch_point.instantiate()
 					TouchPoints.global_position = GameManager.global_mouse_position
 					add_child(TouchPoints)
+			
 func select_warrior():
 	if GameManager.currentwarriors >=1:
 		$ArmySelection/ArmySelectionKnight.show()
@@ -83,6 +85,7 @@ func _on_multiple_selection_army_timer_timeout():
 
 func _on_knight_removed_button_pressed():
 	GameManager.global_mouse_entered = true
+	GameManager.current_mouse_area = "Removed"
 	var copycurrentknights = GameManager.currentknights.duplicate()
 	for i in copycurrentknights:
 		i.army_removed()
@@ -93,6 +96,7 @@ func _on_knight_removed_button_pressed():
 
 func _on_archer_removed_button_pressed():
 	GameManager.global_mouse_entered = true
+	GameManager.current_mouse_area = "Removed"
 	var copycurrentarchers = GameManager.currentarchers.duplicate()
 	for i in copycurrentarchers:
 		i.army_removed()
@@ -100,16 +104,16 @@ func _on_archer_removed_button_pressed():
 
 
 func _on_knight_removed_button_released():
-	var timer = get_tree().create_timer(1)
+	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
-
+	GameManager.current_mouse_area = null
 
 func _on_archer_removed_button_released():
-	var timer = get_tree().create_timer(1)
+	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
-
+	GameManager.current_mouse_area = null
 
 func _on_pawn_removed_button_pressed():
 	GameManager.global_mouse_entered = true
@@ -119,7 +123,7 @@ func _on_pawn_removed_button_pressed():
 
 
 func _on_pawn_removed_button_released():
-	var timer = get_tree().create_timer(1)
+	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	GameManager.global_mouse_entered = false
 

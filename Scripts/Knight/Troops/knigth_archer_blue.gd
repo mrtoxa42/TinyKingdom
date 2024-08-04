@@ -62,6 +62,7 @@ func _physics_process(delta):
 				else:
 						$VisualAnimation.play("RunLeft")
 				move_and_slide()
+				$VisualAnimation.play("Idle")
 
 func _input(event):
 	if event.is_released():
@@ -163,6 +164,7 @@ func Attack():
 			Attack()
 		else:
 			attack = false
+			$VisualAnimation.play("Idle")
 			
 func create_arrow():
 	if enemyarea != null:
@@ -210,3 +212,4 @@ func _on_range_area_area_exited(area):
 		if area.get_owner() == navenemy:
 			mousepos = global_position
 			navenemy = null
+			#$VisualAnimation.play("Idle")

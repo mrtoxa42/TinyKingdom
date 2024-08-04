@@ -369,7 +369,7 @@ _data = {
 "takedamage": SubResource("Animation_3m1ot")
 }
 
-[node name="GoblinTorchRed" type="CharacterBody2D"]
+[node name="GoblinTorchRed" type="CharacterBody2D" groups=["Enemy"]]
 y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_qbmch")

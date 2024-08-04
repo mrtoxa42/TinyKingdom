@@ -28,12 +28,17 @@ window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
+mouse_cursor/custom_image="res://Assets/Tiny Swords (Update 010)/UI/Pointers/01.png"
 
 [editor]
 
 movie_writer/mix_rate=63000
 movie_writer/mjpeg_quality=1.0
 movie_writer/movie_file="C:/Users/Emircan/Desktop/Godot4Projeleri/TinyKingdom/Movie/Movi3.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
 
 [gui]
 
@@ -68,5 +73,5 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

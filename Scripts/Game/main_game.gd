@@ -11,7 +11,7 @@ func _ready():
 	 
 func create_bake_polygon():
 	$NavigationRegion2D.bake_navigation_polygon(true)
-	
+		
 
 func _process(delta):
 	#minimap_icon.position = $KnigthArcherBlue.position / 10
