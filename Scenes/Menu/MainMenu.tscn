@@ -1,0 +1,263 @@
+[gd_scene load_steps=39 format=3 uid="uid://bbvqqa38uhih6"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/MainMenu.gd" id="1_7pmyp"]
+[ext_resource type="Texture2D" uid="uid://dq5el5ns54vie" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni1.png" id="2_o5gj3"]
+[ext_resource type="Texture2D" uid="uid://bqssvwdgydgxc" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni2.png" id="3_0b8kh"]
+[ext_resource type="Texture2D" uid="uid://wqr3a8enlut" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni3.png" id="4_duv8a"]
+[ext_resource type="Texture2D" uid="uid://dtyqnb2ve3hje" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni4.png" id="5_hoesd"]
+[ext_resource type="Texture2D" uid="uid://dng2gur8kmiud" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni5.png" id="6_nj1xi"]
+[ext_resource type="Texture2D" uid="uid://b1i4aji5q7dng" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni6.png" id="7_jwcss"]
+[ext_resource type="Texture2D" uid="uid://n464ugjavaru" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni7.png" id="8_xoq5o"]
+[ext_resource type="Texture2D" uid="uid://gdrhvshusi1f" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni8.png" id="9_fywfa"]
+[ext_resource type="Texture2D" uid="uid://crs3d8n2idc6a" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni9.png" id="10_2cc35"]
+[ext_resource type="Texture2D" uid="uid://67p8ehvi26lw" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni10.png" id="11_dxbj6"]
+[ext_resource type="Texture2D" uid="uid://wgrgesxd48fv" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni11.png" id="12_iqv6d"]
+[ext_resource type="Texture2D" uid="uid://0v7136joyjjf" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni12.png" id="13_xlnb8"]
+[ext_resource type="Texture2D" uid="uid://cas0vcsjpuw48" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni13.png" id="14_dyd8e"]
+[ext_resource type="Texture2D" uid="uid://ybb2artv8ivx" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni14.png" id="15_2jput"]
+[ext_resource type="Texture2D" uid="uid://c5yh2f0lvgdfi" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni15.png" id="16_664w8"]
+[ext_resource type="Texture2D" uid="uid://dcvs61nrmverm" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni16.png" id="17_15t25"]
+[ext_resource type="Texture2D" uid="uid://cwcy6b3qpr3i2" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni17.png" id="18_clyy5"]
+[ext_resource type="Texture2D" uid="uid://xn786xnk3v4x" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni18.png" id="19_n8lnn"]
+[ext_resource type="Texture2D" uid="uid://dlis787vf5c0y" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni19.png" id="20_wf3vi"]
+[ext_resource type="Texture2D" uid="uid://ctvac5xesxqy4" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni20.png" id="21_s5fwf"]
+[ext_resource type="Texture2D" uid="uid://fh4roogeeiby" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni21.png" id="22_2xl2h"]
+[ext_resource type="Texture2D" uid="uid://b6fsyiwghxjd0" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni22.png" id="23_ov0j8"]
+[ext_resource type="Texture2D" uid="uid://cp6006yubets7" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni23.png" id="24_uhv32"]
+[ext_resource type="Texture2D" uid="uid://c7yb8im13owr" path="res://Assets/Tiny Swords (Update 010)/UI/Menu/BgAni24.png" id="25_r3v01"]
+[ext_resource type="Texture2D" uid="uid://dv8jxpvyttxl0" path="res://Assets/Nothing.png" id="27_4v6pu"]
+[ext_resource type="Texture2D" uid="uid://ctneitmvdo3ii" path="res://Assets/Tiny Swords (Update 010)/UI/Buttons/Button_Hover_3Slides.png" id="27_7lfpn"]
+[ext_resource type="FontFile" uid="uid://cubt0lapnh3k6" path="res://Assets/Fonts/StardewValley.ttf" id="28_k4sfp"]
+[ext_resource type="FontFile" uid="uid://y67v3amn5jhw" path="res://Assets/Fonts/RingbearerMedium-51mgZ.ttf" id="29_4vqxt"]
+[ext_resource type="Texture2D" uid="uid://bgb8cd6koxjif" path="res://Logo/42png.png" id="30_vwlvy"]
+
+[sub_resource type="Animation" id="Animation_u52p3"]
+resource_name = "EntryAni"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(208, 336), Vector2(1056, 336)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qi5ux"]
+_data = {
+"EntryAni": SubResource("Animation_u52p3")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yw1vn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o5gj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0b8kh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_duv8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hoesd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nj1xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jwcss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xoq5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fywfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2cc35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dxbj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iqv6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xlnb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dyd8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2jput")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_664w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_15t25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_clyy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_n8lnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wf3vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_s5fwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_2xl2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ov0j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_uhv32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_r3v01")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0rdv"]
+size = Vector2(163.5, 44.5)
+
+[sub_resource type="Theme" id="Theme_4jxlx"]
+
+[sub_resource type="FontVariation" id="FontVariation_ct473"]
+base_font = ExtResource("28_k4sfp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml772"]
+size = Vector2(157, 43.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p14df"]
+size = Vector2(155, 40)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_7pmyp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qi5ux")
+}
+autoplay = "EntryAni"
+
+[node name="BG" type="AnimatedSprite2D" parent="."]
+position = Vector2(642, 359)
+sprite_frames = SubResource("SpriteFrames_yw1vn")
+autoplay = "default"
+frame_progress = 0.0669337
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+modulate = Color(0.192157, 0.192157, 0.192157, 0.243137)
+position = Vector2(639.5, 356.5)
+scale = Vector2(40.9688, 23.2813)
+texture = ExtResource("27_4v6pu")
+
+[node name="CampaingButton" type="TouchScreenButton" parent="UI"]
+position = Vector2(444, 187)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("27_7lfpn")
+
+[node name="CampainArea" type="Area2D" parent="UI/CampaingButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/CampaingButton/CampainArea"]
+position = Vector2(96.75, 27.75)
+shape = SubResource("RectangleShape2D_s0rdv")
+
+[node name="CampaingButtonLabel" type="Label" parent="UI/CampaingButton"]
+offset_left = 25.0
+offset_top = 7.0
+offset_right = 355.0
+offset_bottom = 92.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_4jxlx")
+theme_override_fonts/font = SubResource("FontVariation_ct473")
+theme_override_font_sizes/font_size = 76
+text = "CAMPAING"
+
+[node name="InfiniteModeButton" type="TouchScreenButton" parent="UI"]
+position = Vector2(444, 362)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("27_7lfpn")
+
+[node name="InfiniteModeLabel" type="Label" parent="UI/InfiniteModeButton"]
+offset_left = 22.5
+offset_top = 11.5
+offset_right = 308.5
+offset_bottom = 88.5
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_4jxlx")
+theme_override_fonts/font = SubResource("FontVariation_ct473")
+theme_override_font_sizes/font_size = 48
+text = "INFINITE MODE"
+
+[node name="InfiniteModeArea" type="Area2D" parent="UI/InfiniteModeButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/InfiniteModeButton/InfiniteModeArea"]
+position = Vector2(96, 26.75)
+shape = SubResource("RectangleShape2D_ml772")
+
+[node name="HowToPlayButton" type="TouchScreenButton" parent="UI"]
+position = Vector2(444, 554)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("27_7lfpn")
+
+[node name="HowToPlayLabel" type="Label" parent="UI/HowToPlayButton"]
+offset_left = 31.0
+offset_top = 11.5
+offset_right = 317.0
+offset_bottom = 88.5
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_4jxlx")
+theme_override_fonts/font = SubResource("FontVariation_ct473")
+theme_override_font_sizes/font_size = 52
+text = "HOW TO PLAY"
+
+[node name="HowToPlayArea" type="Area2D" parent="UI/HowToPlayButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/HowToPlayButton/HowToPlayArea"]
+position = Vector2(97, 27)
+shape = SubResource("RectangleShape2D_p14df")
+
+[node name="TinkyKingdom" type="Label" parent="UI"]
+modulate = Color(0.93408, 0.93408, 0.93408, 1)
+offset_left = 223.0
+offset_top = 34.0
+offset_right = 1024.0
+offset_bottom = 170.0
+theme_override_fonts/font = ExtResource("29_4vqxt")
+theme_override_font_sizes/font_size = 96
+text = "TINKY KINGDOM"
+
+[node name="42Png" type="Sprite2D" parent="UI"]
+position = Vector2(202, 576)
+rotation = -0.904081
+texture = ExtResource("30_vwlvy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(208, 336)
+zoom = Vector2(3, 3)
+
+[connection signal="mouse_entered" from="UI/CampaingButton/CampainArea" to="." method="_on_campain_area_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CampaingButton/CampainArea" to="." method="_on_campain_area_mouse_exited"]
+[connection signal="mouse_entered" from="UI/InfiniteModeButton/InfiniteModeArea" to="." method="_on_infinite_mode_area_mouse_entered"]
+[connection signal="mouse_exited" from="UI/InfiniteModeButton/InfiniteModeArea" to="." method="_on_infinite_mode_area_mouse_exited"]
+[connection signal="mouse_entered" from="UI/HowToPlayButton/HowToPlayArea" to="." method="_on_how_to_play_area_mouse_entered"]
+[connection signal="mouse_exited" from="UI/HowToPlayButton/HowToPlayArea" to="." method="_on_how_to_play_area_mouse_exited"]

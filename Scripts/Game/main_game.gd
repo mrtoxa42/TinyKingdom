@@ -5,6 +5,7 @@ extends Node2D
 #@onready var minimap_icon = $CanvasLayer/MiniMap/SubViewportContainer/Icon
 
 func _ready():
+	GameManager.game_in = true
 	GameManager.currentfinish = $Finish
 	GameManager.currentlevel = self
 	$NavigationRegion2D.bake_navigation_polygon(true)

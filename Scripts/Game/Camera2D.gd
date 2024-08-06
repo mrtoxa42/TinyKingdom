@@ -70,9 +70,23 @@ func handle_drag(event: InputEventScreenDrag):
 		touch_points[event.index] = event.position
 		
 		if touch_points.size() == 1:
-			if can_pan:
+			if can_pan and offset.x >= -580 and offset.y >= -630 and offset.x <= 1363 and offset.y <=1215:
 				offset -= event.relative.rotated(rotation) * pan_speed
 				GameManager.dragged = true
+				
+			else:
+				if offset.x < -580:
+					var tween = get_tree().create_tween()
+					tween.tween_property($"../CanvasLayer/BoundaryRight","modulate:a",1,1)
+					tween.connect("finished",tween_finished)
+					
+					offset.x = -580
+				elif offset.y < -630:
+					offset.y = -630
+				elif offset.x > 1363:
+					offset.x = 1363
+				elif offset.y > 1215:
+					offset.y = 1215
 
 		elif touch_points.size() == 2:
 			var touch_point_positions = touch_points.values()
@@ -110,3 +124,7 @@ func limit_zoom(new_zoom):
 func get_angle(p1, p2):
 	var delta = p2 - p1
 	return fmod((atan2(delta.y, delta.x) + PI), (2 * PI))
+
+
+func tween_finished():
+	pass

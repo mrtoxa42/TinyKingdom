@@ -423,6 +423,7 @@ texture = ExtResource("1_a5dpu")
 flip_h = true
 hframes = 7
 vframes = 5
+frame = 21
 
 [node name="SelectedButton" type="TouchScreenButton" parent="."]
 modulate = Color(1, 1, 1, 0.00392157)

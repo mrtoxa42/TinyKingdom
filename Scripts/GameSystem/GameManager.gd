@@ -1,6 +1,7 @@
 extends Node
 
-
+# Genel oyun değikenleşleri
+var game_in = false
 #Tutulan Sahne Değişkenleri
 var currentlevel
 var camera2d

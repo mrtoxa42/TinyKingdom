@@ -147,10 +147,9 @@ z_index = 2
 script = ExtResource("1_d4axj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.309534, 0.642028, 0.427778, 1)
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_j7g6e")
+texture = ExtResource("1_kk5l2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

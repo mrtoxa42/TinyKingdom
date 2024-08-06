@@ -42,7 +42,7 @@ enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
 
 [gui]
 
-theme/custom_font="res://Fonts/PoetsenOne-Regular.ttf"
+theme/custom_font="res://Assets/Fonts/Anton-Regular.ttf"
 
 [input]
 

@@ -19,6 +19,10 @@ func _ready():
 
 
 func _process(delta):
+	if GameManager.game_in == false:
+		hide()
+	else:
+		show()
 	GameManager.middlepoint = $ScreenMiddlePoint.global_position
 	$ArmySelection/ArmySelectionKnight/KnightSelectionLabel.text = "X" + str(GameManager.currentwarriors)
 	$ArmySelection/ArmySelectionArcher/ArchersSelectionLabel.text = "X" + str(GameManager.currentarrows)
