@@ -41,7 +41,7 @@ func update_sprite_position(parent_node, game_object, color: Color):
 	var sprite_name = str(game_object.name)  # `name`'i stringe çevirme
 	if parent_node.has_node(sprite_name):
 		var sprite = parent_node.get_node(sprite_name)
-		sprite.position = game_object.position / 1.5  # Ölçek faktörünü ayarlayın
+		sprite.position = game_object.position / 1.7 # Ölçek faktörünü ayarlayın
 	else:
 		# Yeni sprite oluştur ve ekle
 		var new_sprite = Sprite2D.new()

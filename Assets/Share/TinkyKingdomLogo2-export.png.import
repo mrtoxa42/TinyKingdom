@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl821sehajnc"
-path="res://.godot/imported/TinkyKingdomLogo2-export.png-4d02ce738619370096c188352e3bf79f.ctex"
+path="res://.godot/imported/TinkyKingdomLogo2-export.png-a449de2690bf480a6369a233db0b2712.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiny Swords (Update 010)/Share/TinkyKingdomLogo2-export.png"
-dest_files=["res://.godot/imported/TinkyKingdomLogo2-export.png-4d02ce738619370096c188352e3bf79f.ctex"]
+source_file="res://Assets/Share/TinkyKingdomLogo2-export.png"
+dest_files=["res://.godot/imported/TinkyKingdomLogo2-export.png-a449de2690bf480a6369a233db0b2712.ctex"]
 
 [params]
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnb7xquc7xgor"]
+
+[ext_resource type="Script" path="res://Scripts/Extras/rogue_duck.gd" id="1_1x8jb"]
+[ext_resource type="Texture2D" uid="uid://bbmrdsv8ebe0y" path="res://Assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red.png" id="2_3s6et"]
+
+[node name="RogueDuck" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_1x8jb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1398.0
+offset_bottom = 790.0
+color = Color(0.279114, 0.412561, 0.463912, 1)
+
+[node name="BackButton" type="TouchScreenButton" parent="."]
+texture_normal = ExtResource("2_3s6et")
+
+[node name="Label" type="Label" parent="BackButton"]
+offset_left = 25.0
+offset_top = -13.0
+offset_right = 65.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 79.0
+offset_right = 1354.0
+offset_bottom = 384.0
+text = "Selamlar RogueDuck Ekibi:
+
+Size oyun hakkında biraz bilgi vermek istedim. Projeye en başta strateji oyunlarının karmaşıklığından dolayı bu sistemleride 
+öğrenmek üzere başladım. Ardından ortaya çıkan iş hoşuma gitmeye başlayınca mobil için yayınlayacağım bir oyuna doğru evrilmeye başladı.
+
+Daha sonra yapabileceğim eklentiler ve geliştirmeler ve tabiiki de stratej oyunu olduğu için pc'ye daha uygun olabileceğini düşündüm.
+Eğer sizde bir şans bulabilecek bir oyun olduğunu düşünüyorsanız bunları daha detaylı tabiiki konuşuruz.
+
+
+Campaing:  Hikaye modu olarak yıllar önceden kaybolmuş ve gözükmeyen goblinlerin tekrar geri gelip köylüleri rahatsız etmesi ile alakalı bir hikaye düşündüm tabii ki detaylı hali var.  
+Oynanış olarak levellerde  en başta belirli kaynak ve işçi ile başlayıp o leveli o kaynak ile geçmeye çalışma mantığı mevcut. 
+Level içerisinde küçük yan görevler ile \"3 yıldız ile bitirme\" gibi küçük içeriklerde eklemeyi düşünüyorum.
+
+Infinite mod: Belirli başlı marketteki özellikler ile alınan set(ordu-işçi) ile başlanır. Sürekli olarak kaynaklar yenilenir. Oyuncu sıra sıra gelen wavelere karşı hayatta kalmaya çalışır. Bu tarz bir 
+oynanış düşündüm sonsuz mod içinde.
+
+Multiplayer: Daha önce multiplayer bir projeye girimiştim ve oradaki farklı sorunlardan dolayı bu oyunu sadece arkadaşların ile aynı internetten(LAN) sistemi ile yayınlamayı düşünüyordum.
+Çünkü yeterince kaynak ve zaman ayıramayabilirim. Ancak sizinle bir iş birliği  olur ise Age Of tarzı hızlı oyun bularak dünyanın her yerindeki insanlar ile pvp veya pve oynanış tarzını yapabilirim.
+"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

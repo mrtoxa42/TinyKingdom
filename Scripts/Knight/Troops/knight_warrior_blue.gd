@@ -7,7 +7,7 @@ var enemydistance
 var mousedistance = Vector2.ZERO
 var mousepos = Vector2.ZERO
 var enemyarea
-var speed = 200
+var speed = 2000
 var accel = 7
 var onnav = false
 var direction = Vector3.ZERO

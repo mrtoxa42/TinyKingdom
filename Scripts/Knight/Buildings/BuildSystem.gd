@@ -31,6 +31,7 @@ func ghost_house():
 
 
 func _on_ghost_area_area_entered(area):
+	print(area)
 	if area.is_in_group("Resources") or area.is_in_group("Build"):
 		otherarea = true
 		$GhostSprite.modulate = Color.RED

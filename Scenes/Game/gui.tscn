@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ftwrivxoycjp"]
+[gd_scene load_steps=24 format=3 uid="uid://ftwrivxoycjp"]
 
 [ext_resource type="Script" path="res://Scripts/Game/gui.gd" id="1_esla1"]
 [ext_resource type="Texture2D" uid="uid://c7xklqhia32f" path="res://Assets/Tiny Swords (Update 010)/UI/Banners/Carved_3Slides.png" id="2_fwv03"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cd0wly2ye24vi" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/W_Idle.png" id="12_6mx6w"]
 [ext_resource type="Texture2D" uid="uid://bq2aib0014nv2" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/G_Idle.png" id="13_ueell"]
 [ext_resource type="Texture2D" uid="uid://btjpw6wp86a7i" path="res://Assets/Tiny Swords (Update 010)/Resources/Resources/M_Idle.png" id="14_cctso"]
+[ext_resource type="Script" path="res://Scripts/Knight/Buildings/BuildSystem.gd" id="15_o40s2"]
 
 [sub_resource type="FontVariation" id="FontVariation_p2byf"]
 base_font = ExtResource("8_awd34")
@@ -78,12 +79,14 @@ size = Vector2(91, 145)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hlhe"]
 size = Vector2(99, 124)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qqrx"]
+size = Vector2(106, 146)
+
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_esla1")
 
 [node name="TowerInfo" type="Node2D" parent="."]
-visible = false
-position = Vector2(80, 0)
+position = Vector2(0, -1)
 
 [node name="BG" type="Sprite2D" parent="TowerInfo"]
 position = Vector2(574, 564)
@@ -109,7 +112,7 @@ texture_normal = ExtResource("5_5437b")
 
 [node name="ArmySelectionArcher" type="Node2D" parent="ArmySelection"]
 visible = false
-position = Vector2(1162, 366)
+position = Vector2(1199, 393)
 metadata/_edit_group_ = true
 
 [node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionArcher"]
@@ -148,7 +151,7 @@ shape = SubResource("RectangleShape2D_517tx")
 
 [node name="ArmySelectionKnight" type="Node2D" parent="ArmySelection"]
 visible = false
-position = Vector2(1162, 193)
+position = Vector2(1199, 220)
 metadata/_edit_group_ = true
 
 [node name="KnightArmySelection" type="Sprite2D" parent="ArmySelection/ArmySelectionKnight"]
@@ -316,6 +319,16 @@ layout_mode = 2
 texture = ExtResource("12_6mx6w")
 stretch_mode = 3
 
+[node name="BuildSystem" type="Node2D" parent="."]
+script = ExtResource("15_o40s2")
+
+[node name="GhostSprite" type="Sprite2D" parent="BuildSystem"]
+
+[node name="GhostArea" type="Area2D" parent="BuildSystem"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildSystem/GhostArea"]
+shape = SubResource("RectangleShape2D_4qqrx")
+
 [connection signal="pressed" from="TowerInfo/HouseBlue" to="." method="_on_house_blue_pressed"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionArcher/ArcherRemovedButton" to="." method="_on_archer_removed_button_released"]
@@ -323,3 +336,5 @@ stretch_mode = 3
 [connection signal="released" from="ArmySelection/ArmySelectionKnight/KnightRemovedButton" to="." method="_on_knight_removed_button_released"]
 [connection signal="pressed" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_pressed"]
 [connection signal="released" from="ArmySelection/ArmySelectionPawner/PawnRemovedButton" to="." method="_on_pawn_removed_button_released"]
+[connection signal="area_entered" from="BuildSystem/GhostArea" to="BuildSystem" method="_on_ghost_area_area_entered"]
+[connection signal="area_exited" from="BuildSystem/GhostArea" to="BuildSystem" method="_on_ghost_area_area_exited"]

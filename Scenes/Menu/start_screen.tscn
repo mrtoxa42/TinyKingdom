@@ -1,0 +1,156 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddcynl1x0itv5"]
+
+[ext_resource type="FontFile" uid="uid://bkg8gx8js1ybq" path="res://Assets/Fonts/Anton-Regular.ttf" id="1_glepu"]
+[ext_resource type="Script" path="res://Scripts/Menu/start_screen.gd" id="1_xsmuo"]
+[ext_resource type="Texture2D" uid="uid://dv8jxpvyttxl0" path="res://Assets/Nothing.png" id="2_p7m8h"]
+[ext_resource type="AudioStream" uid="uid://qacdx80qjn4j" path="res://Sound/spray-paint-86162.mp3" id="3_q6o01"]
+
+[sub_resource type="Animation" id="Animation_0h7di"]
+resource_name = "Entry"
+length = 5.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nothing:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.7, 2.7, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1374, -131), Vector2(955, 360), Vector2(955, 360), Vector2(556, -131)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nothing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.7, 2.7, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 6.28319, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-659, 216), Vector2(253, 216)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.4, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.760784, 0, 0.160784, 0), Color(0.760784, 0, 0.160784, 0), Color(0.878431, 0, 0.0431373, 0.290196)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.8, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sse3g"]
+_data = {
+"Entry": SubResource("Animation_0h7di")
+}
+
+[node name="StartScreen" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_xsmuo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -360.0
+offset_top = -113.0
+offset_right = 1403.0
+offset_bottom = 788.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 253.0
+offset_top = 216.0
+offset_right = 878.0
+offset_bottom = 512.0
+theme_override_font_sizes/font_size = 196
+text = "STUDYO"
+
+[node name="Label3" type="Label" parent="."]
+modulate = Color(0.878431, 0, 0.0431373, 0.290196)
+offset_left = 533.0
+offset_top = 584.0
+offset_right = 695.0
+offset_bottom = 643.0
+theme_override_fonts/font = ExtResource("1_glepu")
+theme_override_font_sizes/font_size = 32
+text = "Version 0.0.1"
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0.974897, 0.0731702, 0, 1)
+offset_left = 853.0
+offset_top = 216.0
+offset_right = 1078.0
+offset_bottom = 512.0
+theme_override_fonts/font = ExtResource("1_glepu")
+theme_override_font_sizes/font_size = 196
+text = "42
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sse3g")
+}
+autoplay = "Entry"
+
+[node name="Nothing" type="Sprite2D" parent="."]
+modulate = Color(0.976471, 0.0745098, 0, 1)
+position = Vector2(556, -131)
+scale = Vector2(7, 7)
+texture = ExtResource("2_p7m8h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q6o01")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

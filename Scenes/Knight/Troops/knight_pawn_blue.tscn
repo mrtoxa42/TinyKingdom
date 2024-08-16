@@ -684,7 +684,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqanb"]
-radius = 28.0
+radius = 24.0
 height = 69.0
 
 [node name="KnightPawnBlue" type="CharacterBody2D" groups=["Pawn"]]
@@ -743,7 +743,7 @@ position = Vector2(0, -35)
 [node name="KnightPawnBlueArea" type="Area2D" parent="." groups=["Pawn"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnightPawnBlueArea"]
-position = Vector2(3, -3)
+position = Vector2(1, -1)
 shape = SubResource("CapsuleShape2D_yqanb")
 
 [node name="ExtraSprite" type="Sprite2D" parent="."]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcukloipou4uc"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/HowToPlay.gd" id="1_8jx4l"]
+[ext_resource type="Texture2D" uid="uid://bbmrdsv8ebe0y" path="res://Assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red.png" id="2_30f1e"]
+
+[node name="HowToPlay" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_8jx4l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1346.0
+offset_bottom = 742.0
+color = Color(0.835697, 0.0568352, 9.62615e-08, 0.847059)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 209.0
+offset_right = 562.0
+offset_bottom = 318.0
+text = " Kamera harekti: Mouse ile bir yere tıklayıp fareyi hareket ettirin.
+
+
+	             "
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 345.0
+offset_right = 562.0
+offset_bottom = 454.0
+text = "Tek seçim: Seçmek istediğiniz birimin üstüne bir kere tıklayarak sadece
+o karakteri seçebilirsiniz
+
+	             "
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 465.0
+offset_right = 608.0
+offset_bottom = 574.0
+text = "Çoklu Seçim: Herhangi bir yere çift tıklayıp fare hareketi ile seçim kutusu
+oluşturup çoklu seçim yapabilirsiniz.
+
+	             "
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 704.0
+offset_top = 465.0
+offset_right = 1174.0
+offset_bottom = 574.0
+text = "Birim Seçimi: Herhangi bir birime çift tıklayarak o birime ait tüm karakterleri
+seçebilirsiniz."
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 704.0
+offset_top = 353.0
+offset_right = 1194.0
+offset_bottom = 462.0
+text = "Seçilim Birim Kaldırma: Sağ tarafata açlıan birime ait pencereyi kapatırsanız
+birime ait tüm karakterleri bırakır."
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 1124.0
+offset_top = 683.0
+offset_right = 1614.0
+offset_bottom = 792.0
+text = "Biraz aceleye geldi."
+
+[node name="BackButton" type="TouchScreenButton" parent="."]
+texture_normal = ExtResource("2_30f1e")
+
+[node name="Label" type="Label" parent="BackButton"]
+offset_left = 21.0
+offset_top = -27.0
+offset_right = 61.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 64
+text = "<"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

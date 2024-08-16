@@ -9,6 +9,8 @@ var mutliplecollision = 0
 var touch_points = {}
 var start_position_knight_tab = Vector2.ZERO
 var zoom_touch = false
+var selected_build = false
+
 
 var touch_point = preload("res://Scenes/Extras/touch_point.tscn")
 
@@ -31,6 +33,9 @@ func _process(delta):
 	$ResourcesGui/ResourcesHBox/WoodHBox/MarginContainer/WoodLabel.text = "X" + str(GameManager.currentwood)
 	$ResourcesGui/ResourcesHBox/GoldHBox/MarginContainer/GoldLabel.text = "X" + str(GameManager.currentgold)
 	$ResourcesGui/ResourcesHBox/MeatHBox/MarginContainer/MeatLabel.text = "X" + str(GameManager.currentmeat)
+
+
+
 
 func _input(event):
 	if event is InputEventScreenTouch and event.double_tap:
@@ -170,6 +175,7 @@ func _on_down_area_mouse_exited():
 
 
 func _on_house_blue_pressed():
+	selected_build = true
 	GameManager.global_mouse_entered = true
 	GameManager.BuildSystem.ghost_house()
 	var timer = get_tree().create_timer(0.1)
