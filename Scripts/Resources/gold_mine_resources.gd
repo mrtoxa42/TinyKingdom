@@ -68,5 +68,3 @@ func pull_resources():
 				i.exit_mine()
 				workers.erase(i)
 		
-
-

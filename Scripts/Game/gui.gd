@@ -177,6 +177,7 @@ func _on_down_area_mouse_exited():
 func _on_house_blue_pressed():
 	selected_build = true
 	GameManager.global_mouse_entered = true
+	GameManager.BuildSystem.build_started()
 	GameManager.BuildSystem.ghost_house()
 	var timer = get_tree().create_timer(0.1)
 	await timer.timeout

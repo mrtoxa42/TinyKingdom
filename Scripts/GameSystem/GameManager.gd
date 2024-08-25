@@ -9,6 +9,7 @@ var mouseboundary = ""
 var BuildSystem
 #Oyun içi değişkenler
 var middlepoint
+var game_navigation_node
 var global_mouse_position
 var global_mouse_entered = false
 var maincastle = null
@@ -28,6 +29,7 @@ var currentworkers = 0
 var mousetouchpos = Vector2.ZERO
 var dragged = false
 var selectedbox = false
+var build_started
 
 
 var currentwood = 0
@@ -38,5 +40,3 @@ var currentmeat = 0
 #Kaydedilecek değerler (sınırsız mod)
 
 #Kaydedilecek oyun dataları
-
-

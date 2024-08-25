@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt6x52g3xtxkv"]
+[gd_scene load_steps=6 format=3 uid="uid://dt6x52g3xtxkv"]
 
 [ext_resource type="Script" path="res://Scripts/GameSystem/game_system.gd" id="1_vgdru"]
 [ext_resource type="Script" path="res://Scripts/Knight/Buildings/BuildSystem.gd" id="2_334br"]
+[ext_resource type="Texture2D" uid="uid://bbmrdsv8ebe0y" path="res://Assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red.png" id="4_5nodg"]
+[ext_resource type="Texture2D" uid="uid://wvvygdxb2y62" path="res://Assets/Tiny Swords (Update 010)/UI/Buttons/Button_Red_Pressed.png" id="5_jc06g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fecgh"]
 size = Vector2(82, 112)
@@ -1710,9 +1712,39 @@ scale = Vector2(0.1, 0.1)
 [node name="BuildSystem" type="Node2D" parent="."]
 script = ExtResource("2_334br")
 
+[node name="AcceptButton" type="TouchScreenButton" parent="BuildSystem"]
+z_index = 2
+position = Vector2(25, -102)
+texture_normal = ExtResource("4_5nodg")
+texture_pressed = ExtResource("5_jc06g")
+metadata/_edit_group_ = true
+
+[node name="AcceptLabel" type="Label" parent="BuildSystem/AcceptButton"]
+offset_left = 16.0
+offset_top = -11.0
+offset_right = 57.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 42
+text = "✓ "
+
+[node name="CancelButton" type="TouchScreenButton" parent="BuildSystem"]
+z_index = 2
+position = Vector2(-101, -104)
+texture_normal = ExtResource("4_5nodg")
+texture_pressed = ExtResource("5_jc06g")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="BuildSystem/CancelButton"]
+offset_left = 23.0
+offset_top = -10.0
+offset_right = 42.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 42
+text = "x"
+
 [node name="GhostSprite" type="Sprite2D" parent="BuildSystem"]
 modulate = Color(1, 1, 1, 0.478431)
-position = Vector2(173, 584)
+z_index = 2
 
 [node name="GhostArea" type="Area2D" parent="BuildSystem/GhostSprite"]
 
@@ -1720,5 +1752,9 @@ position = Vector2(173, 584)
 position = Vector2(-1, -22)
 shape = SubResource("RectangleShape2D_fecgh")
 
+[connection signal="pressed" from="BuildSystem/AcceptButton" to="BuildSystem" method="_on_accept_button_pressed"]
+[connection signal="released" from="BuildSystem/AcceptButton" to="BuildSystem" method="_on_accept_button_released"]
+[connection signal="pressed" from="BuildSystem/CancelButton" to="BuildSystem" method="_on_cancel_button_pressed"]
+[connection signal="released" from="BuildSystem/CancelButton" to="BuildSystem" method="_on_cancel_button_released"]
 [connection signal="area_entered" from="BuildSystem/GhostSprite/GhostArea" to="BuildSystem" method="_on_ghost_area_area_entered"]
 [connection signal="area_exited" from="BuildSystem/GhostSprite/GhostArea" to="BuildSystem" method="_on_ghost_area_area_exited"]

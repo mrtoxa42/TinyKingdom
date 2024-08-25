@@ -66,7 +66,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_released():
-		if GameManager.global_mouse_entered == false and GameManager.currentarchers.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false and GameManager.current_mouse_area != "Resources":
+		if GameManager.global_mouse_entered == false and GameManager.currentarchers.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false and GameManager.current_mouse_area != "Resources" and GameManager.build_started == false:
 			army_line = GameManager.currentarchers.find(self)
 			var armypos
 			if GameManager.currentwarriors == 0:
@@ -81,10 +81,11 @@ func _input(event):
 func _on_selected_touched_pressed():
 	GameManager.global_mouse_entered = true
 	GameManager.current_mouse_area = "Archer"
-	if !GameManager.currentarchers.has(self):
-		army_selected()
-	else:
-		army_removed()
+	if GameManager.build_started == false:
+		if !GameManager.currentarchers.has(self):
+			army_selected()
+		else:
+			army_removed()
 
 
 func _on_selected_touched_released():

@@ -688,6 +688,7 @@ radius = 24.0
 height = 69.0
 
 [node name="KnightPawnBlue" type="CharacterBody2D" groups=["Pawn"]]
+y_sort_enabled = true
 collision_layer = 0
 script = ExtResource("1_cxr5x")
 

@@ -6,6 +6,7 @@ extends Node2D
 
 func _ready():
 	#get_tree().paused = true+
+	GameManager.game_navigation_node = $NavigationRegion2D
 	GameManager.game_in = true
 	GameManager.currentfinish = $Finish
 	GameManager.currentlevel = self
@@ -23,13 +24,13 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_select"):
 		$LevelAni/LevelAnimation.speed_scale = 4
-		print("kanğ")
 	
 #func _on_game_started_timeout():
 	#$NavigationRegion2D.bake_navigation_polygon(true)
 
 func new_bake_navigation():
 	$NavigationRegion2D.bake_navigation_polygon(true)
+	print("geldi bake")
 
 
 

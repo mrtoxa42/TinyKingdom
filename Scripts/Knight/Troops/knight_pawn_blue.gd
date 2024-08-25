@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 
 var current_resources = null
+var current_build = null
+var building = false
 var gathering_resources = false
 var castle_area = false
 var resources_type = ""
@@ -31,7 +33,7 @@ func _process(delta):
 	pass
 func _physics_process(delta):
 	if attack == false and dead == false:
-		if current_resources == null and gathering_resources == false:
+		if current_resources == null and gathering_resources == false and current_build == null:
 			if GameManager.currentpawn.has(self) or onnav == true:
 				direction = Vector3()
 				nav.target_position = mousepos
@@ -48,7 +50,7 @@ func _physics_process(delta):
 					$VisualAnimation.play("Idle")
 					
 		else:
-			if current_resources != null and gathering_resources == false and current_resources.over == false:
+			if current_resources != null and gathering_resources == false and current_resources.over == false and current_build == null:
 				direction = Vector3()
 				nav.target_position = current_resources.global_position
 				direction = nav.get_next_path_position() - global_position
@@ -83,7 +85,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventScreenTouch and !event.double_tap:
-		if event.is_released() and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false:
+		if event.is_released() and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false and GameManager.build_started == false:
 			if GameManager.global_mouse_entered == false and GameManager.currentpawn.has(self):
 				army_line = GameManager.currentpawn.find(self)
 				var army_pos = GameSystem.get_node("CanvasLayer/ArmyFormationPawner/Formation" + str(army_line)).global_position

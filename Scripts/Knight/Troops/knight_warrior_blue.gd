@@ -74,7 +74,7 @@ func _physics_process(delta):
 			#onnav = true
 func _input(event):
 	if event.is_released() and GameManager.selectedbox == false:
-		if GameManager.global_mouse_entered == false and GameManager.currentknights.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false:
+		if GameManager.global_mouse_entered == false and GameManager.currentknights.has(self) and event is InputEventScreenTouch and GameManager.dragged == false and GameManager.selectedbox == false and GameManager.build_started == false:
 				army_line = GameManager.currentknights.find(self)
 				var armypos = GameSystem.get_node("CanvasLayer/ArmyFormationKnight/Formation" + str(army_line)).global_position
 				mousepos = armypos
@@ -157,10 +157,11 @@ func _on_tool_animation_animation_finished(anim_name):
 func _on_selected_touch_pressed():
 	GameManager.global_mouse_entered = true
 	GameManager.current_mouse_area = "Knight"
-	if GameManager.currentknights.has(self) == false:
-		army_selected()
-	else:
-		army_removed()
+	if GameManager.build_started == false:
+		if GameManager.currentknights.has(self) == false:
+			army_selected()
+		else:
+			army_removed()
 	
 func army_selected():
 	if GameManager.currentknights.has(self) == false:

@@ -13,7 +13,7 @@ func _process(delta):
 		$CanvasLayer/ArmyFormationArcher.global_position = get_global_mouse_position() - Vector2(-8,-68)
 
 func _input(event):
-	if event is InputEventScreenTouch and event.double_tap:
+	if event is InputEventScreenTouch and event.double_tap and GameManager.build_started == false:
 		if GameManager.current_mouse_area == "Knight" or "Archer" or "Pawn":
 			if GameManager.current_mouse_area == "Knight":
 					all_knight_selected()
@@ -31,4 +31,3 @@ func all_archer_selected():
 	get_tree().call_group("Archer","army_selected")
 func all_pawn_selected():
 	get_tree().call_group("Pawn", "worker_selected")
-
